@@ -1,0 +1,48 @@
+---
+// src/components/Header.astro
+const navItems = [
+  { label: 'Inicio', url: '#' },
+  { label: 'Proyectos', url: '#proyectos' },
+  { label: 'Sobre Mí', url: '#sobre-mi' },
+  { label: 'Contacto', url: 'mailto:tu-email@gmail.com' }, // Cambia esto por tu email real
+];
+---
+
+<header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    
+    <a href="#" class="text-xl font-bold font-mono text-white hover:text-ai-neon transition-colors">
+      &lt;Nahu /&gt;
+    </a>
+
+    <nav class="hidden md:flex gap-8">
+      {navItems.map((link) => (
+        <a 
+          href={link.url} 
+          class="text-sm font-medium text-gray-300 hover:text-ai-neon transition-colors relative group"
+        >
+          {link.label}
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-ai-neon transition-all group-hover:w-full"></span>
+        </a>
+      ))}
+    </nav>
+
+    <a href="#proyectos" class="md:hidden text-sm text-ai-neon border border-ai-neon px-3 py-1 rounded">
+      Menu
+    </a>
+
+  </div>
+</header>
+
+<script>
+  // Script para efecto "Glass" al hacer scroll
+  const navbar = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('bg-chess-dark/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+    } else {
+      navbar?.classList.remove('bg-chess-dark/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+    }
+  });
+</script>
