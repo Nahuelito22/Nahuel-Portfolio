@@ -1,0 +1,52 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-chess-dark">
+  
+  <div class="absolute inset-0 z-0 opacity-20">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-ai-neon rounded-full mix-blend-screen filter blur-[128px] opacity-10 animate-pulse"></div>
+
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+    
+    <div class="inline-block mb-4 px-3 py-1 border border-ai-neon/30 rounded-full bg-ai-neon/5 backdrop-blur-sm">
+      <span class="text-ai-neon font-mono text-sm tracking-wider">
+        &lt;SystemReady mode="Defense" /&gt;
+      </span>
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+      Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-ai-neon to-purple-500">Nahu</span>.
+    </h1>
+
+    <p class="text-xl md:text-2xl text-chess-accent mb-10 max-w-2xl mx-auto font-light">
+      Desarrollador Full Stack & Data Scientist.
+      <br/>
+      <span class="text-sm font-mono mt-2 block opacity-80">
+        Combinando lógica de ajedrez con potencia de IA.
+      </span>
+    </p>
+
+    <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+      <a href="#proyectos" class="group relative px-8 py-3 bg-white text-chess-dark font-bold rounded hover:bg-ai-neon transition-colors duration-300">
+        Ver Proyectos
+        <span class="absolute -right-2 -top-2 w-4 h-4 bg-chess-dark border border-ai-neon rounded-full opacity-0 group-hover:opacity-100 transition-all"></span>
+      </a>
+      
+      <a href="#contacto" class="px-8 py-3 border border-chess-accent text-chess-accent hover:text-white hover:border-white rounded transition-colors duration-300 font-mono text-sm">
+        ./contactar_me.sh
+      </a>
+    </div>
+
+  </div>
+  
+  <div class="absolute bottom-10 animate-bounce text-chess-accent opacity-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+
+</section>
