@@ -1,11 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Projects from '../components/Projects.astro'; // <--- Importar
+import Projects from '../components/Projects.astro';
+import About from '../components/About.astro'; // <--- Nuevo
+import Skills from '../components/Skills.astro'; // <--- Nuevo
 ---
 
 <Layout title="Nahu | Portfolio">
 	<main>
 		<Hero />
-		<Projects /> </main>
+		<Projects />
+        <About /> <Skills />
+	</main>
 </Layout>

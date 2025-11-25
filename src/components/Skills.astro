@@ -1,0 +1,55 @@
+---
+// src/components/Skills.astro
+import { Icon } from 'astro-icon/components';
+
+const SKILLS = [
+  {
+    category: "Data Science & AI",
+    icon: "mdi:brain", // Icono mental (requiere configuración, si falla usa texto)
+    items: ["Python", "Pandas & NumPy", "Scikit-learn", "TensorFlow / Keras", "Matplotlib", "NLP (Spacy/NLTK)"]
+  },
+  {
+    category: "Backend & Systems",
+    icon: "mdi:server",
+    items: ["SQL (MySQL/Postgres)", "FastAPI / Flask", "Git & GitHub", "Docker Basics", "Linux Terminal"]
+  },
+  {
+    category: "Frontend & Visualization",
+    icon: "mdi:monitor",
+    items: ["HTML5 & CSS3", "JavaScript", "React / Astro", "Tailwind CSS", "Power BI / Tableau"]
+  }
+];
+---
+
+<section class="py-20 bg-chess-dark">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <h2 class="text-4xl font-bold text-white mb-12 text-center">
+      Tech <span class="text-ai-neon">Stack</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {SKILLS.map((skill) => (
+        <div class="bg-chess-board p-8 rounded-2xl border border-white/5 hover:border-ai-neon/40 transition-all group">
+          
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-ai-neon/10 rounded-lg flex items-center justify-center text-ai-neon group-hover:scale-110 transition-transform">
+               <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">{skill.category}</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {skill.items.map((item) => (
+              <span class="px-3 py-1 bg-chess-dark text-gray-300 text-sm font-mono border border-white/10 rounded hover:border-ai-neon/50 hover:text-white transition-colors cursor-default">
+                {item}
+              </span>
+            ))}
+          </div>
+          
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
