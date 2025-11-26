@@ -1,35 +1,32 @@
 ---
 // src/layouts/Layout.astro
-import Header from '../components/Header.astro'; // <--- Importar
-import Footer from '../components/Footer.astro'; // <--- Importar
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Particles from "astro-particles"; // <--- Importar
+import { loadSlim } from "tsparticles-slim"; // <--- Importar motor ligero
+import { particlesConfig } from "../config/particlesConfig"; // <--- Tu config
 
-interface Props {
-	title: string;
-}
+// Función para inicializar partículas
+const particlesInit = async (engine: any) => {
+  await loadSlim(engine);
+};
 
+interface Props { title: string; }
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth"> <head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio de Nahu - Data Scientist & Developer" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-        
-		<title>{title}</title>
-	</head>
-	<body class="bg-chess-dark text-white font-sans"> <Header /> <slot />   <Footer /> </body>
-</html>
+<html lang="es" class="scroll-smooth">
+  <head>...</head>
+  
+  <body class="bg-chess-dark text-white font-sans relative">
+    
+    <div class="absolute inset-0 -z-10 h-full w-full">
+        <Particles id="tsparticles" options={particlesConfig} init={particlesInit} />
+    </div>
 
-<style is:global>
-	/* Estilos globales opcionales si Tailwind no cubre algo */
-    html {
-        scroll-behavior: smooth;
-    }
-</style>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
