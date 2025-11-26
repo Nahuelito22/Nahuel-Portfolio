@@ -1,0 +1,64 @@
+---
+// src/components/Certificates.astro
+const CERTIFICATES = [
+  {
+    date: "2024",
+    title: "Carrera de Data Science",
+    issuer: "Coderhouse",
+    description: "Formación integral cubriendo el ciclo completo de vida del dato.",
+    details: [
+      "Data Science I: Fundamentos y Visualización",
+      "Data Science II: Machine Learning Supervisado",
+      "Data Science III: NLP & Deep Learning (Origen de Roque Chess)"
+    ],
+    link: "#" // Link a tu credencial si tienes
+  },
+  {
+    date: "2024",
+    title: "Cursos de Especialización",
+    issuer: "Santander / Otros",
+    description: "Formación complementaria para ampliar el stack tecnológico.",
+    details: [
+      "Power BI: Dashboarding y Business Intelligence",
+      "IA Generativa: Prompt Engineering y LLMs",
+      "Gestión Ágil de Proyectos"
+    ]
+  }
+];
+---
+
+<section id="certificados" class="py-20 relative">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-white mb-12 text-center">
+      Formación <span class="text-ai-neon">& Certificaciones</span>
+    </h2>
+
+    <div class="relative border-l border-gray-700 ml-4 md:ml-0 space-y-12">
+      {CERTIFICATES.map((cert) => (
+        <div class="mb-8 md:ml-12 relative pl-8 md:pl-0">
+          <div class="absolute -left-2.5 top-0 w-5 h-5 bg-chess-dark border-2 border-ai-neon rounded-full"></div>
+          
+          <div class="bg-chess-board p-6 rounded-xl border border-white/5 hover:border-ai-neon/30 transition-all">
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">{cert.title}</h3>
+                <span class="text-ai-neon font-mono text-sm">{cert.issuer}</span>
+              </div>
+              <span class="text-gray-500 font-mono text-sm mt-2 md:mt-0">{cert.date}</span>
+            </div>
+            
+            <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+            
+            <ul class="space-y-2">
+              {cert.details.map(item => (
+                <li class="flex items-center text-gray-400 text-sm gap-2">
+                  <span class="text-ai-neon">▹</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
