@@ -3,43 +3,51 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Particles from "astro-particles";
-import { loadSlim } from "tsparticles-slim";
 import { particlesConfig } from "../config/particlesConfig";
 
-const particlesInit = async (engine: any) => {
-  await loadSlim(engine);
-};
+interface Props {
+	title: string;
+}
 
-interface Props { title: string; }
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Portfolio de Nahu - Data Scientist & Developer" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <title>{title}</title>
-  </head>
-  
-  <body class="bg-chess-dark text-white font-sans selection:bg-ai-neon selection:text-chess-dark relative">
-    
-    <div class="fixed inset-0 -z-10 h-full w-full pointer-events-none">
-        <Particles id="tsparticles" options={particlesConfig} init={particlesInit} />
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Portfolio de Nahu - Data Scientist & Developer" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+        
+		<title>{title}</title>
+	</head>
+	
+	<body class="font-sans text-white relative bg-chess-dark">
+        
+        <div class="fixed inset-0 z-0 pointer-events-none">
+            <Particles id="tsparticles" options={particlesConfig} />
+        </div>
 
-    <div class="relative z-10">
-        <Header />
-        <slot />
-        <Footer />
-    </div>
-  </body>
+        <script>
+            import { tsParticles } from "tsparticles-engine";
+            import { loadSlim } from "tsparticles-slim";
+
+            // Esta función se ejecuta apenas carga el navegador
+            (async () => {
+                await loadSlim(tsParticles);
+            })();
+        </script>
+
+        <div class="relative z-10">
+            <Header />
+		    <slot />
+            <Footer />
+        </div>
+	</body>
 </html>

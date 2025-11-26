@@ -1,16 +1,18 @@
 // src/config/particlesConfig.ts
-import type { ISourceOptions } from "tsparticles-engine";
 
-export const particlesConfig: ISourceOptions = {
+// NOTA: Quitamos la importación de "tsparticles-engine" para evitar errores de dependencias.
+// Exportamos la configuración como un objeto simple.
+
+export const particlesConfig = {
   background: {
-    color: { value: "transparent" }, // Transparente para ver el color de fondo de tu CSS
+    color: { value: "transparent" },
   },
   fpsLimit: 120,
   interactivity: {
     events: {
       onHover: {
         enable: true,
-        mode: "grab", // Efecto de conectar neuronas al pasar el mouse
+        mode: "grab",
       },
       onClick: {
         enable: true,
@@ -35,14 +37,14 @@ export const particlesConfig: ISourceOptions = {
     },
     move: {
       enable: true,
-      speed: 1, // Movimiento lento y sutil
+      speed: 1,
     },
     number: {
       density: { enable: true, area: 800 },
-      value: 60, // Cantidad de nodos
+      value: 60,
     },
     opacity: { value: 0.3 },
-    shape: { type: "circle" }, // Nodos circulares
+    shape: { type: "circle" },
     size: { value: { min: 1, max: 3 } },
   },
   detectRetina: true,
