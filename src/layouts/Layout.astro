@@ -1,3 +1,4 @@
+
 ---
 // src/layouts/Layout.astro
 import Header from "../components/Header.astro";
@@ -33,7 +34,7 @@ const { title } = Astro.props;
     </head>
 
     <body class="font-sans text-white relative bg-chess-dark">
-        <!-- El contenedor donde tsparticles dibujará el canvas -->
+        <!-- Tu estructura HTML para las partículas y el contenido se mantiene intacta -->
         <div id="tsparticles" class="fixed inset-0 z-0"></div>
 
         <div class="relative z-10 pointer-events-none">
@@ -48,77 +49,15 @@ const { title } = Astro.props;
             </div>
         </div>
 
-        <!-- PASO 1: Cargar la librería desde un CDN fiable -->
-        <!-- Esto crea una variable global llamada 'tsParticles' -->
-        <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+        <!-- 
+          AQUÍ ESTÁ EL CAMBIO CLAVE:
+          Cargamos nuestro script de partículas de forma segura.
+          Astro se encargará de procesarlo y empaquetarlo correctamente.
+          'type="module"' es importante porque nuestro script usa 'import'.
+        -->
+        <script src="/src/scripts/particles.js" type="module"></script>
 
-        <!-- PASO 2: Usar la variable global 'tsParticles' -->
-        <script>
-            // Copiamos tu configuración aquí
-            const particlesConfig = {
-              background: { color: { value: "transparent" } },
-              fpsLimit: 120,
-              interactivity: {
-                detectsOn: "window",
-                events: {
-                  onHover: { enable: true, mode: "grab" },
-                  onClick: { enable: true, mode: "push" },
-                  resize: true,
-                },
-                modes: {
-                  grab: { distance: 140, links: { opacity: 0.8 } },
-                  push: { quantity: 2 },
-                },
-              },
-              particles: {
-                color: { value: "#00ffff" },
-                links: {
-                  color: "#4a5568",
-                  distance: 180,
-                  enable: true,
-                  opacity: 0.2,
-                  width: 0.5,
-                },
-                move: {
-                  enable: true,
-                  speed: 0.5,
-                  direction: "none",
-                  random: false,
-                  straight: false,
-                  outModes: { default: "bounce" },
-                },
-                number: { density: { enable: true, area: 1000 }, value: 50 },
-                opacity: {
-                  value: 0.6,
-                  animation: {
-                    enable: true,
-                    speed: 2,
-                    sync: false,
-                    minimumValue: 0.3,
-                  },
-                },
-                shape: { type: "circle" },
-                size: {
-                  value: { min: 2, max: 4 },
-                  animation: {
-                    enable: true,
-                    speed: 3,
-                    sync: false,
-                    minimumValue: 1,
-                  },
-                },
-              },
-              detectRetina: true,
-            };
-
-            // Inicializamos las partículas cuando la página esté lista
-            // 'tsParticles' ya está disponible globalmente gracias al script anterior
-            document.addEventListener("DOMContentLoaded", () => {
-                tsParticles.load("tsparticles", particlesConfig);
-            });
-        </script>
-
-        <!-- Tus otros scripts (Konami Code y animaciones) van aquí, sin cambios -->
+        <!-- Tus otros scripts (Konami Code y animaciones) se mantienen intactos -->
         <script>
             // Konami Code Easter Egg
             const konamiCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
