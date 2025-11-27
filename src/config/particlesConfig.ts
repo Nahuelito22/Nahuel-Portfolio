@@ -4,13 +4,12 @@ export const particlesConfig = {
     color: { value: "transparent" },
   },
   fpsLimit: 120,
-  // ESTA PARTE ES CLAVE: detectsOn: "window" hace que funcione en toda la pantalla
   interactivity: {
-    detectsOn: "window", 
+    detectsOn: "window", // IMPORTANTE
     events: {
       onHover: {
         enable: true,
-        mode: "grab", // Esto crea las líneas al mouse
+        mode: "grab", // Volvemos a conectar líneas (Efecto Neuronal)
       },
       onClick: {
         enable: true,
@@ -20,7 +19,7 @@ export const particlesConfig = {
     },
     modes: {
       grab: {
-        distance: 140, // Distancia para conectar con el mouse
+        distance: 200, // Aumenté un poco la distancia para que sea más fácil de notar
         links: { opacity: 1 },
       },
       push: {
@@ -32,15 +31,14 @@ export const particlesConfig = {
     color: { value: "#00f3ff" },
     links: {
       color: "#a8a8b8",
-      distance: 150, // Distancia para conectar entre partículas
+      distance: 150,
       enable: true,
-      opacity: 0.2,
+      opacity: 0.4,
       width: 1,
     },
     move: {
       enable: true,
-      // Aumentamos la velocidad a 2 para que sea vea el movimiento
-      speed: 2, 
+      speed: 1.5, // Velocidad elegante
       direction: "none",
       random: false,
       straight: false,
@@ -50,7 +48,7 @@ export const particlesConfig = {
     },
     number: {
       density: { enable: true, area: 800 },
-      value: 80, // Un poco más de partículas
+      value: 80,
     },
     opacity: { value: 0.5 },
     shape: { type: "circle" },
