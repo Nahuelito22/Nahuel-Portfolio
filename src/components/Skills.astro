@@ -5,21 +5,44 @@ import { Icon } from 'astro-icon/components';
 const SKILLS = [
   {
     category: "Data Science & AI",
-    // Icono de cerebro/red para IA
     icon: "mdi:brain", 
-    items: ["Python", "Pandas & NumPy", "Scikit-learn", "TensorFlow / Keras", "Matplotlib", "NLP (Spacy/NLTK)"]
+    items: [
+      { name: "Python", icon: "devicon:python" },
+      { name: "Pandas", icon: "devicon:pandas" },
+      { name: "NumPy", icon: "devicon:numpy" },
+      { name: "Scikit-learn", icon: "devicon:scikitlearn" },
+      { name: "TensorFlow", icon: "devicon:tensorflow" },
+      { name: "Keras", icon: "devicon:keras" },
+      { name: "Matplotlib", icon: "devicon:matplotlib" },
+      { name: "NLP", icon: "mdi:comment-text-multiple-outline" },
+    ]
   },
   {
     category: "Backend & Systems",
-    // Icono de servidor/torre para Backend
     icon: "mdi:server-network", 
-    items: ["SQL (MySQL/Postgres)", "FastAPI / Flask", "Git & GitHub", "Docker Basics", "Linux Terminal"]
+    items: [
+      { name: "MySQL", icon: "devicon:mysql" },
+      { name: "PostgreSQL", icon: "devicon:postgresql" },
+      { name: "FastAPI", icon: "devicon:fastapi" },
+      { name: "Flask", icon: "devicon:flask" },
+      { name: "Git", icon: "devicon:git" },
+      { name: "GitHub", icon: "devicon:github" },
+      { name: "Docker", icon: "devicon:docker" },
+      { name: "Linux", icon: "devicon:linux" },
+    ]
   },
   {
     category: "Frontend & Visualization",
-    // Icono de dashboard para visualización
     icon: "mdi:monitor-dashboard", 
-    items: ["HTML5 & CSS3", "JavaScript", "React / Astro", "Tailwind CSS", "Power BI / Tableau"]
+    items: [
+      { name: "HTML5", icon: "devicon:html5" },
+      { name: "CSS3", icon: "devicon:css3" },
+      { name: "JavaScript", icon: "devicon:javascript" },
+      { name: "React", icon: "devicon:react" },
+      { name: "Astro", icon: "devicon:astro" },
+      { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
+      { name: "Tableau", icon: "mdi:chart-bar" },
+    ]
   }
 ];
 ---
@@ -44,8 +67,9 @@ const SKILLS = [
 
           <div class="flex flex-wrap gap-2">
             {skill.items.map((item) => (
-              <span class="px-3 py-1 bg-chess-dark text-gray-300 text-sm font-mono border border-white/10 rounded hover:border-ai-neon/50 hover:text-white transition-colors cursor-default">
-                {item}
+              <span class="flex items-center gap-2 px-3 py-1 bg-chess-dark text-gray-300 text-sm font-mono border border-white/10 rounded hover:border-ai-neon/50 hover:text-white transition-colors cursor-default">
+                <Icon name={item.icon} class="w-4 h-4" />
+                {item.name}
               </span>
             ))}
           </div>
