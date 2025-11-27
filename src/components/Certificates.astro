@@ -1,5 +1,11 @@
 ---
 // src/components/Certificates.astro
+
+// TODO:
+// 1. Si aún no lo has hecho, crea la carpeta `public/certificates/`.
+// 2. Guarda todos tus certificados (PDF o imagen) en esa carpeta.
+// 3. Asegúrate de que los nombres de archivo coincidan con la propiedad `file` de abajo.
+
 const CERTIFICATES = [
   {
     date: "2024",
@@ -7,11 +13,10 @@ const CERTIFICATES = [
     issuer: "Coderhouse",
     description: "Formación integral cubriendo el ciclo completo de vida del dato.",
     details: [
-      "Data Science I: Fundamentos y Visualización",
-      "Data Science II: Machine Learning Supervisado",
-      "Data Science III: NLP & Deep Learning (Origen de Roque Chess)"
+      { name: "Data Science I: Fundamentos y Visualización", file: "/certificates/ds-fundamentos.pdf" },
+      { name: "Data Science II: Machine Learning Supervisado", file: "/certificates/ds-ml-supervisado.pdf" },
+      { name: "Data Science III: NLP & Deep Learning", file: "/certificates/ds-nlp-deep-learning.pdf" }
     ],
-    link: "#" // Link a tu credencial si tienes
   },
   {
     date: "2024",
@@ -19,9 +24,9 @@ const CERTIFICATES = [
     issuer: "Santander / Otros",
     description: "Formación complementaria para ampliar el stack tecnológico.",
     details: [
-      "Power BI: Dashboarding y Business Intelligence",
-      "IA Generativa: Prompt Engineering y LLMs",
-      "Gestión Ágil de Proyectos"
+      { name: "Power BI: Dashboarding y Business Intelligence", file: "/certificates/especializacion-power-bi.pdf" },
+      { name: "IA Generativa: Prompt Engineering y LLMs", file: "/certificates/especializacion-ia-generativa.pdf" },
+      { name: "Gestión Ágil de Proyectos", file: "/certificates/especializacion-agile.pdf" }
     ]
   }
 ];
@@ -38,7 +43,7 @@ const CERTIFICATES = [
         <div class="mb-8 md:ml-12 relative pl-8 md:pl-0">
           <div class="absolute -left-2.5 top-0 w-5 h-5 bg-chess-dark border-2 border-ai-neon rounded-full"></div>
           
-          <div class="bg-chess-board p-6 rounded-xl border border-white/5 hover:border-ai-neon/30 transition-all">
+          <div class="bg-chess-board p-6 rounded-xl border border-white/5">
             <div class="flex flex-col md:flex-row justify-between mb-4">
               <div>
                 <h3 class="text-xl font-bold text-white">{cert.title}</h3>
@@ -51,8 +56,17 @@ const CERTIFICATES = [
             
             <ul class="space-y-2">
               {cert.details.map(item => (
-                <li class="flex items-center text-gray-400 text-sm gap-2">
-                  <span class="text-ai-neon">▹</span> {item}
+                <li>
+                  <a 
+                    href={item.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center text-gray-400 text-sm gap-2 group hover:text-ai-neon transition-colors"
+                  >
+                    <span class="text-ai-neon group-hover:text-white transition-colors">▹</span> 
+                    <span>{item.name}</span>
+                    <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
                 </li>
               ))}
             </ul>
