@@ -2,8 +2,6 @@
 // src/layouts/Layout.astro
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Particles from "astro-particles";
-import { particlesConfig } from "../config/particlesConfig";
 
 interface Props {
     title: string;
@@ -35,18 +33,8 @@ const { title } = Astro.props;
     </head>
 
     <body class="font-sans text-white relative bg-chess-dark">
-        <div class="fixed inset-0 z-0">
-            <Particles id="tsparticles" options={particlesConfig} />
-        </div>
-
-        <script>
-            import { tsParticles } from "tsparticles-engine";
-            import { loadSlim } from "tsparticles-slim";
-
-            (async () => {
-                await loadSlim(tsParticles);
-            })();
-        </script>
+        <!-- El contenedor donde tsparticles dibujará el canvas -->
+        <div id="tsparticles" class="fixed inset-0 z-0"></div>
 
         <div class="relative z-10 pointer-events-none">
             <div class="pointer-events-auto">
@@ -59,88 +47,118 @@ const { title } = Astro.props;
                 <Footer />
             </div>
         </div>
+
+        <!-- PASO 1: Cargar la librería desde un CDN fiable -->
+        <!-- Esto crea una variable global llamada 'tsParticles' -->
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+
+        <!-- PASO 2: Usar la variable global 'tsParticles' -->
+        <script>
+            // Copiamos tu configuración aquí
+            const particlesConfig = {
+              background: { color: { value: "transparent" } },
+              fpsLimit: 120,
+              interactivity: {
+                detectsOn: "window",
+                events: {
+                  onHover: { enable: true, mode: "grab" },
+                  onClick: { enable: true, mode: "push" },
+                  resize: true,
+                },
+                modes: {
+                  grab: { distance: 140, links: { opacity: 0.8 } },
+                  push: { quantity: 2 },
+                },
+              },
+              particles: {
+                color: { value: "#00ffff" },
+                links: {
+                  color: "#4a5568",
+                  distance: 180,
+                  enable: true,
+                  opacity: 0.2,
+                  width: 0.5,
+                },
+                move: {
+                  enable: true,
+                  speed: 0.5,
+                  direction: "none",
+                  random: false,
+                  straight: false,
+                  outModes: { default: "bounce" },
+                },
+                number: { density: { enable: true, area: 1000 }, value: 50 },
+                opacity: {
+                  value: 0.6,
+                  animation: {
+                    enable: true,
+                    speed: 2,
+                    sync: false,
+                    minimumValue: 0.3,
+                  },
+                },
+                shape: { type: "circle" },
+                size: {
+                  value: { min: 2, max: 4 },
+                  animation: {
+                    enable: true,
+                    speed: 3,
+                    sync: false,
+                    minimumValue: 1,
+                  },
+                },
+              },
+              detectRetina: true,
+            };
+
+            // Inicializamos las partículas cuando la página esté lista
+            // 'tsParticles' ya está disponible globalmente gracias al script anterior
+            document.addEventListener("DOMContentLoaded", () => {
+                tsParticles.load("tsparticles", particlesConfig);
+            });
+        </script>
+
+        <!-- Tus otros scripts (Konami Code y animaciones) van aquí, sin cambios -->
+        <script>
+            // Konami Code Easter Egg
+            const konamiCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+            let konamiIndex = 0;
+            document.addEventListener("keydown", (e) => {
+                if (e.key === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        activateEasterEgg();
+                        konamiIndex = 0;
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+            function activateEasterEgg() {
+                alert("♟️ SYSTEM OVERRIDE: CHECKMATE! ♟️\n\nAccessing Neural Network Core...");
+                document.body.style.filter = "invert(1) hue-rotate(180deg)";
+                setTimeout(() => { document.body.style.filter = "none"; }, 5000);
+            }
+
+            // Scroll Animations
+            const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate-fade-in-up");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll("section, .project-card, .timeline-item").forEach((el) => {
+                el.classList.add("opacity-0","translate-y-10","transition-all","duration-700","ease-out");
+                observer.observe(el);
+            });
+        </script>
     </body>
 </html>
 
-<script>
-    // Konami Code Easter Egg
-    const konamiCode = [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowLeft",
-        "ArrowRight",
-        "b",
-        "a",
-    ];
-    let konamiIndex = 0;
-
-    document.addEventListener("keydown", (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
-                konamiIndex = 0;
-            }
-        } else {
-            konamiIndex = 0;
-        }
-    });
-
-    function activateEasterEgg() {
-        alert(
-            "♟️ SYSTEM OVERRIDE: CHECKMATE! ♟️\n\nAccessing Neural Network Core...",
-        );
-        document.body.style.filter = "invert(1) hue-rotate(180deg)";
-        setTimeout(() => {
-            document.body.style.filter = "none";
-        }, 5000);
-    }
-
-    // Scroll Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate-fade-in-up");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document
-        .querySelectorAll("section, .project-card, .timeline-item")
-        .forEach((el) => {
-            el.classList.add(
-                "opacity-0",
-                "translate-y-10",
-                "transition-all",
-                "duration-700",
-                "ease-out",
-            );
-            observer.observe(el);
-        });
-</script>
-
 <style is:global>
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .animate-fade-in-up {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
+    body, html { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+    .animate-fade-in-up { opacity: 1 !important; transform: translateY(0) !important; }
 </style>

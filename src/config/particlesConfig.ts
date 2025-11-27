@@ -1,15 +1,50 @@
-// src/config/particlesConfig.ts
-export const particlesConfig = {
-  background: {
-    color: { value: "transparent" },
+import type { ISourceOptions } from "tsparticles-engine";
+
+export const particlesConfig: ISourceOptions = {
+  // No usaremos fullScreen aquí, ya que tú controlas el div con CSS.
+  // Dejarlo en blanco es lo correcto.
+  particles: {
+    number: {
+      value: 80,
+      density: {
+        enable: true,
+        value_area: 800,
+      },
+    },
+    color: {
+      value: "#00ffff", // ai-neon
+    },
+    shape: {
+      type: "circle",
+    },
+    opacity: {
+      value: 0.5,
+      random: true,
+    },
+    size: {
+      value: 3,
+      random: true,
+    },
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#00ffff",
+      opacity: 0.4,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 1,
+      direction: "none",
+      out_mode: "out",
+    },
   },
-  fpsLimit: 120,
   interactivity: {
-    detectsOn: "window", // IMPORTANTE
+    detectsOn: "window", // Detecta sobre toda la ventana
     events: {
       onHover: {
         enable: true,
-        mode: "grab", // Volvemos a conectar líneas (Efecto Neuronal)
+        mode: "connect", // El modo que crea la red
       },
       onClick: {
         enable: true,
@@ -18,41 +53,20 @@ export const particlesConfig = {
       resize: true,
     },
     modes: {
-      grab: {
-        distance: 200, // Aumenté un poco la distancia para que sea más fácil de notar
-        links: { opacity: 1 },
+      connect: {
+        distance: 80,
+        links: {
+          opacity: 0.8,
+        },
+        radius: 100,
       },
       push: {
         quantity: 4,
       },
     },
   },
-  particles: {
-    color: { value: "#00f3ff" },
-    links: {
-      color: "#a8a8b8",
-      distance: 150,
-      enable: true,
-      opacity: 0.4,
-      width: 1,
-    },
-    move: {
-      enable: true,
-      speed: 1.5, // Velocidad elegante
-      direction: "none",
-      random: false,
-      straight: false,
-      outModes: {
-        default: "bounce",
-      },
-    },
-    number: {
-      density: { enable: true, area: 800 },
-      value: 80,
-    },
-    opacity: { value: 0.5 },
-    shape: { type: "circle" },
-    size: { value: { min: 1, max: 3 } },
-  },
   detectRetina: true,
+  background: {
+    color: "transparent", // Transparente para que se vea el fondo de tu body
+  },
 };
