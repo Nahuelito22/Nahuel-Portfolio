@@ -1,12 +1,12 @@
 ---
 // src/layouts/Layout.astro
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import Particles from "astro-particles";
 import { particlesConfig } from "../config/particlesConfig";
 
 interface Props {
-	title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
@@ -14,22 +14,27 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio de Nahu - Data Scientist & Developer" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-        
-		<title>{title}</title>
-	</head>
-	
-	<body class="font-sans text-white relative bg-chess-dark">
-        
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Portfolio de Nahu - Data Scientist & Developer"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>{title}</title>
+    </head>
+
+    <body class="font-sans text-white relative bg-chess-dark">
         <div class="fixed inset-0 z-0">
             <Particles id="tsparticles" options={particlesConfig} />
         </div>
@@ -43,19 +48,99 @@ const { title } = Astro.props;
             })();
         </script>
 
-        <div class="relative z-10">
-            <Header />
-		    <slot />
-            <Footer />
+        <div class="relative z-10 pointer-events-none">
+            <div class="pointer-events-auto">
+                <Header />
+            </div>
+            <main class="pointer-events-auto">
+                <slot />
+            </main>
+            <div class="pointer-events-auto">
+                <Footer />
+            </div>
         </div>
-	</body>
+    </body>
 </html>
 
+<script>
+    // Konami Code Easter Egg
+    const konamiCode = [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "b",
+        "a",
+    ];
+    let konamiIndex = 0;
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                activateEasterEgg();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
+    function activateEasterEgg() {
+        alert(
+            "♟️ SYSTEM OVERRIDE: CHECKMATE! ♟️\n\nAccessing Neural Network Core...",
+        );
+        document.body.style.filter = "invert(1) hue-rotate(180deg)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 5000);
+    }
+
+    // Scroll Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-fade-in-up");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document
+        .querySelectorAll("section, .project-card, .timeline-item")
+        .forEach((el) => {
+            el.classList.add(
+                "opacity-0",
+                "translate-y-10",
+                "transition-all",
+                "duration-700",
+                "ease-out",
+            );
+            observer.observe(el);
+        });
+</script>
+
 <style is:global>
-    body, html {
+    body,
+    html {
         margin: 0;
         padding: 0;
         width: 100%;
         overflow-x: hidden;
+    }
+
+    .animate-fade-in-up {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 </style>

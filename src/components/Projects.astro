@@ -1,107 +1,125 @@
 ---
 // src/components/Projects.astro
-import ProjectCard from './ProjectCard.astro';
+import ProjectCard from "./ProjectCard.astro";
 
 // AQUÍ ESTÁN TUS PROYECTOS. Edita esto para cambiar textos o links.
 const PROJECTS = [
   {
     title: "Nimbus AI",
-    description: "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
+    description:
+      "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
     tags: ["Python", "Scikit-learn", "Pandas", "API REST"],
     category: "Data Science",
-    github: "https://github.com/tu-usuario/nimbus", // Pon tus links reales
-    image: "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800" // Placeholder de tormenta
+    github: "https://github.com/tu-usuario/nimbus", // TODO: Reemplazar con link real
+    image:
+      "https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?auto=format&fit=crop&q=80&w=800", // Placeholder de tormenta
   },
   {
     title: "Roque Chess Bot",
-    description: "Motor de ajedrez basado en redes neuronales LSTM. Entrenado con un corpus masivo de partidas PGN para predecir movimientos humanos y detectar patrones tácticos.",
+    description:
+      "Motor de ajedrez basado en redes neuronales LSTM. Entrenado con un corpus masivo de partidas PGN para predecir movimientos humanos y detectar patrones tácticos.",
     tags: ["TensorFlow", "Keras", "Deep Learning", "LSTM"],
     category: "AI & Deep Learning",
-    github: "#",
-    image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800" // Placeholder ajedrez
+    github: "#", // TODO: Agregar link
+    image:
+      "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800", // Placeholder ajedrez
   },
   {
     title: "Guidia",
-    description: "Asistente de planificación inteligente desarrollado para Hackathon. Genera itinerarios y sugerencias basadas en preferencias del usuario utilizando IA generativa.",
+    description:
+      "Asistente de planificación inteligente desarrollado para Hackathon. Genera itinerarios y sugerencias basadas en preferencias del usuario utilizando IA generativa.",
     tags: ["GenAI", "React", "Python"],
     category: "AI & Deep Learning",
-    github: "#",
-    link: "#"
+    github: "#", // TODO: Agregar link
+    link: "#", // TODO: Agregar link
   },
   {
     title: "Bodega Manager",
-    description: "Plataforma web integral para la gestión de stock, ventas y trazabilidad en bodegas. Incluye panel de administración y control de inventario en tiempo real.",
+    description:
+      "Plataforma web integral para la gestión de stock, ventas y trazabilidad en bodegas. Incluye panel de administración y control de inventario en tiempo real.",
     tags: ["Full Stack", "SQL", "Dashboard"],
     category: "Full Stack",
-    github: "#"
+    github: "#", // TODO: Agregar link
   },
-   {
+  {
     title: "Juego Pygame",
-    description: "Videojuego desarrollado en Python aplicando conceptos de programación orientada a objetos, gestión de estados y físicas básicas.",
+    description:
+      "Videojuego desarrollado en Python aplicando conceptos de programación orientada a objetos, gestión de estados y físicas básicas.",
     tags: ["Python", "Pygame", "OOP"],
     category: "Game Dev",
-    github: "#"
-  }
+    github: "#", // TODO: Agregar link
+  },
 ];
 ---
 
 <section id="proyectos" class="py-20">
   <div class="max-w-6xl mx-auto px-4">
-    
     <h2 class="text-4xl font-bold text-white mb-8 text-center">
       Proyectos <span class="text-ai-neon">Destacados</span>
     </h2>
 
     <div class="flex flex-wrap justify-center gap-4 mb-12" id="filters">
-      <button class="filter-btn active px-4 py-2 rounded-full border border-ai-neon bg-ai-neon/10 text-ai-neon font-mono text-sm transition-all hover:bg-ai-neon hover:text-chess-dark" data-filter="all">
+      <button
+        class="filter-btn active px-4 py-2 rounded-full border border-ai-neon bg-ai-neon/10 text-ai-neon font-mono text-sm transition-all hover:bg-ai-neon hover:text-chess-dark"
+        data-filter="all"
+      >
         [ All_Systems ]
       </button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon" data-filter="Data Science">
+      <button
+        class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        data-filter="Data Science"
+      >
         / Data_Science
       </button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon" data-filter="AI & Deep Learning">
+      <button
+        class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        data-filter="AI & Deep Learning"
+      >
         / AI_Models
       </button>
-      <button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon" data-filter="Full Stack">
+      <button
+        class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        data-filter="Full Stack"
+      >
         / Full_Stack
       </button>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-      {PROJECTS.map((project) => (
-        <ProjectCard {...project} />
-      ))}
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      id="projects-grid"
+    >
+      {PROJECTS.map((project) => <ProjectCard {...project} />)}
     </div>
-
   </div>
 </section>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.project-card');
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".project-card");
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
       // Remover clase activa de todos
-      buttons.forEach(b => {
-        b.classList.remove('bg-ai-neon/10', 'text-ai-neon', 'border-ai-neon');
-        b.classList.add('text-gray-400', 'border-gray-700');
+      buttons.forEach((b) => {
+        b.classList.remove("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
+        b.classList.add("text-gray-400", "border-gray-700");
       });
       // Activar el actual
-      btn.classList.remove('text-gray-400', 'border-gray-700');
-      btn.classList.add('bg-ai-neon/10', 'text-ai-neon', 'border-ai-neon');
+      btn.classList.remove("text-gray-400", "border-gray-700");
+      btn.classList.add("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
 
-      const filter = btn.getAttribute('data-filter');
+      const filter = btn.getAttribute("data-filter");
 
-      cards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          (card as HTMLElement).style.display = 'block';
+      cards.forEach((card) => {
+        const category = card.getAttribute("data-category");
+        if (filter === "all" || category === filter) {
+          (card as HTMLElement).style.display = "block";
           // Pequeña animación de entrada
-          (card as HTMLElement).style.opacity = '0';
-          setTimeout(() => (card as HTMLElement).style.opacity = '1', 50);
+          (card as HTMLElement).style.opacity = "0";
+          setTimeout(() => ((card as HTMLElement).style.opacity = "1"), 50);
         } else {
-          (card as HTMLElement).style.display = 'none';
+          (card as HTMLElement).style.display = "none";
         }
       });
     });
