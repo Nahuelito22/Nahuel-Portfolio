@@ -42,33 +42,32 @@ export const particlesConfig: ISourceOptions = {
     events: {
       onHover: {
         enable: true,
-        // 1. CAMBIO: Usamos 'grab' para conectar al puntero, y mantenemos 'trail'.
         mode: ["grab", "trail"],
       },
       onClick: {
         enable: true,
-        // 2. CAMBIO: Usamos 'bubble' para el efecto de pulso.
-        mode: "bubble",
+        // 1. ¡LA MAGIA! Combinamos 'bubble' y 'connect' en el clic.
+        mode: ["bubble", "connect"],
       },
       resize: true,
     },
     modes: {
-      // 3. NUEVO: Configuración para 'grab'.
       grab: {
-        distance: 200, // La distancia a la que el mouse "agarra" las partículas
+        distance: 200,
         links: {
-          opacity: 0.8, // Hacemos la línea hacia el mouse bien visible
+          opacity: 0.8,
           color: "#ffffff"
         }
       },
-      // 4. NUEVO: Configuración para el 'bubble' (pulso).
       bubble: {
-        distance: 250, // El radio del pulso
-        size: 8,       // El tamaño al que crecen las partículas
-        duration: 2,   // Cuánto dura el efecto en segundos
-        opacity: 1,    // La opacidad máxima durante el pulso
+        distance: 250,
+        size: 8,
+        duration: 2,
+        opacity: 1,
       },
-      // Eliminamos 'push' y 'connect' que ya no se usan en los eventos.
+      // 2. Re-introducimos 'connect' para que funcione con el clic.
+      //    No necesita configuración extra, usará las propiedades de las líneas base.
+      connect: {},
       trail: {
         delay: 0.005,
         quantity: 2,
