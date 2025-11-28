@@ -55,7 +55,22 @@ const { title } = Astro.props;
           Astro se encargará de procesarlo y empaquetarlo correctamente.
           'type="module"' es importante porque nuestro script usa 'import'.
         -->
-        <script src="/src/scripts/particles.js" type="module"></script>
+        <script>
+        import { tsParticles } from "tsparticles-engine";
+        import { loadSlim } from "tsparticles-slim";
+        import { particlesConfig } from "../config/particlesConfig";
+
+        async function setupParticles() {
+            await loadSlim(tsParticles);
+            await tsParticles.load("tsparticles", particlesConfig);
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", setupParticles);
+        } else {
+            setupParticles();
+        }
+</script>
 
         <!-- Tus otros scripts (Konami Code y animaciones) se mantienen intactos -->
         <script>
