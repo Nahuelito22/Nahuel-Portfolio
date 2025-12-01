@@ -35,6 +35,14 @@ const PROJECTS = [
     image: "/projects/guidia.webp",
   },
   {
+    title: "Virtual Mouse",
+    description: 
+      "Control total de tu PC sin tocar el mouse, utilizando el poder de la Visión Artificial. El sistema detecta los 'landmarks' de la mano en tiempo real y mapea gestos naturales a funciones del sistema operativo.",
+    tags: ["Python", "OpenCV", "MediaPipe"],
+    category: "AI & Deep Learning",
+    github: "https://github.com/Nahuelito22/Virtual_Mouse"
+  },
+  {
     title: "¿Laburar o Jugar?",
     description:
       "Videojuego desarrollado en Python aplicando conceptos de programación orientada a objetos, gestión de estados y físicas básicas.",
@@ -51,6 +59,7 @@ const PROJECTS = [
     tags: ["Full Stack", "SQL", "Dashboard"],
     category: "Full Stack",
     github: "https://github.com/Nahuelito22/Gestion_de_bodega",
+    image: "/projects/gestion_de_bodega.webp",
   },
 ];
 ---
@@ -85,6 +94,12 @@ const PROJECTS = [
         data-filter="Full Stack"
       >
         / Full_Stack
+      </button>
+      <button
+        class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        data-filter="Game Dev"
+      >
+        / Game_Dev
       </button>
     </div>
 
