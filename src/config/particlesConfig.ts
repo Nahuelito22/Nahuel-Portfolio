@@ -46,7 +46,6 @@ export const particlesConfig: ISourceOptions = {
       },
       onClick: {
         enable: true,
-        // 1. ¡LA MAGIA! Combinamos 'bubble' y 'connect' en el clic.
         mode: ["bubble", "connect"],
       },
       resize: true,
@@ -65,8 +64,7 @@ export const particlesConfig: ISourceOptions = {
         duration: 2,
         opacity: 1,
       },
-      // 2. Re-introducimos 'connect' para que funcione con el clic.
-      //    No necesita configuración extra, usará las propiedades de las líneas base.
+      
       connect: {},
       trail: {
         delay: 0.005,

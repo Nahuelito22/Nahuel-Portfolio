@@ -34,7 +34,7 @@ const { title } = Astro.props;
     </head>
 
     <body class="font-sans text-white relative bg-chess-dark">
-        <!-- Tu estructura HTML para las partículas y el contenido se mantiene intacta -->
+        
         <div id="tsparticles" class="fixed inset-0 z-0"></div>
 
         <div class="relative z-10 pointer-events-none">
@@ -49,12 +49,7 @@ const { title } = Astro.props;
             </div>
         </div>
 
-        <!-- 
-          AQUÍ ESTÁ EL CAMBIO CLAVE:
-          Cargamos nuestro script de partículas de forma segura.
-          Astro se encargará de procesarlo y empaquetarlo correctamente.
-          'type="module"' es importante porque nuestro script usa 'import'.
-        -->
+        
         <script>
         import { tsParticles } from "tsparticles-engine";
         import { loadSlim } from "tsparticles-slim";
@@ -72,7 +67,7 @@ const { title } = Astro.props;
         }
 </script>
 
-        <!-- Tus otros scripts (Konami Code y animaciones) se mantienen intactos -->
+        
         <script>
             // Konami Code Easter Egg
             const konamiCode = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
