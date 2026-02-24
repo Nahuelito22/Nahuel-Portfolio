@@ -5,6 +5,15 @@ import ProjectCard from "./ProjectCard.astro";
 // Proyectos destacados.
 const PROJECTS = [
   {
+    title: "AstroFit",
+    description:
+      "Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.",
+    tags: ["Astro", "Supabase", "TypeScript", "Playwright", "PWA"],
+    category: "Full Stack",
+    link: "https://www.astrofitapp.com.ar/",
+    image: "/projects/astrofit.webp",
+  },
+  {
     title: "Nimbus AI",
     description:
       "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
@@ -36,11 +45,11 @@ const PROJECTS = [
   },
   {
     title: "Virtual Mouse",
-    description: 
+    description:
       "Control total de tu PC sin tocar el mouse, utilizando el poder de la Visión Artificial. El sistema detecta los 'landmarks' de la mano en tiempo real y mapea gestos naturales a funciones del sistema operativo.",
     tags: ["Python", "OpenCV", "MediaPipe"],
     category: "AI & Deep Learning",
-    github: "https://github.com/Nahuelito22/Virtual_Mouse"
+    github: "https://github.com/Nahuelito22/Virtual_Mouse",
   },
   {
     title: "¿Laburar o Jugar?",
@@ -50,7 +59,7 @@ const PROJECTS = [
     category: "Game Dev",
     github: "https://github.com/Nahuelito22/Laburar_o_Jugar",
     link: "https://nahuelito22.itch.io/laburar-o-jugar",
-    image: "/projects/laburar-o-jugar.webp", 
+    image: "/projects/laburar-o-jugar.webp",
   },
   {
     title: "Bodega Manager",
@@ -112,6 +121,143 @@ const PROJECTS = [
   </div>
 </section>
 
+<!-- Project Modal -->
+<div
+  id="project-modal"
+  class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
+>
+  <div
+    id="modal-backdrop"
+    class="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+  >
+  </div>
+
+  <div
+    class="relative w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row bg-chess-board border border-white/10 rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300"
+    id="modal-content-container"
+  >
+    <button
+      id="modal-close"
+      class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-gray-400 hover:text-ai-neon hover:bg-black/80 transition-colors border border-white/10 hover:border-ai-neon"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><line x1="18" y1="6" x2="6" y2="18"></line><line
+          x1="6"
+          y1="6"
+          x2="18"
+          y2="18"></line></svg
+      >
+    </button>
+
+    <!-- Image Section -->
+    <div
+      class="w-full md:w-2/5 min-h-[250px] md:min-h-[auto] relative bg-chess-dark shrink-0"
+    >
+      <div
+        id="modal-image-placeholder"
+        class="absolute inset-0 flex items-center justify-center"
+      >
+        <span class="text-6xl opacity-50">♟️</span>
+      </div>
+      <img
+        id="modal-image"
+        src=""
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover hidden"
+      />
+    </div>
+
+    <!-- Content Section -->
+    <div
+      class="w-full md:w-3/5 p-6 md:p-8 flex flex-col overflow-y-auto max-h-[calc(90vh-250px)] md:max-h-[90vh]"
+    >
+      <span
+        id="modal-category"
+        class="font-mono text-ai-neon text-sm mb-2 block"></span>
+      <h3 id="modal-title" class="text-3xl font-bold text-white mb-6"></h3>
+
+      <div class="prose prose-invert max-w-none mb-8">
+        <p
+          id="modal-description"
+          class="text-chess-accent leading-relaxed text-lg"
+        >
+        </p>
+      </div>
+
+      <div class="mt-auto">
+        <h4
+          class="text-sm font-semibold text-white mb-3 uppercase tracking-wider"
+        >
+          Tecnologías
+        </h4>
+        <div id="modal-tags" class="flex flex-wrap gap-2 mb-8">
+          <!-- Tags injected via JS -->
+        </div>
+
+        <div class="flex flex-wrap gap-4 border-t border-white/10 pt-6">
+          <a
+            id="modal-github"
+            href="#"
+            target="_blank"
+            class="hidden inline-flex flex-1 items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/5 text-white hover:bg-white/10 hover:text-ai-neon transition-colors border border-white/10 text-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path></svg
+            >
+            <span>Ver Código</span>
+          </a>
+          <a
+            id="modal-link"
+            href="#"
+            target="_blank"
+            class="hidden inline-flex flex-1 items-center justify-center gap-2 px-6 py-3 rounded-lg bg-ai-neon/10 text-ai-neon hover:bg-ai-neon hover:text-chess-dark transition-colors border border-ai-neon text-center font-semibold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              ></path><polyline points="15 3 21 3 21 9"></polyline><line
+                x1="10"
+                y1="14"
+                x2="21"
+                y2="3"></line></svg
+            >
+            <span>Visitar Proyecto</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   const buttons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".project-card");
@@ -140,6 +286,121 @@ const PROJECTS = [
           (card as HTMLElement).style.display = "none";
         }
       });
+    });
+  });
+
+  // ========== MODAL LOGIC ==========
+  const modal = document.getElementById("project-modal");
+  const modalBackdrop = document.getElementById("modal-backdrop");
+  const modalCloseBtn = document.getElementById("modal-close");
+  const modalContentContainer = document.getElementById(
+    "modal-content-container",
+  );
+
+  // Elements to inject data into
+  const mTitle = document.getElementById("modal-title");
+  const mCategory = document.getElementById("modal-category");
+  const mDesc = document.getElementById("modal-description");
+  const mTags = document.getElementById("modal-tags");
+  const mImage = document.getElementById("modal-image") as HTMLImageElement;
+  const mImagePlaceholder = document.getElementById("modal-image-placeholder");
+  const mGithub = document.getElementById("modal-github") as HTMLAnchorElement;
+  const mLink = document.getElementById("modal-link") as HTMLAnchorElement;
+
+  const openModal = () => {
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    // Simple reflow to ensure transition works
+    void modal.offsetWidth;
+    modal.classList.remove("opacity-0");
+    modalContentContainer?.classList.remove("scale-95");
+    modalContentContainer?.classList.add("scale-100");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.add("opacity-0");
+    modalContentContainer?.classList.remove("scale-100");
+    modalContentContainer?.classList.add("scale-95");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }, 300); // match duration-300
+  };
+
+  modalBackdrop?.addEventListener("click", closeModal);
+  modalCloseBtn?.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // Don't open if clicking on internal links of the card
+      const target = e.target as HTMLElement;
+      if (target.closest("a")) return;
+
+      const title = card.getAttribute("data-title") || "";
+      const category = card.getAttribute("data-category") || "";
+      const description = card.getAttribute("data-description") || "";
+      const tagsRaw = card.getAttribute("data-tags");
+      const image = card.getAttribute("data-image");
+      const github = card.getAttribute("data-github");
+      const link = card.getAttribute("data-link");
+
+      let tags: string[] = [];
+      try {
+        tags = tagsRaw ? JSON.parse(tagsRaw) : [];
+      } catch (err) {}
+
+      // Inject data
+      if (mTitle) mTitle.textContent = title;
+      if (mCategory) mCategory.textContent = category;
+      if (mDesc) mDesc.textContent = description;
+
+      if (mTags) {
+        mTags.innerHTML = tags
+          .map(
+            (tag) =>
+              `<span class="text-sm font-mono px-3 py-1.5 rounded bg-white/5 text-gray-300 border border-white/5">${tag}</span>`,
+          )
+          .join("");
+      }
+
+      if (image && mImage && mImagePlaceholder) {
+        mImage.src = image;
+        mImage.alt = title;
+        mImage.classList.remove("hidden");
+        mImagePlaceholder.classList.add("hidden");
+      } else if (mImage && mImagePlaceholder) {
+        mImage.src = "";
+        mImage.classList.add("hidden");
+        mImagePlaceholder.classList.remove("hidden");
+      }
+
+      // Links handling
+      if (github && mGithub) {
+        mGithub.href = github;
+        mGithub.classList.remove("hidden");
+        mGithub.classList.add("inline-flex");
+      } else if (mGithub) {
+        mGithub.classList.add("hidden");
+        mGithub.classList.remove("inline-flex");
+      }
+
+      if (link && mLink) {
+        mLink.href = link;
+        mLink.classList.remove("hidden");
+        mLink.classList.add("inline-flex");
+      } else if (mLink) {
+        mLink.classList.add("hidden");
+        mLink.classList.remove("inline-flex");
+      }
+
+      openModal();
     });
   });
 </script>
