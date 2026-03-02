@@ -4,6 +4,12 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Calcular la edad dinámica basada en la fecha de nacimiento
+const birthDate = new Date("2002-02-04");
+const ageDifMs = Date.now() - birthDate.getTime();
+const ageDate = new Date(ageDifMs);
+const currentAge = Math.abs(ageDate.getUTCFullYear() - 1970);
 ---
 
 <section id="sobre-mi" class="py-20 bg-chess-board/50 relative overflow-hidden">
@@ -32,7 +38,9 @@ const t = useTranslations(lang);
 
       <div class="space-y-4 text-gray-400 leading-relaxed">
         <p>
-          {t("about.p1.1")}<strong>Tupungato, Mendoza</strong>{t("about.p1.2")}
+          {t("about.p1.1a")}{currentAge}{t("about.p1.1b")}<strong
+            >Tupungato, Mendoza</strong
+          >{t("about.p1.2")}
           <span class="text-white font-medium">Electromecánica</span>{
             t("about.p1.3")
           }
@@ -40,14 +48,16 @@ const t = useTranslations(lang);
 
         <p>
           {t("about.p2.1")}
-          <strong>Data Science</strong>{t("about.p2.2")}<strong
-            >Desarrollo de Software</strong
+          <strong>{t("about.p2.ds")}</strong>{t("about.p2.2")}<strong
+            >{t("about.p2.dev")}</strong
           >{t("about.p2.3")}
         </p>
 
         <p>
           {t("about.p3.1")}
-          <span class="text-ai-neon">red neuronal LSTM</span>{t("about.p3.2")}
+          <span class="text-ai-neon">{t("about.p3.lstm")}</span>{
+            t("about.p3.2")
+          }
         </p>
       </div>
 
@@ -55,7 +65,7 @@ const t = useTranslations(lang);
         <div
           class="p-4 bg-chess-dark border border-white/5 rounded-lg hover:border-ai-neon/30 transition-colors"
         >
-          <h4 class="text-ai-neon font-bold text-2xl">2+</h4>
+          <h4 class="text-ai-neon font-bold text-2xl">4+</h4>
           <p class="text-xs text-gray-500 font-mono">
             {t("about.stats.years")}
           </p>
