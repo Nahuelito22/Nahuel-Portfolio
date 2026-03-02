@@ -3,16 +3,18 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
+  lang?: string;
 }
 
-const { title } = Astro.props;
+const { title, lang = "es" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -31,6 +33,7 @@ const { title } = Astro.props;
     />
 
     <title>{title}</title>
+    <ViewTransitions />
   </head>
 
   <body class="font-sans text-white relative bg-chess-dark">
@@ -54,15 +57,12 @@ const { title } = Astro.props;
       import { particlesConfig } from "../config/particlesConfig";
 
       async function setupParticles() {
+        if (!document.getElementById("tsparticles")) return;
         await loadSlim(tsParticles);
         await tsParticles.load("tsparticles", particlesConfig);
       }
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", setupParticles);
-      } else {
-        setupParticles();
-      }
+      document.addEventListener("astro:page-load", setupParticles);
     </script>
 
     <script>
@@ -101,28 +101,35 @@ const { title } = Astro.props;
         }, 5000);
       }
 
-      // Scroll Animations
-      const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      document
-        .querySelectorAll("section, .project-card, .timeline-item")
-        .forEach((el) => {
-          el.classList.add(
-            "opacity-0",
-            "translate-y-10",
-            "transition-all",
-            "duration-700",
-            "ease-out",
-          );
-          observer.observe(el);
-        });
+      // Scroll Animations setup on every page load
+      document.addEventListener("astro:page-load", () => {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in-up");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll("section, .project-card, .timeline-item")
+          .forEach((el) => {
+            el.classList.add(
+              "opacity-0",
+              "translate-y-10",
+              "transition-all",
+              "duration-700",
+              "ease-out",
+            );
+            observer.observe(el);
+          });
+      });
     </script>
     <Analytics />
   </body>

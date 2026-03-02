@@ -1,82 +1,19 @@
 ---
 // src/components/Projects.astro
 import ProjectCard from "./ProjectCard.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { PROJECTS } from "../data/projects";
 
-// Proyectos destacados.
-const PROJECTS = [
-  {
-    title: "AstroFit",
-    description:
-      "Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.",
-    tags: ["Astro", "Supabase", "TypeScript", "Playwright", "PWA"],
-    category: "Full Stack",
-    link: "https://www.astrofitapp.com.ar/",
-    image: "/projects/astrofit.webp",
-  },
-  {
-    title: "Nimbus AI",
-    description:
-      "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
-    tags: ["Python", "Scikit-learn", "Pandas", "API REST"],
-    category: "Data Science",
-    github: "https://github.com/Nahuelito22/Nimbus-AI",
-    link: "https://nimbus-ai-mdz.vercel.app/",
-    image: "/projects/nimbus-ai.webp",
-  },
-  {
-    title: "Roque Chess Bot",
-    description:
-      "Motor de ajedrez basado en redes neuronales LSTM. Entrenado con un corpus masivo de partidas PGN para predecir movimientos humanos y detectar patrones tácticos.",
-    tags: ["TensorFlow", "Keras", "Deep Learning", "LSTM"],
-    category: "AI & Deep Learning",
-    github: "https://github.com/Nahuelito22/Bot_Ajedrez",
-    link: "https://nahuelito22.github.io/Bot_Ajedrez/#jugar",
-    image: "/projects/roque-chess.webp",
-  },
-  {
-    title: "Guidia",
-    description:
-      "Asistente de planificación inteligente desarrollado para Hackathon. Genera itinerarios y sugerencias basadas en preferencias del usuario utilizando IA generativa.",
-    tags: ["GenAI", "React", "Python"],
-    category: "AI & Deep Learning",
-    github: "https://github.com/Nahuelito22/Guidia",
-    link: "https://guidia.onrender.com/",
-    image: "/projects/guidia.webp",
-  },
-  {
-    title: "Virtual Mouse",
-    description:
-      "Control total de tu PC sin tocar el mouse, utilizando el poder de la Visión Artificial. El sistema detecta los 'landmarks' de la mano en tiempo real y mapea gestos naturales a funciones del sistema operativo.",
-    tags: ["Python", "OpenCV", "MediaPipe"],
-    category: "AI & Deep Learning",
-    github: "https://github.com/Nahuelito22/Virtual_Mouse",
-  },
-  {
-    title: "¿Laburar o Jugar?",
-    description:
-      "Videojuego desarrollado en Python aplicando conceptos de programación orientada a objetos, gestión de estados y físicas básicas.",
-    tags: ["Python", "Pygame", "OOP"],
-    category: "Game Dev",
-    github: "https://github.com/Nahuelito22/Laburar_o_Jugar",
-    link: "https://nahuelito22.itch.io/laburar-o-jugar",
-    image: "/projects/laburar-o-jugar.webp",
-  },
-  {
-    title: "Bodega Manager",
-    description:
-      "Plataforma web integral para la gestión de stock, ventas y trazabilidad en bodegas. Incluye panel de administración y control de inventario en tiempo real.",
-    tags: ["Full Stack", "SQL", "Dashboard"],
-    category: "Full Stack",
-    github: "https://github.com/Nahuelito22/Gestion_de_bodega",
-    image: "/projects/gestion_de_bodega.webp",
-  },
-];
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentProjects = PROJECTS[lang];
 ---
 
 <section id="proyectos" class="py-20">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-4xl font-bold text-white mb-8 text-center">
-      Proyectos <span class="text-ai-neon">Destacados</span>
+      {t("projects.title1")}
+      <span class="text-ai-neon">{t("projects.title2")}</span>
     </h2>
 
     <div class="flex flex-wrap justify-center gap-4 mb-12" id="filters">
@@ -84,31 +21,31 @@ const PROJECTS = [
         class="filter-btn active px-4 py-2 rounded-full border border-ai-neon bg-ai-neon/10 text-ai-neon font-mono text-sm transition-all hover:bg-ai-neon hover:text-chess-dark"
         data-filter="all"
       >
-        [ All_Systems ]
+        {t("projects.filter.all")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
-        data-filter="Data Science"
+        data-filter="data-science"
       >
-        / Data_Science
+        {t("projects.filter.ds")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
-        data-filter="AI & Deep Learning"
+        data-filter="ai-models"
       >
-        / AI_Models
+        {t("projects.filter.ai")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
-        data-filter="Full Stack"
+        data-filter="full-stack"
       >
-        / Full_Stack
+        {t("projects.filter.fs")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
-        data-filter="Game Dev"
+        data-filter="game-dev"
       >
-        / Game_Dev
+        {t("projects.filter.gd")}
       </button>
     </div>
 
@@ -116,7 +53,7 @@ const PROJECTS = [
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       id="projects-grid"
     >
-      {PROJECTS.map((project) => <ProjectCard {...project} />)}
+      {currentProjects.map((project) => <ProjectCard {...project} />)}
     </div>
   </div>
 </section>
@@ -197,7 +134,7 @@ const PROJECTS = [
         <h4
           class="text-sm font-semibold text-white mb-3 uppercase tracking-wider"
         >
-          Tecnologías
+          {t("projects.modal.tech")}
         </h4>
         <div id="modal-tags" class="flex flex-wrap gap-2 mb-8">
           <!-- Tags injected via JS -->
@@ -224,7 +161,7 @@ const PROJECTS = [
                 d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
               ></path></svg
             >
-            <span>Ver Código</span>
+            <span>{t("projects.modal.code")}</span>
           </a>
           <a
             id="modal-link"
@@ -250,7 +187,7 @@ const PROJECTS = [
                 x2="21"
                 y2="3"></line></svg
             >
-            <span>Visitar Proyecto</span>
+            <span>{t("projects.modal.visit")}</span>
           </a>
         </div>
       </div>
@@ -259,148 +196,156 @@ const PROJECTS = [
 </div>
 
 <script>
-  const buttons = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".project-card");
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // Remover clase activa de todos
-      buttons.forEach((b) => {
-        b.classList.remove("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
-        b.classList.add("text-gray-400", "border-gray-700");
-      });
-      // Activar el actual
-      btn.classList.remove("text-gray-400", "border-gray-700");
-      btn.classList.add("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
+    if (!buttons.length || !cards.length) return;
 
-      const filter = btn.getAttribute("data-filter");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Remover clase activa de todos
+        buttons.forEach((b) => {
+          b.classList.remove("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
+          b.classList.add("text-gray-400", "border-gray-700");
+        });
+        // Activar el actual
+        btn.classList.remove("text-gray-400", "border-gray-700");
+        btn.classList.add("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
 
-      cards.forEach((card) => {
-        const category = card.getAttribute("data-category");
-        if (filter === "all" || category === filter) {
-          (card as HTMLElement).style.display = "block";
-          // Pequeña animación de entrada
-          (card as HTMLElement).style.opacity = "0";
-          setTimeout(() => ((card as HTMLElement).style.opacity = "1"), 50);
-        } else {
-          (card as HTMLElement).style.display = "none";
-        }
+        const filter = btn.getAttribute("data-filter");
+
+        cards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+          if (filter === "all" || category === filter) {
+            (card as HTMLElement).style.display = "block";
+            // Pequeña animación de entrada
+            (card as HTMLElement).style.opacity = "0";
+            setTimeout(() => ((card as HTMLElement).style.opacity = "1"), 50);
+          } else {
+            (card as HTMLElement).style.display = "none";
+          }
+        });
       });
     });
-  });
 
-  // ========== MODAL LOGIC ==========
-  const modal = document.getElementById("project-modal");
-  const modalBackdrop = document.getElementById("modal-backdrop");
-  const modalCloseBtn = document.getElementById("modal-close");
-  const modalContentContainer = document.getElementById(
-    "modal-content-container",
-  );
+    // ========== MODAL LOGIC ==========
+    const modal = document.getElementById("project-modal");
+    const modalBackdrop = document.getElementById("modal-backdrop");
+    const modalCloseBtn = document.getElementById("modal-close");
+    const modalContentContainer = document.getElementById(
+      "modal-content-container",
+    );
 
-  // Elements to inject data into
-  const mTitle = document.getElementById("modal-title");
-  const mCategory = document.getElementById("modal-category");
-  const mDesc = document.getElementById("modal-description");
-  const mTags = document.getElementById("modal-tags");
-  const mImage = document.getElementById("modal-image") as HTMLImageElement;
-  const mImagePlaceholder = document.getElementById("modal-image-placeholder");
-  const mGithub = document.getElementById("modal-github") as HTMLAnchorElement;
-  const mLink = document.getElementById("modal-link") as HTMLAnchorElement;
+    // Elements to inject data into
+    const mTitle = document.getElementById("modal-title");
+    const mCategory = document.getElementById("modal-category");
+    const mDesc = document.getElementById("modal-description");
+    const mTags = document.getElementById("modal-tags");
+    const mImage = document.getElementById("modal-image") as HTMLImageElement;
+    const mImagePlaceholder = document.getElementById(
+      "modal-image-placeholder",
+    );
+    const mGithub = document.getElementById(
+      "modal-github",
+    ) as HTMLAnchorElement;
+    const mLink = document.getElementById("modal-link") as HTMLAnchorElement;
 
-  const openModal = () => {
-    if (!modal) return;
-    modal.classList.remove("hidden");
-    // Simple reflow to ensure transition works
-    void modal.offsetWidth;
-    modal.classList.remove("opacity-0");
-    modalContentContainer?.classList.remove("scale-95");
-    modalContentContainer?.classList.add("scale-100");
-    document.body.style.overflow = "hidden"; // Prevent background scrolling
-  };
+    const openModal = () => {
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      // Simple reflow to ensure transition works
+      void modal.offsetWidth;
+      modal.classList.remove("opacity-0");
+      modalContentContainer?.classList.remove("scale-95");
+      modalContentContainer?.classList.add("scale-100");
+      document.body.style.overflow = "hidden"; // Prevent background scrolling
+    };
 
-  const closeModal = () => {
-    if (!modal) return;
-    modal.classList.add("opacity-0");
-    modalContentContainer?.classList.remove("scale-100");
-    modalContentContainer?.classList.add("scale-95");
-    setTimeout(() => {
-      modal.classList.add("hidden");
-      document.body.style.overflow = "";
-    }, 300); // match duration-300
-  };
+    const closeModal = () => {
+      if (!modal) return;
+      modal.classList.add("opacity-0");
+      modalContentContainer?.classList.remove("scale-100");
+      modalContentContainer?.classList.add("scale-95");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+      }, 300); // match duration-300
+    };
 
-  modalBackdrop?.addEventListener("click", closeModal);
-  modalCloseBtn?.addEventListener("click", closeModal);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
-      closeModal();
-    }
-  });
-
-  cards.forEach((card) => {
-    card.addEventListener("click", (e) => {
-      // Don't open if clicking on internal links of the card
-      const target = e.target as HTMLElement;
-      if (target.closest("a")) return;
-
-      const title = card.getAttribute("data-title") || "";
-      const category = card.getAttribute("data-category") || "";
-      const description = card.getAttribute("data-description") || "";
-      const tagsRaw = card.getAttribute("data-tags");
-      const image = card.getAttribute("data-image");
-      const github = card.getAttribute("data-github");
-      const link = card.getAttribute("data-link");
-
-      let tags: string[] = [];
-      try {
-        tags = tagsRaw ? JSON.parse(tagsRaw) : [];
-      } catch (err) {}
-
-      // Inject data
-      if (mTitle) mTitle.textContent = title;
-      if (mCategory) mCategory.textContent = category;
-      if (mDesc) mDesc.textContent = description;
-
-      if (mTags) {
-        mTags.innerHTML = tags
-          .map(
-            (tag) =>
-              `<span class="text-sm font-mono px-3 py-1.5 rounded bg-white/5 text-gray-300 border border-white/5">${tag}</span>`,
-          )
-          .join("");
+    modalBackdrop?.addEventListener("click", closeModal);
+    modalCloseBtn?.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+        closeModal();
       }
+    });
 
-      if (image && mImage && mImagePlaceholder) {
-        mImage.src = image;
-        mImage.alt = title;
-        mImage.classList.remove("hidden");
-        mImagePlaceholder.classList.add("hidden");
-      } else if (mImage && mImagePlaceholder) {
-        mImage.src = "";
-        mImage.classList.add("hidden");
-        mImagePlaceholder.classList.remove("hidden");
-      }
+    cards.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        // Don't open if clicking on internal links of the card
+        const target = e.target as HTMLElement;
+        if (target.closest("a")) return;
 
-      // Links handling
-      if (github && mGithub) {
-        mGithub.href = github;
-        mGithub.classList.remove("hidden");
-        mGithub.classList.add("inline-flex");
-      } else if (mGithub) {
-        mGithub.classList.add("hidden");
-        mGithub.classList.remove("inline-flex");
-      }
+        const title = card.getAttribute("data-title") || "";
+        const bgCategory = card.getAttribute("data-original-category") || ""; // the localized readable category
+        const description = card.getAttribute("data-description") || "";
+        const tagsRaw = card.getAttribute("data-tags");
+        const image = card.getAttribute("data-image");
+        const github = card.getAttribute("data-github");
+        const link = card.getAttribute("data-link");
 
-      if (link && mLink) {
-        mLink.href = link;
-        mLink.classList.remove("hidden");
-        mLink.classList.add("inline-flex");
-      } else if (mLink) {
-        mLink.classList.add("hidden");
-        mLink.classList.remove("inline-flex");
-      }
+        let tags: string[] = [];
+        try {
+          tags = tagsRaw ? JSON.parse(tagsRaw) : [];
+        } catch (err) {}
 
-      openModal();
+        // Inject data
+        if (mTitle) mTitle.textContent = title;
+        if (mCategory) mCategory.textContent = bgCategory;
+        if (mDesc) mDesc.textContent = description;
+
+        if (mTags) {
+          mTags.innerHTML = tags
+            .map(
+              (tag) =>
+                `<span class="text-sm font-mono px-3 py-1.5 rounded bg-white/5 text-gray-300 border border-white/5">${tag}</span>`,
+            )
+            .join("");
+        }
+
+        if (image && mImage && mImagePlaceholder) {
+          mImage.src = image;
+          mImage.alt = title;
+          mImage.classList.remove("hidden");
+          mImagePlaceholder.classList.add("hidden");
+        } else if (mImage && mImagePlaceholder) {
+          mImage.src = "";
+          mImage.classList.add("hidden");
+          mImagePlaceholder.classList.remove("hidden");
+        }
+
+        // Links handling
+        if (github && mGithub) {
+          mGithub.href = github;
+          mGithub.classList.remove("hidden");
+          mGithub.classList.add("inline-flex");
+        } else if (mGithub) {
+          mGithub.classList.add("hidden");
+          mGithub.classList.remove("inline-flex");
+        }
+
+        if (link && mLink) {
+          mLink.href = link;
+          mLink.classList.remove("hidden");
+          mLink.classList.add("inline-flex");
+        } else if (mLink) {
+          mLink.classList.add("hidden");
+          mLink.classList.remove("inline-flex");
+        }
+
+        openModal();
+      });
     });
   });
 </script>

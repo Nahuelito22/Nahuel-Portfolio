@@ -8,14 +8,17 @@ export interface Props {
   github?: string;
   image?: string;
   category: string;
+  slug: string;
 }
 
-const { title, description, tags, link, github, image, category } = Astro.props;
+const { title, description, tags, link, github, image, category, slug } =
+  Astro.props;
 ---
 
 <div
   class="project-card cursor-pointer group relative bg-chess-board border border-white/10 rounded-xl overflow-hidden hover:border-ai-neon/50 transition-all duration-300 transform hover:-translate-y-1"
-  data-category={category}
+  data-category={slug}
+  data-original-category={category}
   data-title={title}
   data-description={description}
   data-tags={JSON.stringify(tags)}

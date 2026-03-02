@@ -4,6 +4,13 @@ import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon'; 
 
 export default defineConfig({
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   integrations: [
     tailwind(), 
     icon() 
