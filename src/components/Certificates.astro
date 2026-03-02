@@ -10,22 +10,31 @@ const CERTIFICATES = [
     date: t("cert.uni2.date"),
     title: t("cert.uni2.title"),
     issuer: "Universidad Siglo 21",
-    description: t("cert.uni2.desc"),
+    gpa: t("cert.uni2.gpa"),
     details: [
-      { name: t("cert.uni2.1"), file: "#" },
-      { name: t("cert.uni2.2"), file: "#" },
-      { name: t("cert.uni2.3"), file: "#" },
+      {
+        name: t("cert.uni2.1"),
+        file: "/certificates/certificado_de_examen_analisis_matematico.pdf",
+      },
+      {
+        name: t("cert.uni2.2"),
+        file: "/certificates/certificado_de_examen_computacion_en_la_nube.pdf",
+      },
+      {
+        name: t("cert.uni2.3"),
+        file: "/certificates/certificado_de_examen_analisis_de_datos.pdf",
+      },
     ],
   },
   {
     date: t("cert.uni1.date"),
     title: t("cert.uni1.title"),
     issuer: "Instituto CESIT 9-023",
-    description: t("cert.uni1.desc"),
+    gpa: t("cert.uni1.gpa"),
     details: [
-      { name: t("cert.uni1.1"), file: "#" },
-      { name: t("cert.uni1.2"), file: "#" },
-      { name: t("cert.uni1.3"), file: "#" },
+      { name: t("cert.uni1.1"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
+      { name: t("cert.uni1.2"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
+      { name: t("cert.uni1.3"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
     ],
   },
   {
@@ -77,19 +86,30 @@ const CERTIFICATES = [
             <div class="bg-chess-board p-6 rounded-xl border border-white/5">
               <div class="flex flex-col md:flex-row justify-between mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">{cert.title}</h3>
-                  <span class="text-ai-neon font-mono text-sm">
-                    {cert.issuer}
-                  </span>
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    {cert.title}
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-ai-neon font-mono text-sm">
+                      {cert.issuer}
+                    </span>
+                    {cert.gpa && (
+                      <span class="inline-block bg-ai-neon/10 text-ai-neon border border-ai-neon/50 px-2.5 py-0.5 rounded text-xs font-mono font-bold tracking-wide">
+                        {cert.gpa}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <span class="text-gray-500 font-mono text-sm mt-2 md:mt-0">
                   {cert.date}
                 </span>
               </div>
 
-              <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+              {cert.description && (
+                <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+              )}
 
-              <ul class="space-y-2">
+              <ul class="space-y-2 mt-4">
                 {cert.details.map((item) => (
                   <li>
                     <a

@@ -65,17 +65,17 @@ export const ui = {
     'cert.title2': '& Certificaciones',
     
     'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
-    'cert.uni1.desc': 'Formación integral técnica enfocada en el diseño, desarrollo y despliegue de software.',
-    'cert.uni1.1': 'Programación Estructurada y Orientada a Objetos',
-    'cert.uni1.2': 'Bases de Datos y Arquitecturas Web',
-    'cert.uni1.3': 'Desarrollo Full Stack',
+    'cert.uni1.gpa': 'Promedio Actual: 9.50 / 10',
+    'cert.uni1.1': 'Programación II (Nota: 10)',
+    'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
+    'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
     'cert.uni1.date': '2024 - Presente',
 
     'cert.uni2.title': 'Licenciatura en Ciencia de Datos',
-    'cert.uni2.desc': 'Grado académico enfocado en ingeniería de datos, modelos estadísticos y matemáticas aplicadas.',
-    'cert.uni2.1': 'Estadística y Probabilidad',
-    'cert.uni2.2': 'Machine Learning y Toma de Decisiones',
-    'cert.uni2.3': 'Big Data e Infraestructura Cloud',
+    'cert.uni2.gpa': 'Promedio General: 8.55 / 10',
+    'cert.uni2.1': 'Análisis Matemático',
+    'cert.uni2.2': 'Computación en la Nube',
+    'cert.uni2.3': 'Análisis de Datos',
     'cert.uni2.date': '2024 - Presente',
 
     'cert.ds.title': 'Carrera de Data Science',
@@ -104,7 +104,7 @@ export const ui = {
     'saas.landing': 'Ver Landing',
 
     'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
-    'saas.tr.desc': 'Sistema integral de gestión para carreras de Trail Running. Control de inscripciones, pasarelas de pago, acreditación por QR y tracking de resultados en vivo. Orquestado para soportar picos de alta demanda de inscripciones simultáneas.',
+    'saas.tr.desc': '[ NUEVA DESCRIPCIÓN PENDIENTE ]',
 
     // Contact
     'contact.title1': 'Hablemos',
@@ -178,17 +178,17 @@ export const ui = {
     'cert.title2': '& Certifications',
 
     'cert.uni1.title': 'Software Development Degree',
-    'cert.uni1.desc': 'Comprehensive technical training focused on software design, development, and deployment.',
-    'cert.uni1.1': 'Structured and Object-Oriented Programming',
-    'cert.uni1.2': 'Databases and Web Architectures',
-    'cert.uni1.3': 'Full Stack Development',
+    'cert.uni1.gpa': 'Current GPA: 9.50 / 10',
+    'cert.uni1.1': 'Programming II (Grade: 10)',
+    'cert.uni1.2': 'Databases I (Grade: 10)',
+    'cert.uni1.3': 'Computational Logic (Grade: 10)',
     'cert.uni1.date': '2024 - Present',
 
     'cert.uni2.title': 'Bachelor in Data Science',
-    'cert.uni2.desc': 'Academic degree focused on data engineering, statistical models, and applied mathematics.',
-    'cert.uni2.1': 'Statistics and Probability',
-    'cert.uni2.2': 'Machine Learning and Decision Making',
-    'cert.uni2.3': 'Big Data and Cloud Infrastructure',
+    'cert.uni2.gpa': 'Overall GPA: 8.55 / 10',
+    'cert.uni2.1': 'Mathematical Analysis',
+    'cert.uni2.2': 'Cloud Computing',
+    'cert.uni2.3': 'Data Analysis',
     'cert.uni2.date': '2024 - Present',
 
     'cert.ds.title': 'Data Science Career',
@@ -217,7 +217,7 @@ export const ui = {
     'saas.landing': 'View Landing',
 
     'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
-    'saas.tr.desc': 'Comprehensive management system for Trail Running races. Registration control, payment gateways, QR accreditation, and live results tracking. Orchestrated to handle high-demand concurrency during signups.',
+    'saas.tr.desc': '[ NEW DESCRIPTION PENDING ]',
 
     // Contact
     'contact.title1': 'Let\'s talk',
