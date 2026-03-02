@@ -23,12 +23,14 @@ const products = [
   {
     title: "TupRun",
     description: t("saas.tr.desc"),
+    statusDetailed: t("saas.tr.status_detailed"),
     tags: ["Next.js", "React Native", "PostgreSQL", "Stripe"],
     status: t("saas.status.dev"),
     metrics: [
       { value: "---", label: t("saas.metrics.clients") },
       { value: "---", label: t("saas.metrics.users") }
     ],
+    image: "/projects/TupRun_Sin_Fondo.webp",
     badges: ["SaaS", "Event Management"],
     isReady: false
   }
@@ -101,9 +103,17 @@ const products = [
                             </div>
                         </div>
 
-                        <p class="text-gray-400 leading-relaxed mb-8">
+                        <p class="text-gray-400 leading-relaxed mb-6">
                             {product.description}
                         </p>
+
+                        {product.statusDetailed && (
+                            <div class="mb-6 inline-block w-full sm:w-auto px-4 py-3 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm shadow-inner shadow-purple-500/10">
+                                <p class="leading-relaxed">
+                                    {product.statusDetailed}
+                                </p>
+                            </div>
+                        )}
 
                         <!-- Métricas del mundo real -->
                         <div class="grid grid-cols-2 gap-4 mb-8">

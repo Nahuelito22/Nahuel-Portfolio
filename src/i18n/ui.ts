@@ -65,7 +65,7 @@ export const ui = {
     'cert.title2': '& Certificaciones',
     
     'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
-    'cert.uni1.gpa': 'Promedio Actual: 9.50 / 10',
+    'cert.uni1.gpa': 'Promedio Actual: 9.44 / 10',
     'cert.uni1.1': 'Programación II (Nota: 10)',
     'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
     'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
@@ -104,7 +104,8 @@ export const ui = {
     'saas.landing': 'Ver Landing',
 
     'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
-    'saas.tr.desc': '[ NUEVA DESCRIPCIÓN PENDIENTE ]',
+    'saas.tr.desc': 'Plataforma B2B2C que gamifica el running y potencia la economía local. El sistema conecta a deportistas con comercios mediante recompensas: los usuarios acumulan kilómetros (sincronizados vía API de Strava) y los canjean por descuentos exclusivos usando códigos QR dinámicos.',
+    'saas.tr.status_detailed': '🚀 Status: En desarrollo (Fase MVP). Lanzamiento Beta: Q2 2026.',
 
     // Contact
     'contact.title1': 'Hablemos',
@@ -178,7 +179,7 @@ export const ui = {
     'cert.title2': '& Certifications',
 
     'cert.uni1.title': 'Software Development Degree',
-    'cert.uni1.gpa': 'Current GPA: 9.50 / 10',
+    'cert.uni1.gpa': 'Current GPA: 9.44 / 10',
     'cert.uni1.1': 'Programming II (Grade: 10)',
     'cert.uni1.2': 'Databases I (Grade: 10)',
     'cert.uni1.3': 'Computational Logic (Grade: 10)',
@@ -217,7 +218,8 @@ export const ui = {
     'saas.landing': 'View Landing',
 
     'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
-    'saas.tr.desc': '[ NEW DESCRIPTION PENDING ]',
+    'saas.tr.desc': 'B2B2C platform that gamifies running and boosts the local economy. The system connects athletes with businesses through rewards: users accumulate kilometers (synced via Strava API) and redeem them for exclusive discounts using dynamic QR codes.',
+    'saas.tr.status_detailed': '🚀 Status: In development (MVP Phase). Beta Launch: Q2 2026.',
 
     // Contact
     'contact.title1': 'Let\'s talk',
