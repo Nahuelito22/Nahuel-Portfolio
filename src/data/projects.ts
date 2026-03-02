@@ -4,15 +4,6 @@
 export const PROJECTS = {
   es: [
     {
-      title: "AstroFit",
-      description: "Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.",
-      tags: ["Astro", "Supabase", "TypeScript", "Playwright", "PWA"],
-      category: "Full Stack",
-      slug: "full-stack",
-      link: "https://www.astrofitapp.com.ar/",
-      image: "/projects/astrofit.webp",
-    },
-    {
       title: "Nimbus AI",
       description: "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
       tags: ["Python", "Scikit-learn", "Pandas", "API REST"],
@@ -71,15 +62,6 @@ export const PROJECTS = {
     },
   ],
   en: [
-    {
-      title: "AstroFit",
-      description: "Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.",
-      tags: ["Astro", "Supabase", "TypeScript", "Playwright", "PWA"],
-      category: "Full Stack",
-      slug: "full-stack",
-      link: "https://www.astrofitapp.com.ar/",
-      image: "/projects/astrofit.webp",
-    },
     {
       title: "Nimbus AI",
       description: "Advanced meteorological prediction system focused on hail detection. Uses supervised models and dataset enrichment via meteorological APIs for risk analysis.",

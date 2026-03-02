@@ -63,6 +63,21 @@ export const ui = {
     // Certificates
     'cert.title1': 'Formación ',
     'cert.title2': '& Certificaciones',
+    
+    'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
+    'cert.uni1.desc': 'Formación integral técnica enfocada en el diseño, desarrollo y despliegue de software.',
+    'cert.uni1.1': 'Programación Estructurada y Orientada a Objetos',
+    'cert.uni1.2': 'Bases de Datos y Arquitecturas Web',
+    'cert.uni1.3': 'Desarrollo Full Stack',
+    'cert.uni1.date': '2024 - Presente',
+
+    'cert.uni2.title': 'Licenciatura en Ciencia de Datos',
+    'cert.uni2.desc': 'Grado académico enfocado en ingeniería de datos, modelos estadísticos y matemáticas aplicadas.',
+    'cert.uni2.1': 'Estadística y Probabilidad',
+    'cert.uni2.2': 'Machine Learning y Toma de Decisiones',
+    'cert.uni2.3': 'Big Data e Infraestructura Cloud',
+    'cert.uni2.date': '2024 - Presente',
+
     'cert.ds.title': 'Carrera de Data Science',
     'cert.ds.desc': 'Formación integral cubriendo el ciclo completo de vida del dato.',
     'cert.ds.1': 'Data Science I: Fundamentos y Visualización',
@@ -76,6 +91,20 @@ export const ui = {
     'cert.esp.2': 'IA Generativa: Prompt Engineering y LLMs',
     'cert.esp.3': 'Gestión Ágil de Proyectos',
     'cert.esp.date': '2024',
+
+    // Production SaaS
+    'saas.title1': 'Soluciones en ',
+    'saas.title2': 'Producción',
+    'saas.metrics.users': 'Usuarios Activos',
+    'saas.metrics.clients': 'Clientes B2B',
+    'saas.status.active': 'En Producción',
+    'saas.status.dev': 'Desarrollo Activo',
+    'saas.soon': 'Próximamente',
+    'saas.visit': 'Visitar App',
+    'saas.landing': 'Ver Landing',
+
+    'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
+    'saas.tr.desc': 'Sistema integral de gestión para carreras de Trail Running. Control de inscripciones, pasarelas de pago, acreditación por QR y tracking de resultados en vivo. Orquestado para soportar picos de alta demanda de inscripciones simultáneas.',
 
     // Contact
     'contact.title1': 'Hablemos',
@@ -147,6 +176,21 @@ export const ui = {
     // Certificates
     'cert.title1': 'Education ',
     'cert.title2': '& Certifications',
+
+    'cert.uni1.title': 'Software Development Degree',
+    'cert.uni1.desc': 'Comprehensive technical training focused on software design, development, and deployment.',
+    'cert.uni1.1': 'Structured and Object-Oriented Programming',
+    'cert.uni1.2': 'Databases and Web Architectures',
+    'cert.uni1.3': 'Full Stack Development',
+    'cert.uni1.date': '2024 - Present',
+
+    'cert.uni2.title': 'Bachelor in Data Science',
+    'cert.uni2.desc': 'Academic degree focused on data engineering, statistical models, and applied mathematics.',
+    'cert.uni2.1': 'Statistics and Probability',
+    'cert.uni2.2': 'Machine Learning and Decision Making',
+    'cert.uni2.3': 'Big Data and Cloud Infrastructure',
+    'cert.uni2.date': '2024 - Present',
+
     'cert.ds.title': 'Data Science Career',
     'cert.ds.desc': 'Comprehensive training covering the full data lifecycle.',
     'cert.ds.1': 'Data Science I: Fundamentals & Visualization',
@@ -160,6 +204,20 @@ export const ui = {
     'cert.esp.2': 'Generative AI: Prompt Engineering & LLMs',
     'cert.esp.3': 'Agile Project Management',
     'cert.esp.date': '2024',
+
+    // Production SaaS
+    'saas.title1': 'Production ',
+    'saas.title2': 'Solutions',
+    'saas.metrics.users': 'Active Users',
+    'saas.metrics.clients': 'B2B Clients',
+    'saas.status.active': 'In Production',
+    'saas.status.dev': 'Active Development',
+    'saas.soon': 'Coming Soon',
+    'saas.visit': 'Visit App',
+    'saas.landing': 'View Landing',
+
+    'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
+    'saas.tr.desc': 'Comprehensive management system for Trail Running races. Registration control, payment gateways, QR accreditation, and live results tracking. Orchestrated to handle high-demand concurrency during signups.',
 
     // Contact
     'contact.title1': 'Let\'s talk',
