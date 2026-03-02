@@ -1,73 +1,107 @@
 ---
 // src/components/Certificates.astro
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const CERTIFICATES = [
   {
-    date: "2024",
-    title: "Carrera de Data Science",
+    date: t("cert.ds.date"),
+    title: t("cert.ds.title"),
     issuer: "Coderhouse",
-    description: "Formación integral cubriendo el ciclo completo de vida del dato.",
+    description: t("cert.ds.desc"),
     details: [
-      { name: "Data Science I: Fundamentos y Visualización", file: "/certificates/ds-fundamentos.pdf" },
-      { name: "Data Science II: Machine Learning Supervisado", file: "/certificates/ds-ml-supervisado.pdf" },
-      { name: "Data Science III: NLP & Deep Learning", file: "/certificates/ds-nlp-deep-learning.pdf" }
+      { name: t("cert.ds.1"), file: "/certificates/ds-fundamentos.pdf" },
+      { name: t("cert.ds.2"), file: "/certificates/ds-ml-supervisado.pdf" },
+      { name: t("cert.ds.3"), file: "/certificates/ds-nlp-deep-learning.pdf" },
     ],
   },
   {
-    date: "2024",
-    title: "Cursos de Especialización",
+    date: t("cert.esp.date"),
+    title: t("cert.esp.title"),
     issuer: "Santander / Otros",
-    description: "Formación complementaria para ampliar el stack tecnológico.",
+    description: t("cert.esp.desc"),
     details: [
-      { name: "Power BI: Dashboarding y Business Intelligence", file: "/certificates/especializacion-power-bi.pdf" },
-      { name: "IA Generativa: Prompt Engineering y LLMs", file: "/certificates/especializacion-ia-generativa.pdf" },
-      { name: "Gestión Ágil de Proyectos", file: "/certificates/especializacion-agile.pdf" }
-    ]
-  }
+      {
+        name: t("cert.esp.1"),
+        file: "/certificates/especializacion-power-bi.pdf",
+      },
+      {
+        name: t("cert.esp.2"),
+        file: "/certificates/especializacion-ia-generativa.pdf",
+      },
+      {
+        name: t("cert.esp.3"),
+        file: "/certificates/especializacion-agile.pdf",
+      },
+    ],
+  },
 ];
 ---
 
 <section id="certificados" class="py-20 relative">
   <div class="max-w-4xl mx-auto px-4">
     <h2 class="text-4xl font-bold text-white mb-12 text-center">
-      Formación <span class="text-ai-neon">& Certificaciones</span>
+      {t("cert.title1")}<span class="text-ai-neon">{t("cert.title2")}</span>
     </h2>
 
     <div class="relative border-l border-gray-700 ml-4 md:ml-0 space-y-12">
-      {CERTIFICATES.map((cert) => (
-        <div class="mb-8 md:ml-12 relative pl-8 md:pl-0">
-          <div class="absolute -left-2.5 top-0 w-5 h-5 bg-chess-dark border-2 border-ai-neon rounded-full"></div>
-          
-          <div class="bg-chess-board p-6 rounded-xl border border-white/5">
-            <div class="flex flex-col md:flex-row justify-between mb-4">
-              <div>
-                <h3 class="text-xl font-bold text-white">{cert.title}</h3>
-                <span class="text-ai-neon font-mono text-sm">{cert.issuer}</span>
+      {
+        CERTIFICATES.map((cert) => (
+          <div class="mb-8 md:ml-12 relative pl-8 md:pl-0">
+            <div class="absolute -left-2.5 top-0 w-5 h-5 bg-chess-dark border-2 border-ai-neon rounded-full" />
+
+            <div class="bg-chess-board p-6 rounded-xl border border-white/5">
+              <div class="flex flex-col md:flex-row justify-between mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">{cert.title}</h3>
+                  <span class="text-ai-neon font-mono text-sm">
+                    {cert.issuer}
+                  </span>
+                </div>
+                <span class="text-gray-500 font-mono text-sm mt-2 md:mt-0">
+                  {cert.date}
+                </span>
               </div>
-              <span class="text-gray-500 font-mono text-sm mt-2 md:mt-0">{cert.date}</span>
+
+              <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+
+              <ul class="space-y-2">
+                {cert.details.map((item) => (
+                  <li>
+                    <a
+                      href={item.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center text-gray-400 text-sm gap-2 group hover:text-ai-neon transition-colors"
+                    >
+                      <span class="text-ai-neon group-hover:text-white transition-colors">
+                        ▹
+                      </span>
+                      <span>{item.name}</span>
+                      <svg
+                        class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            
-            <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
-            
-            <ul class="space-y-2">
-              {cert.details.map(item => (
-                <li>
-                  <a 
-                    href={item.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center text-gray-400 text-sm gap-2 group hover:text-ai-neon transition-colors"
-                  >
-                    <span class="text-ai-neon group-hover:text-white transition-colors">▹</span> 
-                    <span>{item.name}</span>
-                    <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
