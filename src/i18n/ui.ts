@@ -10,8 +10,10 @@ export const ui = {
   es: {
     // Navbar
     'nav.home': 'Inicio',
+    'nav.saas': 'Soluciones B2B',
     'nav.projects': 'Proyectos',
     'nav.about': 'Sobre Mí',
+    'nav.cert': 'Educación',
     'nav.contact': 'Contacto',
     'nav.menu': 'Menu',
     
@@ -65,7 +67,7 @@ export const ui = {
     'cert.title2': '& Certificaciones',
     
     'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
-    'cert.uni1.gpa': 'Promedio Actual: 9.44 / 10',
+    'cert.uni1.gpa': 'Promedio Actual: 9.50 / 10',
     'cert.uni1.1': 'Programación II (Nota: 10)',
     'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
     'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
@@ -76,21 +78,21 @@ export const ui = {
     'cert.uni2.1': 'Análisis Matemático',
     'cert.uni2.2': 'Computación en la Nube',
     'cert.uni2.3': 'Análisis de Datos',
-    'cert.uni2.date': '2024 - Presente',
+    'cert.uni2.date': '2025 - Presente',
 
     'cert.ds.title': 'Carrera de Data Science',
     'cert.ds.desc': 'Formación integral cubriendo el ciclo completo de vida del dato.',
     'cert.ds.1': 'Data Science I: Fundamentos y Visualización',
     'cert.ds.2': 'Data Science II: Machine Learning Supervisado',
     'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2024',
+    'cert.ds.date': '2023 - 2025',
     
     'cert.esp.title': 'Cursos de Especialización',
     'cert.esp.desc': 'Formación complementaria para ampliar el stack tecnológico.',
     'cert.esp.1': 'Power BI: Dashboarding y Business Intelligence',
     'cert.esp.2': 'IA Generativa: Prompt Engineering y LLMs',
     'cert.esp.3': 'Gestión Ágil de Proyectos',
-    'cert.esp.date': '2024',
+    'cert.esp.date': '2025',
 
     // Production SaaS
     'saas.title1': 'Soluciones en ',
@@ -124,8 +126,10 @@ export const ui = {
   en: {
     // Navbar
     'nav.home': 'Home',
+    'nav.saas': 'B2B Solutions',
     'nav.projects': 'Projects',
     'nav.about': 'About',
+    'nav.cert': 'Education',
     'nav.contact': 'Contact',
     'nav.menu': 'Menu',
     
