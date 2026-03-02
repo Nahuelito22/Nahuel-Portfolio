@@ -5,7 +5,45 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const CERTIFICATES = [
+type DetailItem = { name: string; file?: string };
+type CertificateItem = {
+  date: string;
+  title: string;
+  issuer: string;
+  description?: string;
+  gpa?: string;
+  details: DetailItem[];
+};
+
+const CERTIFICATES: CertificateItem[] = [
+  {
+    date: t("cert.uni2.date"),
+    title: t("cert.uni2.title"),
+    issuer: "Universidad Siglo 21",
+    gpa: t("cert.uni2.gpa"),
+    details: [
+      {
+        name: t("cert.uni2.1"),
+      },
+      {
+        name: t("cert.uni2.2"),
+      },
+      {
+        name: t("cert.uni2.3"),
+      },
+    ],
+  },
+  {
+    date: t("cert.uni1.date"),
+    title: t("cert.uni1.title"),
+    issuer: "Instituto CESIT 9-023",
+    gpa: t("cert.uni1.gpa"),
+    details: [
+      { name: t("cert.uni1.1"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
+      { name: t("cert.uni1.2"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
+      { name: t("cert.uni1.3"), file: "/certificates/Alumnos DES v1.1.5.pdf" },
+    ],
+  },
   {
     date: t("cert.ds.date"),
     title: t("cert.ds.title"),
@@ -55,46 +93,64 @@ const CERTIFICATES = [
             <div class="bg-chess-board p-6 rounded-xl border border-white/5">
               <div class="flex flex-col md:flex-row justify-between mb-4">
                 <div>
-                  <h3 class="text-xl font-bold text-white">{cert.title}</h3>
-                  <span class="text-ai-neon font-mono text-sm">
-                    {cert.issuer}
-                  </span>
+                  <h3 class="text-xl font-bold text-white mb-2">
+                    {cert.title}
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="text-ai-neon font-mono text-sm">
+                      {cert.issuer}
+                    </span>
+                    {cert.gpa && (
+                      <span class="inline-block bg-ai-neon/10 text-ai-neon border border-ai-neon/50 px-2.5 py-0.5 rounded text-xs font-mono font-bold tracking-wide">
+                        {cert.gpa}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <span class="text-gray-500 font-mono text-sm mt-2 md:mt-0">
                   {cert.date}
                 </span>
               </div>
 
-              <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+              {cert.description && (
+                <p class="text-gray-300 text-sm mb-4">{cert.description}</p>
+              )}
 
-              <ul class="space-y-2">
+              <ul class="space-y-2 mt-4">
                 {cert.details.map((item) => (
                   <li>
-                    <a
-                      href={item.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="flex items-center text-gray-400 text-sm gap-2 group hover:text-ai-neon transition-colors"
-                    >
-                      <span class="text-ai-neon group-hover:text-white transition-colors">
-                        ▹
-                      </span>
-                      <span>{item.name}</span>
-                      <svg
-                        class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                    {item.file ? (
+                      <a
+                        href={item.file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center text-gray-400 text-sm gap-2 group hover:text-ai-neon transition-colors"
                       >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                    </a>
+                        <span class="text-ai-neon group-hover:text-white transition-colors">
+                          ▹
+                        </span>
+                        <span>{item.name}</span>
+                        <svg
+                          class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <div class="flex items-center text-gray-400 text-sm gap-2 pl-1">
+                        <span class="text-ai-neon">▹</span>
+                        <span>{item.name}</span>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -10,8 +10,10 @@ export const ui = {
   es: {
     // Navbar
     'nav.home': 'Inicio',
+    'nav.saas': 'Soluciones B2B',
     'nav.projects': 'Proyectos',
     'nav.about': 'Sobre Mí',
+    'nav.cert': 'Educación',
     'nav.contact': 'Contacto',
     'nav.menu': 'Menu',
     
@@ -63,19 +65,49 @@ export const ui = {
     // Certificates
     'cert.title1': 'Formación ',
     'cert.title2': '& Certificaciones',
+    
+    'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
+    'cert.uni1.gpa': 'Promedio Actual: 9.50 / 10',
+    'cert.uni1.1': 'Programación II (Nota: 10)',
+    'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
+    'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
+    'cert.uni1.date': '2024 - Presente',
+
+    'cert.uni2.title': 'Licenciatura en Ciencia de Datos',
+    'cert.uni2.gpa': 'Promedio General: 8.55 / 10',
+    'cert.uni2.1': 'Análisis Matemático',
+    'cert.uni2.2': 'Computación en la Nube',
+    'cert.uni2.3': 'Análisis de Datos',
+    'cert.uni2.date': '2025 - Presente',
+
     'cert.ds.title': 'Carrera de Data Science',
     'cert.ds.desc': 'Formación integral cubriendo el ciclo completo de vida del dato.',
     'cert.ds.1': 'Data Science I: Fundamentos y Visualización',
     'cert.ds.2': 'Data Science II: Machine Learning Supervisado',
     'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2024',
+    'cert.ds.date': '2023 - 2025',
     
     'cert.esp.title': 'Cursos de Especialización',
     'cert.esp.desc': 'Formación complementaria para ampliar el stack tecnológico.',
     'cert.esp.1': 'Power BI: Dashboarding y Business Intelligence',
     'cert.esp.2': 'IA Generativa: Prompt Engineering y LLMs',
     'cert.esp.3': 'Gestión Ágil de Proyectos',
-    'cert.esp.date': '2024',
+    'cert.esp.date': '2025',
+
+    // Production SaaS
+    'saas.title1': 'Soluciones en ',
+    'saas.title2': 'Producción',
+    'saas.metrics.users': 'Usuarios Activos',
+    'saas.metrics.clients': 'Clientes B2B',
+    'saas.status.active': 'En Producción',
+    'saas.status.dev': 'Desarrollo Activo',
+    'saas.soon': 'Próximamente',
+    'saas.visit': 'Visitar App',
+    'saas.landing': 'Ver Landing',
+
+    'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
+    'saas.tr.desc': 'Plataforma B2B2C que gamifica el running y potencia la economía local. El sistema conecta a deportistas con comercios mediante recompensas: los usuarios acumulan kilómetros (sincronizados vía API de Strava) y los canjean por descuentos exclusivos usando códigos QR dinámicos.',
+    'saas.tr.status_detailed': '🚀 Status: En desarrollo (Fase MVP). Lanzamiento Beta: Q2 2026.',
 
     // Contact
     'contact.title1': 'Hablemos',
@@ -94,8 +126,10 @@ export const ui = {
   en: {
     // Navbar
     'nav.home': 'Home',
+    'nav.saas': 'B2B Solutions',
     'nav.projects': 'Projects',
     'nav.about': 'About',
+    'nav.cert': 'Education',
     'nav.contact': 'Contact',
     'nav.menu': 'Menu',
     
@@ -147,6 +181,21 @@ export const ui = {
     // Certificates
     'cert.title1': 'Education ',
     'cert.title2': '& Certifications',
+
+    'cert.uni1.title': 'Software Development Degree',
+    'cert.uni1.gpa': 'Current GPA: 9.44 / 10',
+    'cert.uni1.1': 'Programming II (Grade: 10)',
+    'cert.uni1.2': 'Databases I (Grade: 10)',
+    'cert.uni1.3': 'Computational Logic (Grade: 10)',
+    'cert.uni1.date': '2024 - Present',
+
+    'cert.uni2.title': 'Bachelor in Data Science',
+    'cert.uni2.gpa': 'Overall GPA: 8.55 / 10',
+    'cert.uni2.1': 'Mathematical Analysis',
+    'cert.uni2.2': 'Cloud Computing',
+    'cert.uni2.3': 'Data Analysis',
+    'cert.uni2.date': '2024 - Present',
+
     'cert.ds.title': 'Data Science Career',
     'cert.ds.desc': 'Comprehensive training covering the full data lifecycle.',
     'cert.ds.1': 'Data Science I: Fundamentals & Visualization',
@@ -160,6 +209,21 @@ export const ui = {
     'cert.esp.2': 'Generative AI: Prompt Engineering & LLMs',
     'cert.esp.3': 'Agile Project Management',
     'cert.esp.date': '2024',
+
+    // Production SaaS
+    'saas.title1': 'Production ',
+    'saas.title2': 'Solutions',
+    'saas.metrics.users': 'Active Users',
+    'saas.metrics.clients': 'B2B Clients',
+    'saas.status.active': 'In Production',
+    'saas.status.dev': 'Active Development',
+    'saas.soon': 'Coming Soon',
+    'saas.visit': 'Visit App',
+    'saas.landing': 'View Landing',
+
+    'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
+    'saas.tr.desc': 'B2B2C platform that gamifies running and boosts the local economy. The system connects athletes with businesses through rewards: users accumulate kilometers (synced via Strava API) and redeem them for exclusive discounts using dynamic QR codes.',
+    'saas.tr.status_detailed': '🚀 Status: In development (MVP Phase). Beta Launch: Q2 2026.',
 
     // Contact
     'contact.title1': 'Let\'s talk',
