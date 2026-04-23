@@ -68,7 +68,7 @@ export const ui = {
     'cert.title2': '& Certificaciones',
     
     'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
-    'cert.uni1.gpa': 'Promedio Actual: 9.50 / 10',
+    'cert.uni1.gpa': 'Promedio Actual: 9.53 / 10',
     'cert.uni1.1': 'Programación II (Nota: 10)',
     'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
     'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
@@ -185,7 +185,7 @@ export const ui = {
     'cert.title2': '& Certifications',
 
     'cert.uni1.title': 'Software Development Degree',
-    'cert.uni1.gpa': 'Current GPA: 9.44 / 10',
+    'cert.uni1.gpa': 'Current GPA: 9.53 / 10',
     'cert.uni1.1': 'Programming II (Grade: 10)',
     'cert.uni1.2': 'Databases I (Grade: 10)',
     'cert.uni1.3': 'Computational Logic (Grade: 10)',
