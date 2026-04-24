@@ -93,7 +93,8 @@ export const ui = {
     'cert.esp.1': 'Power BI: Dashboarding y Business Intelligence',
     'cert.esp.2': 'IA Generativa: Prompt Engineering y LLMs',
     'cert.esp.3': 'Gestión Ágil de Proyectos',
-    'cert.esp.date': '2025',
+    'cert.esp.4': 'Data Science Ethics - University of Michigan',
+    'cert.esp.date': 'Abril 2026',
 
     // Production SaaS
     'saas.title1': 'Soluciones en ',
@@ -210,7 +211,8 @@ export const ui = {
     'cert.esp.1': 'Power BI: Dashboarding & Business Intelligence',
     'cert.esp.2': 'Generative AI: Prompt Engineering & LLMs',
     'cert.esp.3': 'Agile Project Management',
-    'cert.esp.date': '2024',
+    'cert.esp.4': 'Data Science Ethics - University of Michigan',
+    'cert.esp.date': 'April 2026',
 
     // Production SaaS
     'saas.title1': 'Production ',
