@@ -20,7 +20,7 @@ export const PROJECTS = {
       category: "IA & Deep Learning",
       slug: "ai-models",
       github: "https://github.com/Nahuelito22/Bot_Ajedrez",
-      link: "https://nahuelito22.github.io/Bot_Ajedrez/#jugar",
+      link: "https://roquechess.vercel.app/",
       image: "/projects/roque-chess.webp",
     },
     {
