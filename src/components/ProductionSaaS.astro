@@ -1,47 +1,17 @@
 ---
 // src/components/ProductionSaaS.astro
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { PRODUCTS } from "../data/production";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-const products = [
-  {
-    title: "AstroFit",
-    description: t("saas.af.desc"),
-    tags: ["Astro", "Supabase", "TypeScript", "Playwright"],
-    status: t("saas.status.active"),
-    metrics: [
-      { value: "5", label: t("saas.metrics.clients") },
-      { value: "250", label: t("saas.metrics.users") }
-    ],
-    image: "/projects/astrofit.webp",
-    badges: ["SaaS", "B2B"],
-    link: "https://www.astrofitapp.com.ar/",
-    isReady: true
-  },
-  {
-    title: "TupRun",
-    description: t("saas.tr.desc"),
-    statusDetailed: t("saas.tr.status_detailed"),
-    tags: ["Next.js", "React Native", "PostgreSQL", "Stripe"],
-    status: t("saas.status.dev"),
-    metrics: [
-      { value: "---", label: t("saas.metrics.clients") },
-      { value: "---", label: t("saas.metrics.users") }
-    ],
-    image: "/projects/TupRun_Sin_Fondo.webp",
-    badges: ["SaaS", "Event Management"],
-    isReady: false
-  }
-];
 ---
 
 <section id="saas-production" class="relative py-20 z-10">
   <div class="max-w-6xl mx-auto px-4">
     
     <!-- Header de la sección -->
-    <div class="mb-16 text-center md:text-left flex flex-col items-center md:items-start">
+    <div class="mb-12 text-center md:text-left flex flex-col items-center md:items-start">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
             <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
             <span class="text-purple-400 text-sm font-mono tracking-widest uppercase">System.Production.ENV</span>
@@ -52,108 +22,236 @@ const products = [
         <div class="w-full h-px bg-gradient-to-r from-purple-500/50 via-ai-neon/50 to-transparent mt-4 max-w-2xl"></div>
     </div>
 
-    <!-- Grilla principal -->
-    <div class="flex flex-col gap-12">
-        {products.map((product) => (
-            <div class={`relative group flex flex-col ${product.isReady ? 'md:flex-row' : 'md:flex-row-reverse'} bg-chess-board rounded-3xl border ${product.isReady ? 'border-ai-neon/20 hover:border-ai-neon/50' : 'border-purple-500/20 hover:border-purple-500/50'} overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${product.isReady ? 'hover:shadow-ai-neon/20' : 'hover:shadow-purple-500/20'}`}>
-                
-                <!-- Columna de Imagen -->
-                <div class="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px] bg-chess-dark overflow-hidden flex items-center justify-center">
-                    <div class={`absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] ${product.isReady ? 'from-ai-neon via-chess-dark to-chess-dark' : 'from-purple-500 via-chess-dark to-chess-dark'}`}></div>
+    <!-- Lista principal de Filas Compactas -->
+    <div class="flex flex-col gap-4">
+        {PRODUCTS.map((product) => {
+            const statusInfo = {
+                active: {
+                    color: "bg-ai-neon",
+                    textClass: "text-ai-neon",
+                    label: t("saas.status.active")
+                },
+                paused: {
+                    color: "bg-amber-400",
+                    textClass: "text-amber-400",
+                    label: t("saas.status.paused")
+                },
+                dev: {
+                    color: "bg-purple-500",
+                    textClass: "text-purple-400",
+                    label: t("saas.status.dev")
+                }
+            }[product.status];
+
+            return (
+                <div 
+                    class={`production-card cursor-pointer relative group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 md:p-5 bg-chess-board/60 backdrop-blur-md rounded-2xl border ${product.status === 'active' ? 'border-ai-neon/10 hover:border-ai-neon/30' : product.status === 'paused' ? 'border-amber-500/10 hover:border-amber-500/30' : 'border-purple-500/10 hover:border-purple-500/30'} hover:bg-chess-board/90 transition-all duration-300 shadow-xl`}
+                    data-title={product.title}
+                    data-description={t(product.descriptionKey)}
+                    data-tags={JSON.stringify(product.tags)}
+                    data-link={product.link || ""}
+                    data-image={product.image || ""}
+                    data-original-category={t("nav.saas")}
+                >
                     
-                    {product.image ? (
-                        <div class="relative w-full h-full p-8 flex items-center justify-center">
-                             <img src={product.image} alt={product.title} class="w-full h-full object-contain rounded-xl shadow-2xl drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out z-10 relative" />
-                        </div>
-                    ) : (
-                        <div class="relative z-10 flex flex-col items-center justify-center text-center p-8">
-                            <span class="text-7xl mb-4 opacity-50 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500">🏃</span>
-                            <div class="px-6 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-md">
-                                <span class="text-purple-400 font-mono font-bold tracking-widest">{t("saas.soon")}</span>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                <!-- Columna de Contenido -->
-                <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between relative">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-chess-dark/50 z-0"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            {product.badges.map(badge => (
-                                <span class="px-3 py-1 text-xs font-mono font-bold tracking-wider rounded bg-white/5 border border-white/10 text-gray-300">
-                                    {badge}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class={`text-3xl md:text-4xl font-bold ${product.isReady ? 'text-white' : 'text-gray-300'} group-hover:text-white transition-colors`}>
-                                {product.title}
-                            </h3>
-                            <div class="flex items-center gap-2">
-                                <span class={`relative flex h-3 w-3`}>
-                                  <span class={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${product.isReady ? 'bg-ai-neon' : 'bg-purple-500'}`}></span>
-                                  <span class={`relative inline-flex rounded-full h-3 w-3 ${product.isReady ? 'bg-ai-neon' : 'bg-purple-500'}`}></span>
-                                </span>
-                                <span class={`text-xs font-mono hidden sm:inline-block ${product.isReady ? 'text-ai-neon' : 'text-purple-400'}`}>
-                                    {product.status}
-                                </span>
-                            </div>
-                        </div>
-
-                        <p class="text-gray-400 leading-relaxed mb-6">
-                            {product.description}
-                        </p>
-
-                        {product.statusDetailed && (
-                            <div class="mb-6 inline-block w-full sm:w-auto px-4 py-3 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm shadow-inner shadow-purple-500/10">
-                                <p class="leading-relaxed">
-                                    {product.statusDetailed}
-                                </p>
-                            </div>
-                        )}
-
-                        <!-- Métricas del mundo real -->
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                            {product.metrics.map(metric => (
-                                <div class="p-4 rounded-xl bg-chess-dark/50 border border-white/5 flex flex-col items-center sm:items-start text-center sm:text-left">
-                                    <span class={`text-2xl font-bold ${product.isReady ? 'text-white' : 'text-gray-500'}`}>{metric.value}</span>
-                                    <span class="text-xs text-gray-500 font-mono mt-1">{metric.label}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div class="relative z-10 mt-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-                        <div class="flex flex-wrap gap-2 w-full sm:w-auto">
-                            {product.tags.map(tag => (
-                                <span class={`text-xs font-mono px-2 py-1 rounded bg-chess-dark border ${product.isReady ? 'border-ai-neon/20 text-ai-neon/80' : 'border-purple-500/20 text-purple-400/80'}`}>
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-
-                        {product.isReady && product.link ? (
-                            <a 
-                                href={product.link} 
-                                target="_blank"
-                                class="w-full sm:w-auto px-8 py-3 rounded-xl bg-ai-neon text-chess-dark font-bold text-center hover:bg-white hover:shadow-lg hover:shadow-ai-neon/50 transition-all flex justify-center items-center gap-2 group/btn shrink-0"
-                            >
-                                <span>{t("saas.visit")}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                            </a>
+                    <!-- Imagen o Thumbnail -->
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-chess-dark border border-white/5 flex items-center justify-center overflow-hidden shrink-0 relative">
+                        <div class={`absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] ${product.status === 'active' ? 'from-ai-neon via-chess-dark to-chess-dark' : product.status === 'paused' ? 'from-amber-400 via-chess-dark to-chess-dark' : 'from-purple-500 via-chess-dark to-chess-dark'}`}></div>
+                        {product.image ? (
+                            <img src={product.image} alt={product.title} class="w-full h-full object-contain p-1.5 group-hover:scale-105 transition-transform duration-500 z-10 relative" />
                         ) : (
-                             <button disabled class="w-full sm:w-auto px-8 py-3 rounded-xl bg-chess-dark border border-purple-500/50 text-purple-400/50 font-bold text-center cursor-not-allowed shrink-0">
-                                {t("saas.soon")}
-                            </button>
+                            <span class="text-3xl z-10 relative drop-shadow-lg select-none">♟️</span>
                         )}
                     </div>
+
+                    <!-- Contenido Principal -->
+                    <div class="flex-1 min-w-0 flex flex-col lg:flex-row lg:items-center justify-between gap-4 w-full">
+                        
+                        <!-- Texto e Información -->
+                        <div class="flex flex-col gap-1 flex-1 min-w-0">
+                            
+                            <!-- Badges + Título + Status -->
+                            <div class="flex flex-wrap items-center gap-2">
+                                {product.badges.map(badge => (
+                                    <span class="px-2 py-0.5 text-[9px] font-mono font-bold tracking-wider rounded bg-white/5 border border-white/10 text-gray-400 uppercase select-none">
+                                        {badge}
+                                    </span>
+                                ))}
+                                <h3 class="text-base md:text-lg font-bold text-white group-hover:text-ai-neon transition-colors duration-300 truncate">
+                                    {product.title}
+                                </h3>
+                                
+                                <!-- Status Badge -->
+                                <div class="flex items-center gap-1.5 ml-2">
+                                    <span class="relative flex h-2 w-2">
+                                        <span class={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${statusInfo.color}`}></span>
+                                        <span class={`relative inline-flex rounded-full h-2 w-2 ${statusInfo.color}`}></span>
+                                    </span>
+                                    <span class={`text-[10px] font-mono uppercase tracking-wider ${statusInfo.textClass}`}>
+                                        {statusInfo.label}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Descripción y Status Detallado -->
+                            <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                                <p class="text-xs md:text-sm text-gray-400 line-clamp-1 leading-relaxed max-w-4xl">
+                                    {t(product.descriptionKey)}
+                                </p>
+                                {product.statusDetailedKey && (
+                                    <span class="text-[10px] md:text-xs text-amber-400/80 font-mono italic shrink-0">
+                                        — {t(product.statusDetailedKey)}
+                                    </span>
+                                )}
+                            </div>
+
+                            <!-- Tags Tecnológicos -->
+                            <div class="flex flex-wrap gap-1.5 mt-1.5">
+                                {product.tags.map(tag => (
+                                    <span class={`text-[9px] font-mono px-2 py-0.5 rounded bg-chess-dark/80 border ${product.status === 'active' ? 'border-ai-neon/10 text-ai-neon/75 group-hover:border-ai-neon/20' : product.status === 'paused' ? 'border-amber-400/10 text-amber-400/75 group-hover:border-amber-400/20' : 'border-purple-500/10 text-purple-400/75 group-hover:border-purple-500/20'} transition-all duration-300`}>
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <!-- Métricas y CTA -->
+                        <div class="flex items-center justify-between lg:justify-end gap-6 shrink-0 w-full lg:w-auto border-t border-white/5 lg:border-t-0 pt-3 lg:pt-0 mt-2 lg:mt-0">
+                            
+                            <!-- Métricas Inline -->
+                            {product.metrics.length > 0 && (
+                                <div class="flex items-center gap-4 text-xs font-mono text-gray-500 shrink-0">
+                                    {product.metrics.map((metric) => (
+                                        <div class="flex items-center gap-1.5">
+                                            <span class={`font-bold text-sm ${product.status === 'active' ? 'text-white' : 'text-gray-500'}`}>{metric.value}</span>
+                                            <span class="text-[9px] text-gray-500 uppercase tracking-wider select-none">{t(metric.labelKey)}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            <!-- Botón CTA -->
+                            <div class="shrink-0 ml-auto lg:ml-0">
+                                {product.isReady && product.link ? (
+                                    <a 
+                                        href={product.link} 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="px-4 py-2 rounded-lg bg-ai-neon/10 border border-ai-neon/30 text-ai-neon text-xs font-bold hover:bg-ai-neon hover:text-chess-dark hover:shadow-lg hover:shadow-ai-neon/20 transition-all duration-300 flex items-center gap-1.5 group/btn"
+                                    >
+                                        <span>{product.id === 'hackaton-edutech' ? t("saas.visitSite") : t("saas.visit")}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:translate-x-0.5 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                                    </a>
+                                ) : (
+                                    <button disabled class={`px-4 py-2 rounded-lg bg-chess-dark/80 border ${product.status === 'paused' ? 'border-amber-400/20 text-amber-400/40' : 'border-purple-500/20 text-purple-400/40'} text-xs font-bold cursor-not-allowed select-none`}>
+                                        {product.status === 'paused' ? t("saas.status.paused") : t("saas.soon")}
+                                    </button>
+                                )}
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        ))}
+            );
+        })}
     </div>
 
   </div>
 </section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const cards = document.querySelectorAll(".production-card");
+    const modal = document.getElementById("project-modal");
+    
+    if (!cards.length || !modal) return;
+
+    const mTitle = document.getElementById("modal-title");
+    const mCategory = document.getElementById("modal-category");
+    const mDesc = document.getElementById("modal-description");
+    const mTags = document.getElementById("modal-tags");
+    const mImage = document.getElementById("modal-image") as HTMLImageElement;
+    const mImagePlaceholder = document.getElementById("modal-image-placeholder");
+    const mGithub = document.getElementById("modal-github") as HTMLAnchorElement;
+    const mLink = document.getElementById("modal-link") as HTMLAnchorElement;
+    const modalContentContainer = document.getElementById("modal-content-container");
+
+    const openModal = () => {
+      modal.classList.remove("hidden");
+      void modal.offsetWidth;
+      modal.classList.remove("opacity-0");
+      modalContentContainer?.classList.remove("scale-95");
+      modalContentContainer?.classList.add("scale-100");
+      document.body.style.overflow = "hidden";
+    };
+
+    cards.forEach((card) => {
+      // Prevent modal opening when clicking on the CTA link
+      const ctaLink = card.querySelector("a");
+      if (ctaLink) {
+        ctaLink.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      }
+
+      card.addEventListener("click", (e) => {
+        // Double safety check to ensure clicking nested elements in the CTA won't trigger modal
+        const target = e.target as HTMLElement;
+        if (target.closest("a")) return;
+
+        const title = card.getAttribute("data-title") || "";
+        const category = card.getAttribute("data-original-category") || "";
+        const description = card.getAttribute("data-description") || "";
+        const tagsRaw = card.getAttribute("data-tags");
+        const image = card.getAttribute("data-image");
+        const link = card.getAttribute("data-link");
+
+        let tags: string[] = [];
+        try {
+          tags = tagsRaw ? JSON.parse(tagsRaw) : [];
+        } catch (err) {}
+
+        if (mTitle) mTitle.textContent = title;
+        if (mCategory) mCategory.textContent = category;
+        if (mDesc) mDesc.textContent = description;
+
+        if (mTags) {
+          mTags.innerHTML = tags
+            .map(
+              (tag) =>
+                `<span class="text-sm font-mono px-3 py-1.5 rounded bg-white/5 text-gray-300 border border-white/5">${tag}</span>`
+            )
+            .join("");
+        }
+
+        if (image && mImage && mImagePlaceholder) {
+          mImage.src = image;
+          mImage.alt = title;
+          mImage.classList.remove("hidden");
+          mImagePlaceholder.classList.add("hidden");
+        } else if (mImage && mImagePlaceholder) {
+          mImage.src = "";
+          mImage.classList.add("hidden");
+          mImagePlaceholder.classList.remove("hidden");
+        }
+
+        // B2B projects have no GitHub code link
+        if (mGithub) {
+          mGithub.classList.add("hidden");
+          mGithub.classList.remove("inline-flex");
+        }
+
+        if (link && mLink) {
+          mLink.href = link;
+          mLink.classList.remove("hidden");
+          mLink.classList.add("inline-flex");
+        } else if (mLink) {
+          mLink.classList.add("hidden");
+          mLink.classList.remove("inline-flex");
+        }
+
+        openModal();
+      });
+    });
+  });
+</script>
