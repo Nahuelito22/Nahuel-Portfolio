@@ -118,7 +118,7 @@ const { title, lang = "es" } = Astro.props;
         }, observerOptions);
 
         document
-          .querySelectorAll("section, .project-card, .timeline-item")
+          .querySelectorAll("section, .project-card, .timeline-item, .production-card, .service-card")
           .forEach((el) => {
             el.classList.add(
               "opacity-0",
