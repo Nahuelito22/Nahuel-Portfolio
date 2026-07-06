@@ -43,6 +43,16 @@ export const PROJECTS = {
       image: "/projects/guidia.webp",
     },
     {
+      title: "Mundial Data",
+      description: "Plataforma web de estadísticas históricas del Mundial de Fútbol (1930-2022). Permite explorar rankings, comparativas head-to-head y predecir resultados con simulaciones Monte Carlo y Machine Learning. Desarrollada con React, Flask y MySQL.",
+      tags: ["React", "Flask", "MySQL", "TypeScript", "ML"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/Parcial_Programacion_3",
+      link: "https://parcial-programacion-3.vercel.app/",
+      image: "/projects/mundial-data.webp",
+    },
+    {
       title: "Bodega Manager",
       description: "Plataforma web integral para la gestión de stock, ventas y trazabilidad en bodegas. Incluye panel de administración y control de inventario en tiempo real.",
       tags: ["Full Stack", "SQL", "Dashboard"],
@@ -109,6 +119,16 @@ export const PROJECTS = {
       github: "https://github.com/Nahuelito22/Guidia",
       link: "https://guidia.onrender.com/",
       image: "/projects/guidia.webp",
+    },
+    {
+      title: "Mundial Data",
+      description: "Web platform for historical FIFA World Cup statistics (1930-2022). Explore rankings, head-to-head comparisons, and predict match results using Monte Carlo simulations and Machine Learning. Built with React, Flask, and MySQL.",
+      tags: ["React", "Flask", "MySQL", "TypeScript", "ML"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/Parcial_Programacion_3",
+      link: "https://parcial-programacion-3.vercel.app/",
+      image: "/projects/mundial-data.webp",
     },
     {
       title: "Winery Manager",
