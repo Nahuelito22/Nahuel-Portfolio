@@ -1,10 +1,13 @@
 // src/data/projects.ts
 // Usamos "slug" en cada proyecto para conectar con data-filter="..." en el frontend
+// "featured: true" marca los 6 proyectos que se muestran en el filtro [ All_Systems ].
+// El resto sigue disponible dentro de su categoría.
 
 export const PROJECTS = {
   es: [
     {
       title: "Zaha",
+      featured: true,
       description: "Sistema de Soporte a la Decisión Clínica (CDSS) basado en NEWS2. Permite a enfermeros registrar constantes vitales y usa Machine Learning para predecir alertas tempranas de descompensación (sepsis, fallas orgánicas) en tiempo real.",
       tags: ["Python", "Scikit-learn", "NEWS2", "ML", "FastAPI"],
       category: "Data Science",
@@ -14,6 +17,7 @@ export const PROJECTS = {
     },
     {
       title: "Nimbus AI",
+      featured: true,
       description: "Sistema avanzado de predicción meteorológica enfocado en la detección de granizo. Utiliza modelos supervisados y enriquecimiento de datasets mediante APIs meteorológicas para análisis de riesgo.",
       tags: ["Python", "Scikit-learn", "Pandas", "API REST"],
       category: "Data Science",
@@ -24,6 +28,7 @@ export const PROJECTS = {
     },
     {
       title: "Roque Chess Bot",
+      featured: true,
       description: "Motor de ajedrez basado en redes neuronales LSTM. Entrenado con un corpus masivo de partidas PGN para predecir movimientos humanos y detectar patrones tácticos.",
       tags: ["TensorFlow", "Keras", "Deep Learning", "LSTM"],
       category: "IA & Deep Learning",
@@ -34,6 +39,7 @@ export const PROJECTS = {
     },
     {
       title: "Guidia",
+      featured: true,
       description: "Asistente de planificación inteligente desarrollado para Hackathon. Genera itinerarios y sugerencias basadas en preferencias del usuario utilizando IA generativa.",
       tags: ["GenAI", "React", "Python"],
       category: "IA & Deep Learning",
@@ -44,6 +50,7 @@ export const PROJECTS = {
     },
     {
       title: "Mundial Data",
+      featured: true,
       description: "Plataforma web de estadísticas históricas del Mundial de Fútbol (1930-2022). Permite explorar rankings, comparativas head-to-head y predecir resultados con simulaciones Monte Carlo y Machine Learning. Desarrollada con React, Flask y MySQL.",
       tags: ["React", "Flask", "MySQL", "TypeScript", "ML"],
       category: "Full Stack",
@@ -51,6 +58,27 @@ export const PROJECTS = {
       github: "https://github.com/Nahuelito22/Parcial_Programacion_3",
       link: "https://parcial-programacion-3.vercel.app/",
       image: "/projects/mundial-data.webp",
+    },
+    {
+      title: "Siglo 21 · Correlativas",
+      featured: true,
+      description: "Nació de un problema propio: entender qué materias podía cursar en la Licenciatura en Ciencia de Datos sin cruzar planillas a mano. La app mapea las 54 materias de la carrera y sus correlativas en un grafo interactivo, calcula el avance por cuatrimestre y muestra qué se habilita al aprobar cada una. Todo el progreso vive en el navegador —sin cuentas ni base de datos— y se puede compartir con un link. Hoy la usan compañeros de la carrera.",
+      tags: ["Astro", "React", "TypeScript", "Tailwind"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/siglo21-correlativas",
+      link: "https://siglo21-correlativas.vercel.app",
+      image: "/projects/siglo21-correlativas.webp",
+    },
+    {
+      title: "GameMatch",
+      description: "Resuelve una fricción cotidiana: cuando un grupo de amigos quiere jugar, nadie sabe qué juegos tienen todos. GameMatch compara las bibliotecas de Steam del grupo y muestra la intersección, con filtros por género, una ruleta para elegir al azar y votación compartida por link. Sin backend propio: las claves de API viven en funciones serverless.",
+      tags: ["Astro", "TypeScript", "Steam API", "Serverless"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/gamematch",
+      link: "https://gamematch-beta.vercel.app",
+      image: "/projects/gamematch.webp",
     },
     {
       title: "Bodega Manager",
@@ -83,6 +111,7 @@ export const PROJECTS = {
   en: [
     {
       title: "Zaha",
+      featured: true,
       description: "Clinical Decision Support System (CDSS) based on NEWS2. Allows nurses to record vital signs and uses Machine Learning to predict early decompensation alerts (sepsis, organ failure) in real time.",
       tags: ["Python", "Scikit-learn", "NEWS2", "ML", "FastAPI"],
       category: "Data Science",
@@ -92,6 +121,7 @@ export const PROJECTS = {
     },
     {
       title: "Nimbus AI",
+      featured: true,
       description: "Advanced meteorological prediction system focused on hail detection. Uses supervised models and dataset enrichment via meteorological APIs for risk analysis.",
       tags: ["Python", "Scikit-learn", "Pandas", "API REST"],
       category: "Data Science",
@@ -102,16 +132,18 @@ export const PROJECTS = {
     },
     {
       title: "Roque Chess Bot",
+      featured: true,
       description: "Chess engine based on LSTM neural networks. Trained with a massive corpus of PGN matches to predict human moves and detect tactical patterns.",
       tags: ["TensorFlow", "Keras", "Deep Learning", "LSTM"],
       category: "AI & Deep Learning",
       slug: "ai-models",
       github: "https://github.com/Nahuelito22/Bot_Ajedrez",
-      link: "https://nahuelito22.github.io/Bot_Ajedrez/#jugar",
+      link: "https://roquechess.vercel.app/",
       image: "/projects/roque-chess.webp",
     },
     {
       title: "Guidia",
+      featured: true,
       description: "Smart planning assistant developed for a Hackathon. Generates itineraries and suggestions based on user preferences using generative AI.",
       tags: ["GenAI", "React", "Python"],
       category: "AI & Deep Learning",
@@ -122,6 +154,7 @@ export const PROJECTS = {
     },
     {
       title: "Mundial Data",
+      featured: true,
       description: "Web platform for historical FIFA World Cup statistics (1930-2022). Explore rankings, head-to-head comparisons, and predict match results using Monte Carlo simulations and Machine Learning. Built with React, Flask, and MySQL.",
       tags: ["React", "Flask", "MySQL", "TypeScript", "ML"],
       category: "Full Stack",
@@ -129,6 +162,27 @@ export const PROJECTS = {
       github: "https://github.com/Nahuelito22/Parcial_Programacion_3",
       link: "https://parcial-programacion-3.vercel.app/",
       image: "/projects/mundial-data.webp",
+    },
+    {
+      title: "Siglo 21 · Course Map",
+      featured: true,
+      description: "Born from my own problem: figuring out which courses I could take in the Data Science degree without cross-checking spreadsheets by hand. The app maps all 54 courses and their prerequisites in an interactive graph, tracks progress per term, and shows what each pass unlocks. Progress lives entirely in the browser —no accounts, no database— and can be shared with a link. Classmates are using it today.",
+      tags: ["Astro", "React", "TypeScript", "Tailwind"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/siglo21-correlativas",
+      link: "https://siglo21-correlativas.vercel.app",
+      image: "/projects/siglo21-correlativas.webp",
+    },
+    {
+      title: "GameMatch",
+      description: "Solves an everyday friction: when a group of friends wants to play, nobody knows which games they all own. GameMatch compares the group's Steam libraries and shows the intersection, with genre filters, a roulette for random picks, and link-shared voting. No dedicated backend: API keys live in serverless functions.",
+      tags: ["Astro", "TypeScript", "Steam API", "Serverless"],
+      category: "Full Stack",
+      slug: "full-stack",
+      github: "https://github.com/Nahuelito22/gamematch",
+      link: "https://gamematch-beta.vercel.app",
+      image: "/projects/gamematch.webp",
     },
     {
       title: "Winery Manager",

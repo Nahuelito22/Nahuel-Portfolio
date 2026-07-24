@@ -76,7 +76,9 @@ const targetUrl = lang === "es" ? "/en/" : "/";
       <button
         id="mobile-menu-btn"
         class="text-gray-300 hover:text-ai-neon transition-colors p-2 focus:outline-none"
-        aria-label="Toggle menu"
+        aria-label={t("nav.menu")}
+        aria-expanded="false"
+        aria-controls="mobile-menu-overlay"
       >
         <svg
           id="menu-icon-open"
@@ -173,6 +175,8 @@ const targetUrl = lang === "es" ? "/en/" : "/";
 
       const toggleMenu = () => {
         isMenuOpen = !isMenuOpen;
+        // El icono cambia, pero un lector de pantalla necesita el estado
+        mobileBtn.setAttribute("aria-expanded", String(isMenuOpen));
 
         if (isMenuOpen) {
           // Abrir Menú

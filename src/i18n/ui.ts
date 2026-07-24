@@ -16,14 +16,25 @@ export const ui = {
     'nav.cert': 'Educación',
     'nav.services': 'Servicios',
     'nav.contact': 'Contacto',
-    'nav.menu': 'Menu',
+    'nav.menu': 'Menú',
     
     // Hero
     'hero.hello': 'Hola, soy ',
     'hero.role': 'Desarrollador Full Stack & Data Scientist.',
-    'hero.subtitle': 'Combinando lógica de ajedrez con potencia de IA.',
+    'hero.subtitle': 'Del dato al producto: diseño el modelo, lo convierto en software y lo pongo en producción.',
+    'hero.stats.apps': 'Apps en producción',
+    'hero.stats.clients': 'Gimnasios clientes',
+    'hero.stats.users': 'Usuarios activos',
     'hero.projectsBtn': 'Ver Proyectos',
     'hero.contactBtn': 'Contactarme',
+
+    // Testimonios
+    'testimonials.title1': 'Lo que dicen ',
+    'testimonials.title2': 'mis clientes',
+    'testimonials.subtitle': 'Gimnasios que dejaron el cuaderno y hoy gestionan su negocio con AstroFit.',
+    'testimonials.role.direction': 'Dirección',
+    'testimonials.about': 'sobre',
+    'testimonials.disclaimer': 'Testimonios publicados en',
 
     // Projects
     'projects.title1': 'Proyectos',
@@ -37,6 +48,7 @@ export const ui = {
     'projects.modal.tech': 'Tecnologías',
     'projects.modal.code': 'Ver Código',
     'projects.modal.visit': 'Visitar Proyecto',
+    'projects.modal.close': 'Cerrar',
 
     // Skills
     'skills.title1': 'Tech',
@@ -110,10 +122,10 @@ export const ui = {
     'saas.visitSite': 'Visitar Sitio',
     'saas.landing': 'Ver Landing',
 
-    'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
-    'saas.tr.desc': 'Plataforma B2B2C que gamifica el running y potencia la economía local. El sistema conecta a deportistas con comercios mediante recompensas: los usuarios acumulan kilómetros (sincronizados vía API de Strava) y los canjean por descuentos exclusivos usando códigos QR dinámicos.',
-    'saas.tr.status_detailed': '⏸️ Status: Desarrollo pausado temporalmente.',
-    'saas.he.desc': 'Sitio oficial y plataforma de gestión con roles diferenciados para participantes, jueces y mentores del evento.',
+    'saas.af.desc': 'Los gimnasios llevaban todo en un cuaderno: quién debía la cuota, quién asistía, cuánto entraba. AstroFit reemplaza ese cuaderno por un sistema donde el dueño controla alumnos, cobros y asistencias desde el celular, con check-in por código QR y rutinas armadas una sola vez para todos. Hoy lo usan 5 gimnasios para gestionar más de 250 alumnos.',
+    'saas.tr.desc': 'Conecta corredores con comercios del barrio: los kilómetros que corrés se sincronizan con Strava y se convierten en descuentos reales, que se canjean mostrando un código QR en el local. El comercio suma clientes; el corredor, un motivo más para salir a entrenar.',
+    'saas.tr.status_detailed': 'En pausa temporal',
+    'saas.he.desc': 'Los organizadores pedían una landing para anunciar el evento. Propuse construir la plataforma completa: hoy las inscripciones, la entrega de proyectos, la asignación de mentores y la evaluación del jurado corren ahí, cada rol con su propia vista. Se estrena en la 2ª edición, en agosto de 2026, organizada por el IES 9-023 y el IES Tomás Alva Edison.',
 
     // Services
     'services.title1': 'Mis ',
@@ -155,6 +167,12 @@ export const ui = {
     'contact.email': 'Email',
     'contact.message': 'Mensaje',
     'contact.send': 'Enviar Mensaje',
+    'contact.sending': 'Enviando...',
+    'contact.success': '¡Listo! Recibí tu mensaje y te respondo a la brevedad.',
+    'contact.error': 'No se pudo enviar el mensaje. Revisá los datos e intentá de nuevo.',
+    'contact.offline': 'No pudimos conectar. Te abrimos el correo para que puedas escribirme directo.',
+    'contact.or': 'o completá el formulario',
+    'contact.wa.prefill': '¡Hola Nahu! Te escribo desde tu portfolio.',
 
     // Footer
     'footer.rights': 'Matias Nahuel Ghilardi. Casi todos los derechos reservados.',
@@ -174,9 +192,20 @@ export const ui = {
     // Hero
     'hero.hello': 'Hi, I am ',
     'hero.role': 'Full Stack Developer & Data Scientist.',
-    'hero.subtitle': 'Combining chess logic with AI power.',
+    'hero.subtitle': 'From data to product: I design the model, turn it into software and ship it to production.',
+    'hero.stats.apps': 'Apps in production',
+    'hero.stats.clients': 'Gym clients',
+    'hero.stats.users': 'Active users',
     'hero.projectsBtn': 'View Projects',
     'hero.contactBtn': 'Contact Me',
+
+    // Testimonials
+    'testimonials.title1': 'What my ',
+    'testimonials.title2': 'clients say',
+    'testimonials.subtitle': 'Gyms that left the paper notebook behind and now run their business on AstroFit. Quotes kept in their original Spanish.',
+    'testimonials.role.direction': 'Management',
+    'testimonials.about': 'on',
+    'testimonials.disclaimer': 'Testimonials published on',
 
     // Projects
     'projects.title1': 'Featured',
@@ -190,6 +219,7 @@ export const ui = {
     'projects.modal.tech': 'Technologies',
     'projects.modal.code': 'View Code',
     'projects.modal.visit': 'Visit Project',
+    'projects.modal.close': 'Close',
 
     // Skills
     'skills.title1': 'Tech',
@@ -233,14 +263,14 @@ export const ui = {
     'cert.uni2.1': 'Mathematical Analysis',
     'cert.uni2.2': 'Cloud Computing',
     'cert.uni2.3': 'Data Analysis',
-    'cert.uni2.date': '2024 - Present',
+    'cert.uni2.date': '2025 - Present',
 
     'cert.ds.title': 'Data Science Career',
     'cert.ds.desc': 'Comprehensive training covering the full data lifecycle.',
     'cert.ds.1': 'Data Science I: Fundamentals & Visualization',
     'cert.ds.2': 'Data Science II: Supervised Machine Learning',
     'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2024',
+    'cert.ds.date': '2023 - 2025',
 
     'cert.esp.title': 'Specialization Courses',
     'cert.esp.desc': 'Complementary training to expand the tech stack.',
@@ -263,10 +293,10 @@ export const ui = {
     'saas.visitSite': 'Visit Site',
     'saas.landing': 'View Landing',
 
-    'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
-    'saas.tr.desc': 'B2B2C platform that gamifies running and boosts the local economy. The system connects athletes with businesses through rewards: users accumulate kilometers (synced via Strava API) and redeem them for exclusive discounts using dynamic QR codes.',
-    'saas.tr.status_detailed': '⏸️ Status: Development temporarily paused.',
-    'saas.he.desc': 'Official website and management platform with differentiated roles for participants, judges and event mentors.',
+    'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. 5 gyms use it today to manage over 250 members.',
+    'saas.tr.desc': 'Connects runners with neighbourhood shops: the kilometres you run sync from Strava and turn into real discounts, redeemed by showing a QR code at the counter. The shop gains customers; the runner, one more reason to go out and train.',
+    'saas.tr.status_detailed': 'Temporarily on hold',
+    'saas.he.desc': 'The organisers asked for a landing page to announce the event. I proposed building the full platform instead: registration, project submissions, mentor assignment and jury scoring all run on it, each role with its own view. It goes live for the 2nd edition, August 2026, hosted by IES 9-023 and IES Tomás Alva Edison.',
 
     // Services
     'services.title1': 'My ',
@@ -308,6 +338,12 @@ export const ui = {
     'contact.email': 'Email',
     'contact.message': 'Message',
     'contact.send': 'Send Message',
+    'contact.sending': 'Sending...',
+    'contact.success': 'Got it! I received your message and will get back to you shortly.',
+    'contact.error': 'The message could not be sent. Please check the fields and try again.',
+    'contact.offline': 'We could not connect. Opening your email client so you can reach me directly.',
+    'contact.or': 'or fill in the form',
+    'contact.wa.prefill': 'Hi Nahu! I am reaching out from your portfolio.',
 
     // Footer
     'footer.rights': 'Matias Nahuel Ghilardi. Almost all rights reserved.',

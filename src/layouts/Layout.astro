@@ -4,33 +4,104 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
 import { ViewTransitions } from "astro:transitions";
+import { SITE_URL, OG_IMAGE, SOCIALS, EMAIL } from "../config/site";
 
 interface Props {
   title: string;
+  description: string;
   lang?: string;
 }
 
-const { title, lang = "es" } = Astro.props;
+const { title, description, lang = "es" } = Astro.props;
+
+// URLs absolutas: las redes sociales no resuelven rutas relativas.
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const ogImage = new URL(OG_IMAGE, SITE_URL).href;
+
+// hreflang: le dice a Google que "/" y "/en" son la misma pagina en dos idiomas.
+const alternates = [
+  { hreflang: "es", href: new URL("/", SITE_URL).href },
+  { hreflang: "en", href: new URL("/en/", SITE_URL).href },
+  { hreflang: "x-default", href: new URL("/", SITE_URL).href },
+];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Matías Nahuel Ghilardi",
+  alternateName: "Nahu",
+  url: SITE_URL,
+  image: new URL("/profile.webp", SITE_URL).href,
+  email: `mailto:${EMAIL}`,
+  jobTitle: "Full Stack Developer & Data Scientist",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mendoza",
+    addressCountry: "AR",
+  },
+  sameAs: [SOCIALS.github, SOCIALS.linkedin],
+};
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang === "en" ? "en" : "es-AR"} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Portfolio de Nahu - Data Scientist & Developer"
-    />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/Icono-Ajedrez.ico" />
     <meta name="generator" content={Astro.generator} />
 
+    <link rel="canonical" href={canonical} />
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+    <meta name="author" content="Matías Nahuel Ghilardi" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph: lo que se ve al pegar el link en LinkedIn o WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Matías Nahuel Ghilardi" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "es_AR"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Matías Nahuel Ghilardi — Full Stack Developer & Data Scientist"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- media="print" + onload: el navegador baja la hoja sin bloquear el
+         render y la aplica al llegar. El <noscript> cubre el resto. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
+      />
+    </noscript>
 
     <title>{title}</title>
     <ViewTransitions />
@@ -103,6 +174,14 @@ const { title, lang = "es" } = Astro.props;
 
       // Scroll Animations setup on every page load
       document.addEventListener("astro:page-load", () => {
+        // Si el visitante pidio menos movimiento, no animamos nada: el
+        // contenido queda visible desde el inicio.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        // Sin IntersectionObserver no ocultamos nada: mejor sin animacion que
+        // con la pagina en blanco.
+        if (!("IntersectionObserver" in window)) return;
+
         const observerOptions = {
           root: null,
           rootMargin: "0px",
@@ -129,6 +208,14 @@ const { title, lang = "es" } = Astro.props;
             );
             observer.observe(el);
           });
+
+        // Red de seguridad: si algo falla y quedan elementos ocultos pasado
+        // un tiempo razonable, se revelan igual. El contenido nunca se pierde.
+        window.setTimeout(() => {
+          document
+            .querySelectorAll(".opacity-0.translate-y-10")
+            .forEach((el) => el.classList.add("animate-fade-in-up"));
+        }, 3000);
       });
     </script>
     <Analytics />
@@ -149,5 +236,21 @@ const { title, lang = "es" } = Astro.props;
   .animate-fade-in-up {
     opacity: 1 !important;
     transform: translateY(0) !important;
+  }
+
+  /* Quien pidio menos movimiento no deberia recibir pulsos, pings ni scroll
+     animado. El contenido se ve igual, simplemente quieto. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>

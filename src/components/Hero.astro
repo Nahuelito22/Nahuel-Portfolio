@@ -30,14 +30,36 @@ const t = useTranslations(lang);
     </h1>
 
     <p
-      class="text-xl md:text-2xl text-chess-accent mb-10 max-w-2xl mx-auto font-light"
+      class="text-xl md:text-2xl text-chess-accent mb-6 max-w-2xl mx-auto font-light"
     >
       {t("hero.role")}
       <br />
-      <span class="text-sm font-mono mt-2 block opacity-80">
+      <span class="text-base md:text-lg mt-3 block text-gray-300">
         {t("hero.subtitle")}
       </span>
     </p>
+
+    <!-- Prueba dura: lo que ya está funcionando, no lo que sé hacer -->
+    <div
+      class="grid grid-cols-3 divide-x divide-white/10 mb-10 max-w-lg mx-auto"
+    >
+      {
+        [
+          { value: "2", label: t("hero.stats.apps") },
+          { value: "5", label: t("hero.stats.clients") },
+          { value: "250+", label: t("hero.stats.users") },
+        ].map((stat) => (
+          <div class="flex flex-col items-center justify-start px-2">
+            <span class="text-2xl md:text-3xl font-bold text-ai-neon leading-none">
+              {stat.value}
+            </span>
+            <span class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-2 text-center leading-tight">
+              {stat.label}
+            </span>
+          </div>
+        ))
+      }
+    </div>
 
     <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
       <a
