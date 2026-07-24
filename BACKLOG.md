@@ -34,18 +34,27 @@ gana lo segundo.
 
 ### 1. Convertir AstroFit en un mini caso de estudio
 
-Hoy AstroFit aparece con una descripción técnica (RLS, middleware, Service Workers).
-Un cliente potencial no compra eso; compra el resultado. Falta la historia:
+**Parcialmente hecho.** Las descripciones de la sección de Producción ya se
+reescribieron en formato problema → solución → resultado y sin jerga: AstroFit
+arranca por el cuaderno del gimnasio en vez de por RLS y middleware, TupRun dejó
+de llamarse "plataforma B2B2C". El stack sigue disponible en los tags de abajo,
+para quien lo busque.
 
-- **Problema**: qué le dolía al gimnasio antes (la landing de AstroFit ya lo dice
-  mejor que el portfolio: *"dejar el cuaderno y empezar a crecer"*).
-- **Qué construiste**: en una frase, sin stack.
-- **Resultado**: "5 gimnasios, 250+ alumnos gestionados" ya está en las métricas —
-  hay que contarlo como logro, no como dato suelto.
+**Lo que falta es la página propia.** Hoy la historia sigue repartida en tres
+lugares que no se hablan entre sí: el número en el hero, la descripción en
+Producción, y los testimonios más abajo. Un caso de estudio los une en un solo
+argumento, y de paso da una URL indexable y compartible que se le puede mandar
+directo a un cliente potencial sin obligarlo a recorrer todo el portfolio.
 
-Formato sugerido: una página `/casos/astrofit` con 4 bloques (Problema · Solución ·
-Resultado · Stack al final, en letra chica). Es el activo más valioso que tenés y
-hoy ocupa una línea. Los testimonios ya publicados dan el cierre.
+Formato sugerido: `/casos/astrofit` con 4 bloques.
+
+- **Problema**: el cuaderno — no saber quién debe la cuota, quién asiste, cuánto entra.
+- **Solución**: qué construiste, en una frase, sin stack.
+- **Resultado**: 5 gimnasios y 250+ alumnos, cerrado con los testimonios ya publicados.
+- **Stack**: al final, en letra chica.
+
+Conviene hacerlo junto con el testimonio de Edutech y la respuesta de Dialogy,
+para armar la narrativa completa de una sola vez.
 
 ### 2. Sección de Experiencia / Clientes — pendiente de autorización
 

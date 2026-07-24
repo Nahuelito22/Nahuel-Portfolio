@@ -121,10 +121,10 @@ export const ui = {
     'saas.visitSite': 'Visitar Sitio',
     'saas.landing': 'Ver Landing',
 
-    'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
-    'saas.tr.desc': 'Plataforma B2B2C que gamifica el running y potencia la economía local. El sistema conecta a deportistas con comercios mediante recompensas: los usuarios acumulan kilómetros (sincronizados vía API de Strava) y los canjean por descuentos exclusivos usando códigos QR dinámicos.',
+    'saas.af.desc': 'Los gimnasios llevaban todo en un cuaderno: quién debía la cuota, quién asistía, cuánto entraba. AstroFit reemplaza ese cuaderno por un sistema donde el dueño controla alumnos, cobros y asistencias desde el celular, con check-in por código QR y rutinas armadas una sola vez para todos. Hoy lo usan 5 gimnasios para gestionar más de 250 alumnos.',
+    'saas.tr.desc': 'Conecta corredores con comercios del barrio: los kilómetros que corrés se sincronizan con Strava y se convierten en descuentos reales, que se canjean mostrando un código QR en el local. El comercio suma clientes; el corredor, un motivo más para salir a entrenar.',
     'saas.tr.status_detailed': 'En pausa temporal',
-    'saas.he.desc': 'Sitio oficial y plataforma de gestión con roles diferenciados para participantes, jueces y mentores del evento.',
+    'saas.he.desc': 'Sitio oficial del evento y la plataforma donde se organizaron participantes, jurados y mentores, cada uno con su propia vista.',
 
     // Services
     'services.title1': 'Mis ',
@@ -291,10 +291,10 @@ export const ui = {
     'saas.visitSite': 'Visit Site',
     'saas.landing': 'View Landing',
 
-    'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
-    'saas.tr.desc': 'B2B2C platform that gamifies running and boosts the local economy. The system connects athletes with businesses through rewards: users accumulate kilometers (synced via Strava API) and redeem them for exclusive discounts using dynamic QR codes.',
+    'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. Five gyms use it today to manage over 250 members.',
+    'saas.tr.desc': 'Connects runners with neighbourhood shops: the kilometres you run sync from Strava and turn into real discounts, redeemed by showing a QR code at the counter. The shop gains customers; the runner, one more reason to go out and train.',
     'saas.tr.status_detailed': 'Temporarily on hold',
-    'saas.he.desc': 'Official website and management platform with differentiated roles for participants, judges and event mentors.',
+    'saas.he.desc': 'Official event website and the platform where participants, judges and mentors were organised, each with their own view.',
 
     // Services
     'services.title1': 'My ',
