@@ -123,36 +123,17 @@ const personSchema = {
     </div>
 
     <script>
-      // Las particulas son decorativas: ~140 kB que no deben competir con el
-      // contenido. Se importan de forma dinamica (chunk aparte) y recien
-      // cuando el navegador esta ocioso.
+      import { tsParticles } from "tsparticles-engine";
+      import { loadSlim } from "tsparticles-slim";
+      import { particlesConfig } from "../config/particlesConfig";
+
       async function setupParticles() {
         if (!document.getElementById("tsparticles")) return;
-
-        // Quien pidio menos movimiento no recibe particulas animadas.
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-        const [{ tsParticles }, { loadSlim }, { particlesConfig }] =
-          await Promise.all([
-            import("tsparticles-engine"),
-            import("tsparticles-slim"),
-            import("../config/particlesConfig"),
-          ]);
-
         await loadSlim(tsParticles);
         await tsParticles.load("tsparticles", particlesConfig);
       }
 
-      function scheduleParticles() {
-        if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(() => setupParticles(), { timeout: 2500 });
-        } else {
-          // Safari todavia no tiene requestIdleCallback
-          window.setTimeout(setupParticles, 800);
-        }
-      }
-
-      document.addEventListener("astro:page-load", scheduleParticles);
+      document.addEventListener("astro:page-load", setupParticles);
     </script>
 
     <script>

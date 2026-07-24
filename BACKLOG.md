@@ -34,12 +34,11 @@ gana lo segundo.
 - **Accesibilidad.** Modal con `role="dialog"`, `aria-modal`, foco al abrir,
   trampa de foco con Tab y devolución del foco al cerrar. Tarjetas y filas
   operables con Enter/Espacio y con anillo de foco visible. `aria-pressed` en los
-  filtros. `prefers-reduced-motion` respetado en CSS, en las animaciones de scroll
-  y en las partículas. Red de seguridad para que el contenido nunca quede oculto
-  si el JS falla.
-- **Rendimiento.** Imágenes redimensionadas: 2,8 MB → 380 kB (-87%). tsparticles
-  pasó a import dinámico en `requestIdleCallback`: el bundle inicial bajó de
-  140 kB a 1,8 kB. Fuentes no bloqueantes y `loading="lazy"` en las imágenes.
+  filtros. `prefers-reduced-motion` respetado en el CSS y en las animaciones de
+  scroll — **pero no en las partículas**, ver punto 6. Red de seguridad para que el
+  contenido nunca quede oculto si el JS falla.
+- **Rendimiento.** Imágenes redimensionadas: 2,8 MB → 380 kB (-87%). Fuentes no
+  bloqueantes y `loading="lazy"` en las imágenes.
 - **Dependencias.** Removido `tsparticles@3`, que estaba instalado sin usarse.
   `package.json` renombrado de `astronautical-antimatter` a `nahuel-portfolio`.
 
@@ -142,7 +141,31 @@ imágenes de `public/` a `src/assets/` y usar el componente `<Image />`: da
 WebP. Es un cambio más invasivo porque `projects.ts` y `production.ts` referencian
 las rutas como strings.
 
-### 6. Auditoría de idiomas automatizable
+### 6. tsparticles: 140 kB en el bundle inicial
+
+**No tocar sin verificar en el navegador del dueño del sitio.** Se intentó una vez
+y se revirtió.
+
+Qué se probó: import dinámico dentro de `requestIdleCallback` + saltear las
+partículas si el visitante tiene `prefers-reduced-motion: reduce`. El chunk inicial
+bajaba de 140 kB a 1,8 kB.
+
+Por qué se revirtió: **el guard de reduced-motion apagaba las partículas**. Windows
+reporta `prefers-reduced-motion: reduce` cuando "Efectos de animación" está
+desactivado en Accesibilidad, que es una configuración bastante común — así que el
+efecto no era un caso de borde, se veía en máquinas normales. Las partículas son la
+identidad visual del sitio, no un adorno prescindible: apagarlas cuesta más de lo
+que ahorra.
+
+Si se retoma, hacerlo **sin el guard de reduced-motion** y verificando en un
+navegador con esa opción activada. El import dinámico por sí solo funciona (se
+comprobó que los chunks cargan y las partículas se dibujan igual); el problema
+era exclusivamente el guard.
+
+Alternativas más seguras para el mismo objetivo: bajar la cantidad de partículas
+en móvil, o reemplazar tsparticles por un fondo animado en CSS/SVG.
+
+### 7. Auditoría de idiomas automatizable
 
 La comparación ES/EN se hizo a mano con un script de una sola vez. Vale la pena
 dejarlo como `npm run check:i18n` para que un valor divergente falle en CI en
@@ -154,24 +177,24 @@ fechas que difieren entre traducciones de una misma clave.
 
 ## 🟢 Bajo impacto — pulido
 
-### 7. Imagen de portada de GameMatch
+### 8. Imagen de portada de GameMatch
 
 La actual es una placa de título generada, no una captura real. Reemplazarla por un
 screenshot de la app cuando tenga contenido cargado.
 
-### 8. Descubribilidad de los proyectos no destacados
+### 9. Descubribilidad de los proyectos no destacados
 
 `[ All_Systems ]` muestra 6 proyectos y el resto vive dentro de su categoría.
 Está bien para no saturar, pero el visitante no sabe que hay más. Agregar un contador
 en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por categoría".
 
-### 9. Testimonios en el nav
+### 10. Testimonios en el nav
 
 La sección quedó sin link en el menú porque ya hay 7 items y sumar uno más lo satura.
 Si se agrega la sección de Experiencia/Clientes va a haber que repensar el nav
 completo (quizá agrupando "Trabajo" = Producción + Experiencia + Testimonios).
 
-### 10. Faltantes varios
+### 11. Faltantes varios
 
 - No hay página **404**.
 - Los CTA de contacto ya tienen `data-analytics`, pero **falta cablearlos** a eventos
