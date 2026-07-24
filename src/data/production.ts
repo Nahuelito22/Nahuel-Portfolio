@@ -4,7 +4,6 @@ export interface Product {
   id: string;
   title: string;
   image: string;
-  badges: string[];
   tags: string[];
   link?: string;
   isReady: boolean;
@@ -19,7 +18,6 @@ export const PRODUCTS: Product[] = [
     id: "astrofit",
     title: "AstroFit",
     image: "/projects/astrofit.webp",
-    badges: ["SaaS", "B2B"],
     tags: ["Astro", "Supabase", "TypeScript", "Playwright"],
     link: "https://www.astrofitapp.com.ar/",
     isReady: true,
@@ -34,7 +32,6 @@ export const PRODUCTS: Product[] = [
     id: "hackaton-edutech",
     title: "Hackaton Edutech Mendoza",
     image: "/projects/Hackaton.webp",
-    badges: ["Platform", "Event"],
     tags: ["Astro", "Supabase", "TypeScript"],
     link: "https://www.hackathonedutech.com.ar/",
     isReady: true,
@@ -48,7 +45,6 @@ export const PRODUCTS: Product[] = [
     id: "tuprun",
     title: "TupRun",
     image: "/projects/TupRun_Sin_Fondo.webp",
-    badges: ["SaaS", "Event Management"],
     tags: ["Next.js", "React Native", "PostgreSQL", "Stripe"],
     isReady: false,
     status: "paused",

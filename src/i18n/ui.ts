@@ -112,7 +112,7 @@ export const ui = {
 
     'saas.af.desc': 'Plataforma SaaS integral para la gestión de gimnasios y rutinas maestras. Arquitectura segura con validación global de estado en middleware y políticas RLS estrictas. Implementación de Service Workers para soporte PWA y optimización de peticiones. Sistema testeado al 100% mediante pruebas E2E.',
     'saas.tr.desc': 'Plataforma B2B2C que gamifica el running y potencia la economía local. El sistema conecta a deportistas con comercios mediante recompensas: los usuarios acumulan kilómetros (sincronizados vía API de Strava) y los canjean por descuentos exclusivos usando códigos QR dinámicos.',
-    'saas.tr.status_detailed': '⏸️ Status: Desarrollo pausado temporalmente.',
+    'saas.tr.status_detailed': 'En pausa temporal',
     'saas.he.desc': 'Sitio oficial y plataforma de gestión con roles diferenciados para participantes, jueces y mentores del evento.',
 
     // Services
@@ -265,7 +265,7 @@ export const ui = {
 
     'saas.af.desc': 'Comprehensive SaaS platform for gym management and master routines. Secure architecture with global state validation in middleware and strict RLS policies. Service Workers implementation for PWA support and request optimization. 100% End-to-End tested system.',
     'saas.tr.desc': 'B2B2C platform that gamifies running and boosts the local economy. The system connects athletes with businesses through rewards: users accumulate kilometers (synced via Strava API) and redeem them for exclusive discounts using dynamic QR codes.',
-    'saas.tr.status_detailed': '⏸️ Status: Development temporarily paused.',
+    'saas.tr.status_detailed': 'Temporarily on hold',
     'saas.he.desc': 'Official website and management platform with differentiated roles for participants, judges and event mentors.',
 
     // Services
