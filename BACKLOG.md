@@ -25,8 +25,23 @@ gana lo segundo.
   carga/éxito/error en pantalla, honeypot anti-spam, fallback a mail si falla la red,
   y vías directas (mail y WhatsApp) arriba del formulario.
 - **Producción sin jerga.** Fuera etiquetas `SaaS`/`B2B`/`Platform`/`Event` y los
-  indicadores parpadeantes de estado.
+  indicadores parpadeantes de estado. Las tres descripciones reescritas en formato
+  problema → solución → resultado.
 - **Regla de 6 destacados** en `[ All_Systems ]` vía flag `featured`.
+- **Consistencia ES/EN.** Corregidas las fechas de certificados y el link de Roque
+  Chess (se tomó el valor del español como correcto), la tilde de "Menú" y el
+  contador de proyectos de "Sobre Mí", que decía 5+ con 10 proyectos publicados.
+- **Accesibilidad.** Modal con `role="dialog"`, `aria-modal`, foco al abrir,
+  trampa de foco con Tab y devolución del foco al cerrar. Tarjetas y filas
+  operables con Enter/Espacio y con anillo de foco visible. `aria-pressed` en los
+  filtros. `prefers-reduced-motion` respetado en CSS, en las animaciones de scroll
+  y en las partículas. Red de seguridad para que el contenido nunca quede oculto
+  si el JS falla.
+- **Rendimiento.** Imágenes redimensionadas: 2,8 MB → 380 kB (-87%). tsparticles
+  pasó a import dinámico en `requestIdleCallback`: el bundle inicial bajó de
+  140 kB a 1,8 kB. Fuentes no bloqueantes y `loading="lazy"` en las imágenes.
+- **Dependencias.** Removido `tsparticles@3`, que estaba instalado sin usarse.
+  `package.json` renombrado de `astronautical-antimatter` a `nahuel-portfolio`.
 
 ---
 
@@ -105,75 +120,58 @@ fuente anotada.** Nunca redactar un testimonio "de ejemplo", ni siquiera tempora
 
 ---
 
-## 🟡 Medio impacto — calidad y confianza
+## 🟡 Medio impacto
 
-### 4. Inconsistencias entre español e inglés
+### 4. Contenido duplicado entre idiomas
 
-`projects.ts` y `ui.ts` duplican todo el contenido en dos idiomas, y ya divergieron.
-Detectadas:
+Ya no hay divergencias (se auditaron todas las claves y todos los campos no
+traducibles de los proyectos), pero **la causa sigue ahí**: `projects.ts` y `ui.ts`
+duplican el contenido en dos idiomas, así que links, imágenes, tags y fechas
+existen dos veces y pueden volver a separarse.
 
-| Dato | ES | EN |
-|---|---|---|
-| `cert.uni2.date` (Lic. Ciencia de Datos) | `2025 - Presente` | `2024 - Present` |
-| `cert.ds.date` (Carrera Data Science) | `2023 - 2025` | `2024` |
-| Link de Roque Chess Bot | `roquechess.vercel.app` | `nahuelito22.github.io/Bot_Ajedrez` |
+Arreglo de fondo: que los datos que **no** son texto traducible vivan una sola vez
+y que solo `title`/`description` estén por idioma. Elimina la clase entera de bug.
+Mientras tanto, el script de auditoría usado queda documentado abajo.
 
-Hay que corregir cuál es el correcto en cada caso. A futuro conviene que los datos
-que **no** son texto traducible (links, imágenes, tags, fechas) vivan una sola vez
-y que solo `title`/`description` estén por idioma. Eso elimina la clase entera de bug.
+### 5. Imágenes servidas por Astro
 
-### 5. Accesibilidad
+Se resolvió lo urgente (peso y `loading="lazy"`), y el CLS no es problema porque
+los contenedores tienen alto fijo. Lo que falta para hacerlo bien es mover las
+imágenes de `public/` a `src/assets/` y usar el componente `<Image />`: da
+`width`/`height` automáticos, variantes por densidad de pantalla y AVIF además de
+WebP. Es un cambio más invasivo porque `projects.ts` y `production.ts` referencian
+las rutas como strings.
 
-- El modal de proyectos no tiene `role="dialog"` ni `aria-modal`, no atrapa el foco
-  y no lo devuelve al cerrar. Con teclado se queda navegando el fondo.
-- Las tarjetas de proyecto son `<div>` clickeables: no se pueden abrir con Enter ni
-  se alcanzan con Tab. Deberían ser `<button>` o tener `tabindex="0"` + handler de teclado.
-- Los botones de filtro no informan cuál está activo (`aria-pressed`).
-- No se respeta `prefers-reduced-motion`: partículas, blurs y fade-ins corren igual
-  para quien pidió menos movimiento.
-- Las secciones arrancan con `opacity-0` y solo se revelan por IntersectionObserver:
-  **si el JS falla, la página queda en blanco.** Conviene revelar por CSS y que el JS
-  solo agregue la animación.
+### 6. Auditoría de idiomas automatizable
 
-### 6. Rendimiento
-
-- Las imágenes usan `<img>` crudo, sin `width`/`height` (provoca saltos de layout)
-  ni `loading="lazy"` para las que están abajo del fold. Migrar al componente
-  `<Image />` de Astro las resuelve las tres cosas.
-- Google Fonts se carga bloqueando el render. Alternativa: `@fontsource` o
-  `font-display: swap` + preload.
-- tsparticles son ~140 kB de JS solo decorativos. Evaluar cargarlo con
-  `requestIdleCallback`, desactivarlo en móvil, o reemplazarlo por un fondo CSS.
-
-### 7. Dependencias
-
-- Conviven `tsparticles@3.9.1` con `tsparticles-engine@2.12.0` y `tsparticles-slim@2.12.0`.
-  El código importa las v2, así que **`tsparticles@3` está instalado sin usarse**. Sacarlo.
-- `package.json` todavía se llama `astronautical-antimatter` (nombre autogenerado
-  de la plantilla).
+La comparación ES/EN se hizo a mano con un script de una sola vez. Vale la pena
+dejarlo como `npm run check:i18n` para que un valor divergente falle en CI en
+lugar de descubrirse leyendo el sitio. Compara: claves faltantes en cada idioma,
+campos no traducibles distintos entre `PROJECTS.es` y `PROJECTS.en`, y números o
+fechas que difieren entre traducciones de una misma clave.
 
 ---
 
 ## 🟢 Bajo impacto — pulido
 
-### 8. Imagen de portada de GameMatch
+### 7. Imagen de portada de GameMatch
 
 La actual es una placa de título generada, no una captura real. Reemplazarla por un
 screenshot de la app cuando tenga contenido cargado.
 
-### 9. Descubribilidad de los proyectos no destacados
+### 8. Descubribilidad de los proyectos no destacados
 
 `[ All_Systems ]` muestra 6 proyectos y el resto vive dentro de su categoría.
 Está bien para no saturar, pero el visitante no sabe que hay más. Agregar un contador
 en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por categoría".
 
-### 10. Testimonios en el nav
+### 9. Testimonios en el nav
 
 La sección quedó sin link en el menú porque ya hay 7 items y sumar uno más lo satura.
 Si se agrega la sección de Experiencia/Clientes va a haber que repensar el nav
 completo (quizá agrupando "Trabajo" = Producción + Experiencia + Testimonios).
 
-### 11. Faltantes varios
+### 10. Faltantes varios
 
 - No hay página **404**.
 - Los CTA de contacto ya tienen `data-analytics`, pero **falta cablearlos** a eventos

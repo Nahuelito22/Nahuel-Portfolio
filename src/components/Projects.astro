@@ -19,30 +19,35 @@ const currentProjects = PROJECTS[lang];
     <div class="flex flex-wrap justify-center gap-4 mb-12" id="filters">
       <button
         class="filter-btn active px-4 py-2 rounded-full border border-ai-neon bg-ai-neon/10 text-ai-neon font-mono text-sm transition-all hover:bg-ai-neon hover:text-chess-dark"
+        aria-pressed="true"
         data-filter="all"
       >
         {t("projects.filter.all")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        aria-pressed="false"
         data-filter="data-science"
       >
         {t("projects.filter.ds")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        aria-pressed="false"
         data-filter="ai-models"
       >
         {t("projects.filter.ai")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        aria-pressed="false"
         data-filter="full-stack"
       >
         {t("projects.filter.fs")}
       </button>
       <button
         class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 font-mono text-sm transition-all hover:border-ai-neon hover:text-ai-neon"
+        aria-pressed="false"
         data-filter="game-dev"
       >
         {t("projects.filter.gd")}
@@ -61,6 +66,9 @@ const currentProjects = PROJECTS[lang];
 <!-- Project Modal -->
 <div
   id="project-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
   class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300"
 >
   <div
@@ -75,6 +83,7 @@ const currentProjects = PROJECTS[lang];
   >
     <button
       id="modal-close"
+      aria-label={t("projects.modal.close")}
       class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-gray-400 hover:text-ai-neon hover:bg-black/80 transition-colors border border-white/10 hover:border-ai-neon"
     >
       <svg
@@ -208,10 +217,13 @@ const currentProjects = PROJECTS[lang];
         buttons.forEach((b) => {
           b.classList.remove("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
           b.classList.add("text-gray-400", "border-gray-700");
+          b.setAttribute("aria-pressed", "false");
         });
         // Activar el actual
         btn.classList.remove("text-gray-400", "border-gray-700");
         btn.classList.add("bg-ai-neon/10", "text-ai-neon", "border-ai-neon");
+        // El color no alcanza: un lector de pantalla necesita el estado
+        btn.setAttribute("aria-pressed", "true");
 
         const filter = btn.getAttribute("data-filter");
 
@@ -255,15 +267,28 @@ const currentProjects = PROJECTS[lang];
     ) as HTMLAnchorElement;
     const mLink = document.getElementById("modal-link") as HTMLAnchorElement;
 
+    // Guarda quien abrio el modal para devolverle el foco al cerrar: si no,
+    // el lector de pantalla vuelve al principio del documento.
+    let lastFocused: HTMLElement | null = null;
+
+    const focusablesInModal = () =>
+      Array.from(
+        modal?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter((el) => el.offsetParent !== null);
+
     const openModal = () => {
       if (!modal) return;
+      lastFocused = document.activeElement as HTMLElement;
       modal.classList.remove("hidden");
       // Simple reflow to ensure transition works
       void modal.offsetWidth;
       modal.classList.remove("opacity-0");
-      modalContentContainer?.classList.remove("scale-95");
+      modalContentContainer?.classList.remove("scale-100", "scale-95");
       modalContentContainer?.classList.add("scale-100");
       document.body.style.overflow = "hidden"; // Prevent background scrolling
+      modalCloseBtn?.focus();
     };
 
     const closeModal = () => {
@@ -275,17 +300,50 @@ const currentProjects = PROJECTS[lang];
         modal.classList.add("hidden");
         document.body.style.overflow = "";
       }, 300); // match duration-300
+      lastFocused?.focus();
+      lastFocused = null;
     };
 
     modalBackdrop?.addEventListener("click", closeModal);
     modalCloseBtn?.addEventListener("click", closeModal);
+
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      if (!modal || modal.classList.contains("hidden")) return;
+
+      if (e.key === "Escape") {
         closeModal();
+        return;
+      }
+
+      // Trampa de foco: con el modal abierto, Tab no debe escaparse al fondo.
+      if (e.key === "Tab") {
+        const items = focusablesInModal();
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && (active === first || !modal.contains(active))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
 
     cards.forEach((card) => {
+      // Enter/Espacio abren la tarjeta igual que el click: es un div con
+      // tabindex, asi que el teclado no lo activa solo.
+      card.addEventListener("keydown", (e) => {
+        const ev = e as KeyboardEvent;
+        if (ev.key !== "Enter" && ev.key !== " ") return;
+        if ((ev.target as HTMLElement).closest("a")) return;
+        ev.preventDefault();
+        (card as HTMLElement).click();
+      });
+
       card.addEventListener("click", (e) => {
         // Don't open if clicking on internal links of the card
         const target = e.target as HTMLElement;

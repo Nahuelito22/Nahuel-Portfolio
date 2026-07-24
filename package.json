@@ -1,5 +1,5 @@
 {
-  "name": "astronautical-antimatter",
+  "name": "nahuel-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -16,8 +16,8 @@
     "@vercel/analytics": "^1.6.1",
     "astro": "^5.16.0",
     "astro-icon": "^1.1.5",
-    "tsparticles": "^3.9.1",
     "tsparticles-engine": "^2.12.0",
     "tsparticles-slim": "^2.12.0"
-  }
+  },
+  "description": "Portfolio de Matías Nahuel Ghilardi — Full Stack Developer & Data Scientist"
 }

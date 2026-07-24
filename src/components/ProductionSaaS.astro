@@ -27,7 +27,10 @@ const t = useTranslations(lang);
         {PRODUCTS.map((product) => {
             return (
                 <div 
-                    class={`production-card cursor-pointer relative group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 md:p-5 bg-chess-board/60 backdrop-blur-md rounded-2xl border ${product.status === 'active' ? 'border-ai-neon/10 hover:border-ai-neon/30' : product.status === 'paused' ? 'border-amber-500/10 hover:border-amber-500/30' : 'border-purple-500/10 hover:border-purple-500/30'} hover:bg-chess-board/90 transition-all duration-300 shadow-xl`}
+                    class={`production-card cursor-pointer relative group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 md:p-5 bg-chess-board/60 backdrop-blur-md rounded-2xl border ${product.status === 'active' ? 'border-ai-neon/10 hover:border-ai-neon/30' : product.status === 'paused' ? 'border-amber-500/10 hover:border-amber-500/30' : 'border-purple-500/10 hover:border-purple-500/30'} hover:bg-chess-board/90 transition-all duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-neon focus-visible:ring-offset-2 focus-visible:ring-offset-chess-dark`}
+                    role="button"
+                    tabindex="0"
+                    aria-haspopup="dialog"
                     data-title={product.title}
                     data-description={t(product.descriptionKey)}
                     data-tags={JSON.stringify(product.tags)}
@@ -40,7 +43,7 @@ const t = useTranslations(lang);
                     <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-chess-dark border border-white/5 flex items-center justify-center overflow-hidden shrink-0 relative">
                         <div class={`absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] ${product.status === 'active' ? 'from-ai-neon via-chess-dark to-chess-dark' : product.status === 'paused' ? 'from-amber-400 via-chess-dark to-chess-dark' : 'from-purple-500 via-chess-dark to-chess-dark'}`}></div>
                         {product.image ? (
-                            <img src={product.image} alt={product.title} class="w-full h-full object-contain p-1.5 group-hover:scale-105 transition-transform duration-500 z-10 relative" />
+                            <img src={product.image} alt={product.title} loading="lazy" decoding="async" class="w-full h-full object-contain p-1.5 group-hover:scale-105 transition-transform duration-500 z-10 relative" />
                         ) : (
                             <span class="text-3xl z-10 relative drop-shadow-lg select-none">♟️</span>
                         )}
@@ -159,6 +162,15 @@ const t = useTranslations(lang);
           e.stopPropagation();
         });
       }
+
+      // Mismo comportamiento con teclado que con mouse
+      card.addEventListener("keydown", (e) => {
+        const ev = e as KeyboardEvent;
+        if (ev.key !== "Enter" && ev.key !== " ") return;
+        if ((ev.target as HTMLElement).closest("a")) return;
+        ev.preventDefault();
+        (card as HTMLElement).click();
+      });
 
       card.addEventListener("click", (e) => {
         // Double safety check to ensure clicking nested elements in the CTA won't trigger modal

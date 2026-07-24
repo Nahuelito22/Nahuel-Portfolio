@@ -16,7 +16,7 @@ export const ui = {
     'nav.cert': 'Educación',
     'nav.services': 'Servicios',
     'nav.contact': 'Contacto',
-    'nav.menu': 'Menu',
+    'nav.menu': 'Menú',
     
     // Hero
     'hero.hello': 'Hola, soy ',
@@ -48,6 +48,7 @@ export const ui = {
     'projects.modal.tech': 'Tecnologías',
     'projects.modal.code': 'Ver Código',
     'projects.modal.visit': 'Visitar Proyecto',
+    'projects.modal.close': 'Cerrar',
 
     // Skills
     'skills.title1': 'Tech',
@@ -218,6 +219,7 @@ export const ui = {
     'projects.modal.tech': 'Technologies',
     'projects.modal.code': 'View Code',
     'projects.modal.visit': 'Visit Project',
+    'projects.modal.close': 'Close',
 
     // Skills
     'skills.title1': 'Tech',
@@ -261,14 +263,14 @@ export const ui = {
     'cert.uni2.1': 'Mathematical Analysis',
     'cert.uni2.2': 'Cloud Computing',
     'cert.uni2.3': 'Data Analysis',
-    'cert.uni2.date': '2024 - Present',
+    'cert.uni2.date': '2025 - Present',
 
     'cert.ds.title': 'Data Science Career',
     'cert.ds.desc': 'Comprehensive training covering the full data lifecycle.',
     'cert.ds.1': 'Data Science I: Fundamentals & Visualization',
     'cert.ds.2': 'Data Science II: Supervised Machine Learning',
     'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2024',
+    'cert.ds.date': '2023 - 2025',
 
     'cert.esp.title': 'Specialization Courses',
     'cert.esp.desc': 'Complementary training to expand the tech stack.',
@@ -291,7 +293,7 @@ export const ui = {
     'saas.visitSite': 'Visit Site',
     'saas.landing': 'View Landing',
 
-    'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. Five gyms use it today to manage over 250 members.',
+    'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. 5 gyms use it today to manage over 250 members.',
     'saas.tr.desc': 'Connects runners with neighbourhood shops: the kilometres you run sync from Strava and turn into real discounts, redeemed by showing a QR code at the counter. The shop gains customers; the runner, one more reason to go out and train.',
     'saas.tr.status_detailed': 'Temporarily on hold',
     'saas.he.desc': 'The organisers asked for a landing page to announce the event. I proposed building the full platform instead: registration, project submissions, mentor assignment and jury scoring all run on it, each role with its own view. It goes live for the 2nd edition, August 2026, hosted by IES 9-023 and IES Tomás Alva Edison.',

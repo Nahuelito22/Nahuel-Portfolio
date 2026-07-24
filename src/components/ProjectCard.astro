@@ -17,8 +17,11 @@ const { title, description, tags, link, github, image, category, slug, featured 
 ---
 
 <div
-  class="project-card cursor-pointer group relative bg-chess-board border border-white/10 rounded-xl overflow-hidden hover:border-ai-neon/50 transition-all duration-300 transform hover:-translate-y-1"
+  class="project-card cursor-pointer group relative bg-chess-board border border-white/10 rounded-xl overflow-hidden hover:border-ai-neon/50 transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-neon focus-visible:ring-offset-2 focus-visible:ring-offset-chess-dark"
   style={featured ? "" : "display: none;"}
+  role="button"
+  tabindex="0"
+  aria-haspopup="dialog"
   data-featured={featured ? "true" : "false"}
   data-category={slug}
   data-original-category={category}
@@ -40,6 +43,8 @@ const { title, description, tags, link, github, image, category, slug, featured 
         <img
           src={image}
           alt={title}
+          loading="lazy"
+          decoding="async"
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
       ) : (

@@ -88,10 +88,20 @@ const personSchema = {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- media="print" + onload: el navegador baja la hoja sin bloquear el
+         render y la aplica al llegar. El <noscript> cubre el resto. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;700&display=swap"
+      />
+    </noscript>
 
     <title>{title}</title>
     <ViewTransitions />
@@ -113,17 +123,36 @@ const personSchema = {
     </div>
 
     <script>
-      import { tsParticles } from "tsparticles-engine";
-      import { loadSlim } from "tsparticles-slim";
-      import { particlesConfig } from "../config/particlesConfig";
-
+      // Las particulas son decorativas: ~140 kB que no deben competir con el
+      // contenido. Se importan de forma dinamica (chunk aparte) y recien
+      // cuando el navegador esta ocioso.
       async function setupParticles() {
         if (!document.getElementById("tsparticles")) return;
+
+        // Quien pidio menos movimiento no recibe particulas animadas.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const [{ tsParticles }, { loadSlim }, { particlesConfig }] =
+          await Promise.all([
+            import("tsparticles-engine"),
+            import("tsparticles-slim"),
+            import("../config/particlesConfig"),
+          ]);
+
         await loadSlim(tsParticles);
         await tsParticles.load("tsparticles", particlesConfig);
       }
 
-      document.addEventListener("astro:page-load", setupParticles);
+      function scheduleParticles() {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(() => setupParticles(), { timeout: 2500 });
+        } else {
+          // Safari todavia no tiene requestIdleCallback
+          window.setTimeout(setupParticles, 800);
+        }
+      }
+
+      document.addEventListener("astro:page-load", scheduleParticles);
     </script>
 
     <script>
@@ -164,6 +193,14 @@ const personSchema = {
 
       // Scroll Animations setup on every page load
       document.addEventListener("astro:page-load", () => {
+        // Si el visitante pidio menos movimiento, no animamos nada: el
+        // contenido queda visible desde el inicio.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        // Sin IntersectionObserver no ocultamos nada: mejor sin animacion que
+        // con la pagina en blanco.
+        if (!("IntersectionObserver" in window)) return;
+
         const observerOptions = {
           root: null,
           rootMargin: "0px",
@@ -190,6 +227,14 @@ const personSchema = {
             );
             observer.observe(el);
           });
+
+        // Red de seguridad: si algo falla y quedan elementos ocultos pasado
+        // un tiempo razonable, se revelan igual. El contenido nunca se pierde.
+        window.setTimeout(() => {
+          document
+            .querySelectorAll(".opacity-0.translate-y-10")
+            .forEach((el) => el.classList.add("animate-fade-in-up"));
+        }, 3000);
       });
     </script>
     <Analytics />
@@ -210,5 +255,21 @@ const personSchema = {
   .animate-fade-in-up {
     opacity: 1 !important;
     transform: translateY(0) !important;
+  }
+
+  /* Quien pidio menos movimiento no deberia recibir pulsos, pings ni scroll
+     animado. El contenido se ve igual, simplemente quieto. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
