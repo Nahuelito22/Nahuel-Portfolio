@@ -7,6 +7,9 @@ Criterio general: **el portfolio tiene que vender quién sos, no demostrar que s
 tecnicismos.** Cuando haya que elegir entre "se ve pro" y "se entiende rápido",
 gana lo segundo.
 
+El detalle de lo ya ejecutado, con el porqué de cada decisión, está en
+[`docs/auditoria-2026-07-24.md`](docs/auditoria-2026-07-24.md).
+
 ---
 
 ## ✅ Hecho
