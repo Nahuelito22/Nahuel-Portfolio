@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/tailwind": "^6.0.2",
     "@iconify-json/devicon": "^1.2.51",
     "@iconify-json/mdi": "^1.2.3",

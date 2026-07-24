@@ -9,70 +9,99 @@ gana lo segundo.
 
 ---
 
-## 🔴 Alto impacto — mueven la aguja para quien te contrata
+## ✅ Hecho
+
+- **Hero con propuesta de valor y dato duro.** El subtítulo pasó de "Combinando
+  lógica de ajedrez con potencia de IA" a "Del dato al producto: diseño el modelo,
+  lo convierto en software y lo pongo en producción", con una fila de métricas
+  (2 apps en producción · 5 gimnasios · 250+ usuarios).
+- **Sección de testimonios.** Tres citas reales de clientes de AstroFit
+  (Titan Gym, Plena Forma, Evolución Sport), reproducidas textualmente desde la
+  landing pública del producto, con link a la fuente.
+- **SEO completo.** `site` configurado, canonical, `hreflang` es/en/x-default,
+  Open Graph + Twitter Card con imagen 1200×630 propia, JSON-LD de `Person`,
+  títulos y descripciones específicos por idioma, `sitemap-index.xml` y `robots.txt`.
+- **Formulario de contacto.** Envío por `fetch` sin salir del sitio, estados de
+  carga/éxito/error en pantalla, honeypot anti-spam, fallback a mail si falla la red,
+  y vías directas (mail y WhatsApp) arriba del formulario.
+- **Producción sin jerga.** Fuera etiquetas `SaaS`/`B2B`/`Platform`/`Event` y los
+  indicadores parpadeantes de estado.
+- **Regla de 6 destacados** en `[ All_Systems ]` vía flag `featured`.
+
+---
+
+## 🔴 Alto impacto
 
 ### 1. Convertir AstroFit en un mini caso de estudio
 
 Hoy AstroFit aparece con una descripción técnica (RLS, middleware, Service Workers).
 Un cliente potencial no compra eso; compra el resultado. Falta la historia:
 
-- **Problema**: qué le dolía al gimnasio antes.
+- **Problema**: qué le dolía al gimnasio antes (la landing de AstroFit ya lo dice
+  mejor que el portfolio: *"dejar el cuaderno y empezar a crecer"*).
 - **Qué construiste**: en una frase, sin stack.
-- **Resultado**: "5 gimnasios, 250 usuarios activos" ya está en las métricas — hay que
-  contarlo como logro, no como dato suelto.
+- **Resultado**: "5 gimnasios, 250+ alumnos gestionados" ya está en las métricas —
+  hay que contarlo como logro, no como dato suelto.
 
 Formato sugerido: una página `/casos/astrofit` con 4 bloques (Problema · Solución ·
 Resultado · Stack al final, en letra chica). Es el activo más valioso que tenés y
-hoy ocupa una línea.
+hoy ocupa una línea. Los testimonios ya publicados dan el cierre.
 
-### 2. Prueba social
+### 2. Sección de Experiencia / Clientes — pendiente de autorización
 
-No hay ni un testimonio. Una sola frase de un cliente de AstroFit o del organizador
-de la Hackathon Edutech vale más que tres proyectos nuevos. Pedirlas por WhatsApp,
-con nombre y foto si se puede.
+Dialogy LLC no va en "Soluciones en Producción": esa sección está armada como
+**proyectos propios** (sos el dueño del producto). Dialogy es otra cosa —
+sos un profesional contratado. Mezclarlos le quita claridad a la narrativa.
 
-### 3. Hero: decir qué resolvés y para quién
+Crear una sección aparte, **"Experiencia / Clientes"** o **"Freelance & Consultoría"**,
+con tarjetas de rol + stack, sin capturas del producto.
 
-"Combinando lógica de ajedrez con potencia de IA" suena bien pero no dice nada
-accionable. Alguien que cae de LinkedIn en 5 segundos tiene que entender:
-qué hacés, para quién, y por qué vos.
+**Antes de publicar cualquier cosa de Dialogy hay que resolver el NDA.** Criterio
+estándar de la industria (no es asesoramiento legal — la respuesta está en tu NDA
+específico):
 
-Probar algo del estilo: *"Construyo sistemas web y modelos de datos para negocios
-que necesitan decidir mejor. Hoy en producción: 3 plataformas, 250+ usuarios."*
-El dato duro en el hero hace más que cualquier animación.
+| | Qué |
+|---|---|
+| ✅ Casi siempre permitido | Que trabajaste/trabajás para Dialogy LLC, tu rol, y el stack (React Native, Django, Supabase, RevenueCat, AWS). La *existencia* de la relación laboral no suele ser confidencial. |
+| ❌ Nunca, con NDA o sin él | Números internos de negocio (usuarios, ingresos, roadmap no público), código propietario, arquitectura de seguridad, nombres de otros clientes o proveedores que viste en el trabajo, y cualquier bug o vulnerabilidad que hayas encontrado. |
+| ⚠️ Zona gris | Capturas de la app, el nombre del producto ("Amara"), el logo. Muchos NDA permiten nombrar al cliente pero prohíben material visual sin permiso. |
 
-### 4. SEO y previsualización al compartir
+**Acción**: escribirle a Paola algo corto y explícito — *"¿puedo listar a Dialogy como
+cliente en mi portfolio, mencionando el rol y las tecnologías, sin entrar en detalles
+del producto?"*. La mayoría de los founders lo autorizan porque también les sirve como
+validación. Si el NDA es restrictivo, revisar puntualmente si la cláusula de
+confidencialidad cubre "la existencia de la relación comercial".
 
-Es el agujero más grande a nivel técnico y el más barato de tapar:
+Borrador de la tarjeta, para cuando haya luz verde:
 
-- No hay **Open Graph / Twitter Card**: hoy al pegar el link en LinkedIn o WhatsApp
-  no aparece imagen ni descripción. Hace falta una `og-image` (1200×630).
-- Falta `site` en `astro.config.mjs`, sin eso no hay URLs canónicas ni sitemap.
-- Falta `@astrojs/sitemap` y `robots.txt`.
-- Falta `<link rel="alternate" hreflang>` entre `/` y `/en` — Google hoy no sabe
-  que son la misma página en dos idiomas.
-- El `<title>` "Nahu | Portfolio" y la meta description son genéricos. Deberían
-  incluir nombre completo, rol y ubicación.
+> **Dialogy LLC** — Full Stack & AI Engineer
+> Desarrollo y despliegue de aplicación móvil de bienestar emocional con compañera de IA.
+> Arquitectura backend, integración de pagos e infraestructura de IA conversacional.
+> *Stack: React Native, Django, Supabase, AWS, LangChain*
 
-### 5. El formulario de contacto pierde gente
+### 3. Más testimonios
 
-`Contact.astro` postea a Formspree con un POST normal: el visitante sale de tu sitio
-y aterriza en una página de Formspree. Además no hay confirmación en pantalla ni
-anti-spam.
+Ya hay tres de AstroFit. Faltan:
 
-- Enviar con `fetch` y mostrar un estado de éxito/error en la misma página.
-- Agregar honeypot (campo oculto) contra bots.
-- Sumar un enlace directo a WhatsApp o email como alternativa: mucha gente no
-  completa formularios.
+- **Hackathon Edutech Mendoza**: pedirle una línea al organizador. Es un evento, no
+  un cliente pago, así que aporta un tipo de prueba distinto (te confían un proyecto
+  con visibilidad pública).
+- **Dialogy**: sujeto al punto 2.
+
+Cuando haya testimonios de más de un producto, agregar el logo o el nombre del
+producto como filtro visual en la sección.
+
+**Regla para `src/data/testimonials.ts`: solo citas reales y verificables, con la
+fuente anotada.** Nunca redactar un testimonio "de ejemplo", ni siquiera temporal.
 
 ---
 
 ## 🟡 Medio impacto — calidad y confianza
 
-### 6. Inconsistencias entre español e inglés
+### 4. Inconsistencias entre español e inglés
 
 `projects.ts` y `ui.ts` duplican todo el contenido en dos idiomas, y ya divergieron.
-Detectadas hoy:
+Detectadas:
 
 | Dato | ES | EN |
 |---|---|---|
@@ -84,7 +113,7 @@ Hay que corregir cuál es el correcto en cada caso. A futuro conviene que los da
 que **no** son texto traducible (links, imágenes, tags, fechas) vivan una sola vez
 y que solo `title`/`description` estén por idioma. Eso elimina la clase entera de bug.
 
-### 7. Accesibilidad
+### 5. Accesibilidad
 
 - El modal de proyectos no tiene `role="dialog"` ni `aria-modal`, no atrapa el foco
   y no lo devuelve al cerrar. Con teclado se queda navegando el fondo.
@@ -97,7 +126,7 @@ y que solo `title`/`description` estén por idioma. Eso elimina la clase entera 
   **si el JS falla, la página queda en blanco.** Conviene revelar por CSS y que el JS
   solo agregue la animación.
 
-### 8. Rendimiento
+### 6. Rendimiento
 
 - Las imágenes usan `<img>` crudo, sin `width`/`height` (provoca saltos de layout)
   ni `loading="lazy"` para las que están abajo del fold. Migrar al componente
@@ -107,7 +136,7 @@ y que solo `title`/`description` estén por idioma. Eso elimina la clase entera 
 - tsparticles son ~140 kB de JS solo decorativos. Evaluar cargarlo con
   `requestIdleCallback`, desactivarlo en móvil, o reemplazarlo por un fondo CSS.
 
-### 9. Dependencias
+### 7. Dependencias
 
 - Conviven `tsparticles@3.9.1` con `tsparticles-engine@2.12.0` y `tsparticles-slim@2.12.0`.
   El código importa las v2, así que **`tsparticles@3` está instalado sin usarse**. Sacarlo.
@@ -118,30 +147,38 @@ y que solo `title`/`description` estén por idioma. Eso elimina la clase entera 
 
 ## 🟢 Bajo impacto — pulido
 
-### 10. Imagen de portada de GameMatch
+### 8. Imagen de portada de GameMatch
 
 La actual es una placa de título generada, no una captura real. Reemplazarla por un
-screenshot de la app cuando tenga contenido cargado. Ídem revisar que la de
-Siglo 21 · Correlativas (hoy su imagen OG) se vea bien recortada en la grilla.
+screenshot de la app cuando tenga contenido cargado.
 
-### 11. Descubribilidad de los proyectos no destacados
+### 9. Descubribilidad de los proyectos no destacados
 
-Ahora `[ All_Systems ]` muestra 6 proyectos y el resto vive dentro de su categoría.
+`[ All_Systems ]` muestra 6 proyectos y el resto vive dentro de su categoría.
 Está bien para no saturar, pero el visitante no sabe que hay más. Agregar un contador
 en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por categoría".
 
-### 12. Faltantes varios
+### 10. Testimonios en el nav
+
+La sección quedó sin link en el menú porque ya hay 7 items y sumar uno más lo satura.
+Si se agrega la sección de Experiencia/Clientes va a haber que repensar el nav
+completo (quizá agrupando "Trabajo" = Producción + Experiencia + Testimonios).
+
+### 11. Faltantes varios
 
 - No hay página **404**.
-- No hay eventos de analytics en las acciones que importan: click en "Contactar",
-  descarga de CV, click a una app en producción. Sin eso, Vercel Analytics solo te
-  dice cuánta gente entró, no qué hizo.
+- Los CTA de contacto ya tienen `data-analytics`, pero **falta cablearlos** a eventos
+  de Vercel Analytics. Sin eso, sabés cuánta gente entró pero no qué hizo. Sumar
+  también la descarga de CV y los clicks a las apps en producción.
 - El easter egg del Konami usa `alert()` y aplica `filter: invert(1)` al body por 5
   segundos: es abrupto y no hay forma de cortarlo. Cambiar el alert por un toast.
 - `System.Production.ENV` y los filtros `[ All_Systems ]` / `/ Full_Stack` mantienen
   el tono "consola". Es una decisión de estilo consistente en todo el sitio, pero si
   el objetivo es vender a clientes no técnicos, vale la pena testear una versión con
   etiquetas en lenguaje natural y ver si convierte mejor.
+- El `README.md` sigue diciendo que el sitio fue la entrega final de Programación 2 y
+  describe una sección de "Línea de Tiempo con certificaciones de Coderhouse y
+  Santander" que ya no coincide con el contenido actual.
 
 ---
 
@@ -153,5 +190,5 @@ en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por cate
 - **Página de proyecto individual** en vez del modal: URL propia, indexable,
   compartible, con espacio para contar el proceso.
 - **Versión imprimible / one-pager** del portfolio para adjuntar a postulaciones.
-- **Tests E2E mínimos** (Playwright ya lo usás en AstroFit): que los filtros, el modal
-  y el cambio de idioma no se rompan en silencio.
+- **Tests E2E mínimos** (Playwright ya lo usás en AstroFit): que los filtros, el modal,
+  el envío del formulario y el cambio de idioma no se rompan en silencio.

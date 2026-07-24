@@ -21,9 +21,20 @@ export const ui = {
     // Hero
     'hero.hello': 'Hola, soy ',
     'hero.role': 'Desarrollador Full Stack & Data Scientist.',
-    'hero.subtitle': 'Combinando lógica de ajedrez con potencia de IA.',
+    'hero.subtitle': 'Del dato al producto: diseño el modelo, lo convierto en software y lo pongo en producción.',
+    'hero.stats.apps': 'Apps en producción',
+    'hero.stats.clients': 'Gimnasios clientes',
+    'hero.stats.users': 'Usuarios activos',
     'hero.projectsBtn': 'Ver Proyectos',
     'hero.contactBtn': 'Contactarme',
+
+    // Testimonios
+    'testimonials.title1': 'Lo que dicen ',
+    'testimonials.title2': 'mis clientes',
+    'testimonials.subtitle': 'Gimnasios que dejaron el cuaderno y hoy gestionan su negocio con AstroFit.',
+    'testimonials.role.direction': 'Dirección',
+    'testimonials.about': 'sobre',
+    'testimonials.disclaimer': 'Testimonios publicados en',
 
     // Projects
     'projects.title1': 'Proyectos',
@@ -155,6 +166,12 @@ export const ui = {
     'contact.email': 'Email',
     'contact.message': 'Mensaje',
     'contact.send': 'Enviar Mensaje',
+    'contact.sending': 'Enviando...',
+    'contact.success': '¡Listo! Recibí tu mensaje y te respondo a la brevedad.',
+    'contact.error': 'No se pudo enviar el mensaje. Revisá los datos e intentá de nuevo.',
+    'contact.offline': 'No pudimos conectar. Te abrimos el correo para que puedas escribirme directo.',
+    'contact.or': 'o completá el formulario',
+    'contact.wa.prefill': '¡Hola Nahu! Te escribo desde tu portfolio.',
 
     // Footer
     'footer.rights': 'Matias Nahuel Ghilardi. Casi todos los derechos reservados.',
@@ -174,9 +191,20 @@ export const ui = {
     // Hero
     'hero.hello': 'Hi, I am ',
     'hero.role': 'Full Stack Developer & Data Scientist.',
-    'hero.subtitle': 'Combining chess logic with AI power.',
+    'hero.subtitle': 'From data to product: I design the model, turn it into software and ship it to production.',
+    'hero.stats.apps': 'Apps in production',
+    'hero.stats.clients': 'Gym clients',
+    'hero.stats.users': 'Active users',
     'hero.projectsBtn': 'View Projects',
     'hero.contactBtn': 'Contact Me',
+
+    // Testimonials
+    'testimonials.title1': 'What my ',
+    'testimonials.title2': 'clients say',
+    'testimonials.subtitle': 'Gyms that left the paper notebook behind and now run their business on AstroFit. Quotes kept in their original Spanish.',
+    'testimonials.role.direction': 'Management',
+    'testimonials.about': 'on',
+    'testimonials.disclaimer': 'Testimonials published on',
 
     // Projects
     'projects.title1': 'Featured',
@@ -308,6 +336,12 @@ export const ui = {
     'contact.email': 'Email',
     'contact.message': 'Message',
     'contact.send': 'Send Message',
+    'contact.sending': 'Sending...',
+    'contact.success': 'Got it! I received your message and will get back to you shortly.',
+    'contact.error': 'The message could not be sent. Please check the fields and try again.',
+    'contact.offline': 'We could not connect. Opening your email client so you can reach me directly.',
+    'contact.or': 'or fill in the form',
+    'contact.wa.prefill': 'Hi Nahu! I am reaching out from your portfolio.',
 
     // Footer
     'footer.rights': 'Matias Nahuel Ghilardi. Almost all rights reserved.',

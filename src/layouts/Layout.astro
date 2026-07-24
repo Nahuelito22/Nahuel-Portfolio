@@ -4,26 +4,87 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
 import { ViewTransitions } from "astro:transitions";
+import { SITE_URL, OG_IMAGE, SOCIALS, EMAIL } from "../config/site";
 
 interface Props {
   title: string;
+  description: string;
   lang?: string;
 }
 
-const { title, lang = "es" } = Astro.props;
+const { title, description, lang = "es" } = Astro.props;
+
+// URLs absolutas: las redes sociales no resuelven rutas relativas.
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const ogImage = new URL(OG_IMAGE, SITE_URL).href;
+
+// hreflang: le dice a Google que "/" y "/en" son la misma pagina en dos idiomas.
+const alternates = [
+  { hreflang: "es", href: new URL("/", SITE_URL).href },
+  { hreflang: "en", href: new URL("/en/", SITE_URL).href },
+  { hreflang: "x-default", href: new URL("/", SITE_URL).href },
+];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Matías Nahuel Ghilardi",
+  alternateName: "Nahu",
+  url: SITE_URL,
+  image: new URL("/profile.webp", SITE_URL).href,
+  email: `mailto:${EMAIL}`,
+  jobTitle: "Full Stack Developer & Data Scientist",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mendoza",
+    addressCountry: "AR",
+  },
+  sameAs: [SOCIALS.github, SOCIALS.linkedin],
+};
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang === "en" ? "en" : "es-AR"} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Portfolio de Nahu - Data Scientist & Developer"
-    />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/Icono-Ajedrez.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonical} />
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+    <meta name="author" content="Matías Nahuel Ghilardi" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph: lo que se ve al pegar el link en LinkedIn o WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Matías Nahuel Ghilardi" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "es_AR"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Matías Nahuel Ghilardi — Full Stack Developer & Data Scientist"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
