@@ -10,10 +10,10 @@ export const EMAIL = "matiasghilardisalinas@gmail.com";
 
 /**
  * Numero de WhatsApp en formato internacional, solo digitos.
- * Ejemplo Mendoza: "5492611234567" (54 + 9 + 261 + numero).
+ * +54 9 2622 60-4500 -> 54 (pais) + 9 (movil) + 2622 (area) + 604500.
  * Si queda vacio, el boton de WhatsApp no se renderiza.
  */
-export const WHATSAPP = "";
+export const WHATSAPP = "5492622604500";
 
 /** Redes, tambien usadas en el JSON-LD de Person. */
 export const SOCIALS = {
