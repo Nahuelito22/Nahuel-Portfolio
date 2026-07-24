@@ -36,9 +36,9 @@ export const PRODUCTS: Product[] = [
     link: "https://www.hackathonedutech.com.ar/",
     isReady: true,
     status: "active",
-    metrics: [
-      { value: "—", labelKey: "saas.metrics.clients" }
-    ],
+    // Sin metricas: no es un cliente pago y un "—" al lado de "Clientes B2B"
+    // se lee como cero. El componente omite el bloque si el array esta vacio.
+    metrics: [],
     descriptionKey: "saas.he.desc"
   },
   {
@@ -48,10 +48,9 @@ export const PRODUCTS: Product[] = [
     tags: ["Next.js", "React Native", "PostgreSQL", "Stripe"],
     isReady: false,
     status: "paused",
-    metrics: [
-      { value: "---", labelKey: "saas.metrics.clients" },
-      { value: "---", labelKey: "saas.metrics.users" }
-    ],
+    // Mismo criterio que Hackaton: sin numeros reales todavia, mejor no mostrar
+    // guiones. El estado "Pausado" del boton ya explica por que no los hay.
+    metrics: [],
     descriptionKey: "saas.tr.desc",
     statusDetailedKey: "saas.tr.status_detailed"
   }

@@ -124,7 +124,7 @@ export const ui = {
     'saas.af.desc': 'Los gimnasios llevaban todo en un cuaderno: quién debía la cuota, quién asistía, cuánto entraba. AstroFit reemplaza ese cuaderno por un sistema donde el dueño controla alumnos, cobros y asistencias desde el celular, con check-in por código QR y rutinas armadas una sola vez para todos. Hoy lo usan 5 gimnasios para gestionar más de 250 alumnos.',
     'saas.tr.desc': 'Conecta corredores con comercios del barrio: los kilómetros que corrés se sincronizan con Strava y se convierten en descuentos reales, que se canjean mostrando un código QR en el local. El comercio suma clientes; el corredor, un motivo más para salir a entrenar.',
     'saas.tr.status_detailed': 'En pausa temporal',
-    'saas.he.desc': 'Sitio oficial del evento y la plataforma donde se organizaron participantes, jurados y mentores, cada uno con su propia vista.',
+    'saas.he.desc': 'Los organizadores pedían una landing para anunciar el evento. Propuse construir la plataforma completa: hoy las inscripciones, la entrega de proyectos, la asignación de mentores y la evaluación del jurado corren ahí, cada rol con su propia vista. Se estrena en la 2ª edición, en agosto de 2026, organizada por el IES 9-023 y el IES Tomás Alva Edison.',
 
     // Services
     'services.title1': 'Mis ',
@@ -294,7 +294,7 @@ export const ui = {
     'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. Five gyms use it today to manage over 250 members.',
     'saas.tr.desc': 'Connects runners with neighbourhood shops: the kilometres you run sync from Strava and turn into real discounts, redeemed by showing a QR code at the counter. The shop gains customers; the runner, one more reason to go out and train.',
     'saas.tr.status_detailed': 'Temporarily on hold',
-    'saas.he.desc': 'Official event website and the platform where participants, judges and mentors were organised, each with their own view.',
+    'saas.he.desc': 'The organisers asked for a landing page to announce the event. I proposed building the full platform instead: registration, project submissions, mentor assignment and jury scoring all run on it, each role with its own view. It goes live for the 2nd edition, August 2026, hosted by IES 9-023 and IES Tomás Alva Edison.',
 
     // Services
     'services.title1': 'My ',
