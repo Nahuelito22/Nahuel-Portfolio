@@ -1,0 +1,34 @@
+---
+// src/pages/casos/[slug].astro
+// Ruta dinamica: sumar un caso es agregar un objeto a CASES, nada mas.
+import Layout from "../../layouts/Layout.astro";
+import CaseStudyView from "../../components/CaseStudy.astro";
+import { CASES } from "../../data/cases";
+import type { CaseStudy } from "../../data/cases";
+
+export function getStaticPaths() {
+  return CASES.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props as { study: CaseStudy };
+const content = study.content.es;
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  lang="es"
+  ogType="article"
+  alternatePaths={{
+    // Con barra final, para que coincidan exactamente con el canonical y el
+    // sitemap. Sin ella, Google las lee como URLs distintas y el hreflang
+    // no aparea nada.
+    es: `/casos/${study.slug}/`,
+    en: `/en/cases/${study.slug}/`,
+  }}
+>
+  <CaseStudyView study={study} />
+</Layout>

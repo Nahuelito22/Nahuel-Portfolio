@@ -36,6 +36,21 @@ export const ui = {
     'testimonials.about': 'sobre',
     'testimonials.disclaimer': 'Testimonios publicados en',
 
+    // Casos de estudio
+    'case.badge': 'Caso.de.Estudio',
+    'case.back': 'Volver al inicio',
+    'case.problem': 'El problema',
+    'case.solution': 'La solución',
+    'case.result': 'El resultado',
+    'case.stack': 'Cómo está construido',
+    'case.voices': 'Lo que dicen los que lo usan',
+    'case.visit': 'Ver el producto',
+    'case.metrics.gyms': 'Gimnasios clientes',
+    'case.metrics.students': 'Alumnos activos',
+    'case.cta.title': '¿Tenés un problema parecido?',
+    'case.cta.text': 'Si tu negocio todavía vive en un cuaderno o en una planilla, se puede resolver. Contame qué necesitás y te digo si puedo ayudarte.',
+    'case.cta.btn': 'Hablemos',
+
     // Projects
     'projects.title1': 'Proyectos',
     'projects.title2': 'Destacados',
@@ -114,6 +129,7 @@ export const ui = {
     'saas.title2': 'Producción',
     'saas.metrics.users': 'Usuarios Activos',
     'saas.metrics.clients': 'Clientes B2B',
+    'saas.readCase': 'Ver el caso completo',
     'saas.status.active': 'En Producción',
     'saas.status.dev': 'Desarrollo Activo',
     'saas.status.paused': 'Pausado',
@@ -207,6 +223,21 @@ export const ui = {
     'testimonials.about': 'on',
     'testimonials.disclaimer': 'Testimonials published on',
 
+    // Case studies
+    'case.badge': 'Case.Study',
+    'case.back': 'Back to home',
+    'case.problem': 'The problem',
+    'case.solution': 'The solution',
+    'case.result': 'The result',
+    'case.stack': 'How it is built',
+    'case.voices': 'What the people using it say',
+    'case.visit': 'Visit the product',
+    'case.metrics.gyms': 'Gym clients',
+    'case.metrics.students': 'Active members',
+    'case.cta.title': 'Got a similar problem?',
+    'case.cta.text': 'If your business still runs on a notebook or a spreadsheet, it can be solved. Tell me what you need and I will let you know if I can help.',
+    'case.cta.btn': "Let's talk",
+
     // Projects
     'projects.title1': 'Featured',
     'projects.title2': 'Projects',
@@ -285,6 +316,7 @@ export const ui = {
     'saas.title2': 'Solutions',
     'saas.metrics.users': 'Active Users',
     'saas.metrics.clients': 'B2B Clients',
+    'saas.readCase': 'Read the full case',
     'saas.status.active': 'In Production',
     'saas.status.dev': 'Active Development',
     'saas.status.paused': 'On Hold',

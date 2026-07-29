@@ -1,0 +1,33 @@
+---
+// src/pages/en/cases/[slug].astro
+// Espejo en ingles de /casos/[slug]. El contenido sale del mismo CASES: los
+// datos no traducibles (link, imagen, stack, metricas) existen una sola vez.
+import Layout from "../../../layouts/Layout.astro";
+import CaseStudyView from "../../../components/CaseStudy.astro";
+import { CASES } from "../../../data/cases";
+import type { CaseStudy } from "../../../data/cases";
+
+export function getStaticPaths() {
+  return CASES.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props as { study: CaseStudy };
+const content = study.content.en;
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  lang="en"
+  ogType="article"
+  alternatePaths={{
+    // Con barra final: tiene que coincidir con el canonical y el sitemap.
+    es: `/casos/${study.slug}/`,
+    en: `/en/cases/${study.slug}/`,
+  }}
+>
+  <CaseStudyView study={study} />
+</Layout>

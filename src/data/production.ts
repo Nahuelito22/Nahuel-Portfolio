@@ -11,6 +11,8 @@ export interface Product {
   metrics: { value: string; labelKey: string }[];
   descriptionKey: string;
   statusDetailedKey?: string;
+  /** Slug en `cases.ts` si este producto tiene caso de estudio propio. */
+  caseSlug?: string;
 }
 
 export const PRODUCTS: Product[] = [
@@ -26,7 +28,8 @@ export const PRODUCTS: Product[] = [
       { value: "5", labelKey: "saas.metrics.clients" },
       { value: "250", labelKey: "saas.metrics.users" }
     ],
-    descriptionKey: "saas.af.desc"
+    descriptionKey: "saas.af.desc",
+    caseSlug: "astrofit"
   },
   {
     id: "hackaton-edutech",
