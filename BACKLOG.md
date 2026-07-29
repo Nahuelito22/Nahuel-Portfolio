@@ -98,6 +98,12 @@ aparecer** (rol, tecnologías, si hay logo o no). Un "sí, dale" por chat no esp
 a qué se dijo sí, y es lo que después no sirve de nada. Pedirlo en un momento de valor
 entregado, no antes.
 
+**Al desplegar:** el contador de "Apps en producción" del hero pasa de 2 a 3
+(`src/components/Hero.astro`) el día que el trabajo esté efectivamente publicado
+en la tienda, **no antes**. Solo se cuentan cosas ya entregadas: si un cliente
+pregunta "¿cuáles tres?" hay que poder responder. Y el contador de "Clientes
+activos" puede subir a 6 sin nombrar a nadie, si se decide que corresponde.
+
 Estructura de la tarjeta, para cuando haya luz verde:
 
 > **[Cliente]** — [Rol]
@@ -111,6 +117,13 @@ Ya hay tres de AstroFit. Faltan:
 - **Hackathon Edutech Mendoza**: pedirle una línea al organizador. Es un evento, no
   un cliente pago, así que aporta un tipo de prueba distinto (te confían un proyecto
   con visibilidad pública).
+  En el mismo mensaje conviene pedir permiso para publicar **el número final de
+  inscriptos** — la fila de Edutech en Producción hoy no tiene métricas porque
+  cuando se escribió no había datos, y ahora sí. Dos criterios: esperar a que
+  **cierren las inscripciones** (un número que todavía crece queda viejo en
+  semanas, y un portfolio no es un dashboard), y usar **inscriptos, no visitas**:
+  el tráfico no es un resultado y se lee como relleno. El dato es de la
+  organización, no tuyo, así que se pregunta aunque no haya NDA.
 - **Cliente freelance del punto 2**: sujeto a la autorización.
 
 Cuando haya testimonios de más de un producto, agregar el logo o el nombre del
