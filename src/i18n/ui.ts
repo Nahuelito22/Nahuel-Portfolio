@@ -31,10 +31,11 @@ export const ui = {
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
     'testimonials.title2': 'mis clientes',
-    'testimonials.subtitle': 'Gimnasios que dejaron el cuaderno y hoy gestionan su negocio con AstroFit.',
+    'testimonials.subtitle': 'Citas reales, publicadas y verificables. Ninguna la escribí yo.',
     'testimonials.role.direction': 'Dirección',
     'testimonials.about': 'sobre',
     'testimonials.disclaimer': 'Testimonios publicados en',
+    'testimonials.readCase': 'Ver el caso completo de AstroFit',
 
     // Casos de estudio
     'case.badge': 'Caso.de.Estudio',
@@ -218,10 +219,11 @@ export const ui = {
     // Testimonials
     'testimonials.title1': 'What my ',
     'testimonials.title2': 'clients say',
-    'testimonials.subtitle': 'Gyms that left the paper notebook behind and now run their business on AstroFit. Quotes kept in their original Spanish.',
+    'testimonials.subtitle': 'Real quotes, published and verifiable. None of them written by me. Kept in their original Spanish.',
     'testimonials.role.direction': 'Management',
     'testimonials.about': 'on',
     'testimonials.disclaimer': 'Testimonials published on',
+    'testimonials.readCase': 'Read the full AstroFit case',
 
     // Case studies
     'case.badge': 'Case.Study',
