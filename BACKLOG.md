@@ -70,40 +70,49 @@ Formato sugerido: `/casos/astrofit` con 4 bloques.
 - **Resultado**: 5 gimnasios y 250+ alumnos, cerrado con los testimonios ya publicados.
 - **Stack**: al final, en letra chica.
 
-Conviene hacerlo junto con el testimonio de Edutech y la respuesta de Dialogy,
+Conviene hacerlo junto con el testimonio de Edutech y la autorización del punto 2,
 para armar la narrativa completa de una sola vez.
 
 ### 2. Sección de Experiencia / Clientes — pendiente de autorización
 
-Dialogy LLC no va en "Soluciones en Producción": esa sección está armada como
-**proyectos propios** (sos el dueño del producto). Dialogy es otra cosa —
-sos un profesional contratado. Mezclarlos le quita claridad a la narrativa.
+> ⚠️ **Este archivo es público** (el repo lo es). El detalle de qué cliente es, qué
+> permite su acuerdo y qué no, vive **fuera del repo**, en las notas privadas. Acá
+> queda solo el criterio, que es lo reutilizable.
 
-Crear una sección aparte, **"Experiencia / Clientes"** o **"Freelance & Consultoría"**,
-con tarjetas de rol + stack, sin capturas del producto.
+Hay trabajo freelance para un cliente que todavía no aparece en el portfolio porque
+la autorización está pendiente. Cuando llegue, **no** va en "Soluciones en
+Producción": esa sección son proyectos propios, donde sos el dueño del producto.
+Trabajo contratado es otra cosa, y mezclarlos le quita claridad a la narrativa.
 
-**Antes de publicar cualquier cosa de Dialogy hay que resolver el NDA.** Criterio
-estándar de la industria (no es asesoramiento legal — la respuesta está en tu NDA
-específico):
+Va en una sección nueva, **"Experiencia / Clientes"** o **"Freelance & Consultoría"**,
+con tarjetas de rol + stack y sin capturas del producto.
+
+**Criterio para cualquier cliente bajo NDA** (no es asesoramiento legal — la
+respuesta siempre está en el acuerdo concreto, hay que leerlo):
 
 | | Qué |
 |---|---|
-| ✅ Casi siempre permitido | Que trabajaste/trabajás para Dialogy LLC, tu rol, y el stack (React Native, Django, Supabase, RevenueCat, AWS). La *existencia* de la relación laboral no suele ser confidencial. |
-| ❌ Nunca, con NDA o sin él | Números internos de negocio (usuarios, ingresos, roadmap no público), código propietario, arquitectura de seguridad, nombres de otros clientes o proveedores que viste en el trabajo, y cualquier bug o vulnerabilidad que hayas encontrado. |
-| ⚠️ Zona gris | Capturas de la app, el nombre del producto ("Amara"), el logo. Muchos NDA permiten nombrar al cliente pero prohíben material visual sin permiso. |
+| ✅ Suele poderse | La existencia de la relación comercial y tu rol, salvo que el acuerdo lo prohíba expresamente. Muchos NDA no dicen nada al respecto: hay que buscar la cláusula de no-publicidad y confirmar que no está. |
+| ✅ Suele poderse | El stack, **como lista plana de tecnologías**. Es norma de la industria. |
+| ❌ No | **Cómo se conectan** esas tecnologías. Eso es arquitectura de software, y los NDA la listan como confidencial casi siempre. La línea está entre "Django, FastAPI, Postgres" y "microservicio de IA detrás del backend, con vectores en Postgres". |
+| ❌ Nunca, con acuerdo o sin él | En qué estado estaba el producto al llegar, bugs, vulnerabilidades encontradas, números de negocio, montos del contrato o del abono, y nombres de otros proveedores o clientes que viste en el trabajo. |
+| ⚠️ Permiso aparte | Logo, capturas y nombres de producto. Eso es **uso de marca**, no confidencialidad: son dos permisos distintos y hay que pedir los dos. |
 
-**Acción**: escribirle a Paola algo corto y explícito — *"¿puedo listar a Dialogy como
-cliente en mi portfolio, mencionando el rol y las tecnologías, sin entrar en detalles
-del producto?"*. La mayoría de los founders lo autorizan porque también les sirve como
-validación. Si el NDA es restrictivo, revisar puntualmente si la cláusula de
-confidencialidad cubre "la existencia de la relación comercial".
+**Trampa a evitar:** contar el trabajo en anónimo *y* listar al cliente en otra
+sección del mismo sitio. Se cruza en segundos y el anonimato se cae, con el agravante
+de que ahí la divulgación es deliberada. Es binario: o nombrás al cliente y contás la
+versión sin detalles, o guardás los detalles y no nombrás al cliente.
 
-Borrador de la tarjeta, para cuando haya luz verde:
+**Cómo pedir la autorización:** por escrito, **enumerando exactamente qué va a
+aparecer** (rol, tecnologías, si hay logo o no). Un "sí, dale" por chat no especifica
+a qué se dijo sí, y es lo que después no sirve de nada. Pedirlo en un momento de valor
+entregado, no antes.
 
-> **Dialogy LLC** — Full Stack & AI Engineer
-> Desarrollo y despliegue de aplicación móvil de bienestar emocional con compañera de IA.
-> Arquitectura backend, integración de pagos e infraestructura de IA conversacional.
-> *Stack: React Native, Django, Supabase, AWS, LangChain*
+Estructura de la tarjeta, para cuando haya luz verde:
+
+> **[Cliente]** — [Rol]
+> [Qué hacés, en una frase, sin describir la arquitectura.]
+> *Stack: [lista plana de tecnologías]*
 
 ### 3. Más testimonios
 
@@ -112,7 +121,7 @@ Ya hay tres de AstroFit. Faltan:
 - **Hackathon Edutech Mendoza**: pedirle una línea al organizador. Es un evento, no
   un cliente pago, así que aporta un tipo de prueba distinto (te confían un proyecto
   con visibilidad pública).
-- **Dialogy**: sujeto al punto 2.
+- **Cliente freelance del punto 2**: sujeto a la autorización.
 
 Cuando haya testimonios de más de un producto, agregar el logo o el nombre del
 producto como filtro visual en la sección.
