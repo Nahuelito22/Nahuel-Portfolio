@@ -1,7 +1,7 @@
 # Backlog del Portfolio
 
 Evaluación del estado actual y mejoras pendientes, ordenadas por impacto.
-Última revisión: 2026-07-24.
+Última revisión: 2026-07-29.
 
 Criterio general: **el portfolio tiene que vender quién sos, no demostrar que sabés
 tecnicismos.** Cuando haya que elegir entre "se ve pro" y "se entiende rápido",
@@ -44,34 +44,24 @@ El detalle de lo ya ejecutado, con el porqué de cada decisión, está en
   bloqueantes y `loading="lazy"` en las imágenes.
 - **Dependencias.** Removido `tsparticles@3`, que estaba instalado sin usarse.
   `package.json` renombrado de `astronautical-antimatter` a `nahuel-portfolio`.
+- **Caso de estudio de AstroFit** *(era el punto 1)*. `/casos/astrofit` y su
+  espejo `/en/cases/astrofit`, con los cuatro bloques: problema → solución →
+  resultado → stack en letra chica. Une lo que antes estaba repartido entre el
+  hero, Producción y los testimonios, y da una URL compartible que se le puede
+  mandar directo a un cliente. Ruta dinámica `/casos/[slug]`: sumar TupRun o
+  Edutech es agregar un objeto a `CASES`.
+  `cases.ts` estrena el patrón del punto 4 — lo no traducible vive una sola vez.
+  De paso se arreglaron dos cosas que se rompían al existir una subpágina: el
+  `hreflang` del `Layout`, que estaba fijo a la portada, y los enlaces del
+  `Header`, que eran anclas sueltas y no llevaban a ningún lado fuera del home.
 
 ---
 
 ## 🔴 Alto impacto
 
-### 1. Convertir AstroFit en un mini caso de estudio
-
-**Parcialmente hecho.** Las descripciones de la sección de Producción ya se
-reescribieron en formato problema → solución → resultado y sin jerga: AstroFit
-arranca por el cuaderno del gimnasio en vez de por RLS y middleware, TupRun dejó
-de llamarse "plataforma B2B2C". El stack sigue disponible en los tags de abajo,
-para quien lo busque.
-
-**Lo que falta es la página propia.** Hoy la historia sigue repartida en tres
-lugares que no se hablan entre sí: el número en el hero, la descripción en
-Producción, y los testimonios más abajo. Un caso de estudio los une en un solo
-argumento, y de paso da una URL indexable y compartible que se le puede mandar
-directo a un cliente potencial sin obligarlo a recorrer todo el portfolio.
-
-Formato sugerido: `/casos/astrofit` con 4 bloques.
-
-- **Problema**: el cuaderno — no saber quién debe la cuota, quién asiste, cuánto entra.
-- **Solución**: qué construiste, en una frase, sin stack.
-- **Resultado**: 5 gimnasios y 250+ alumnos, cerrado con los testimonios ya publicados.
-- **Stack**: al final, en letra chica.
-
-Conviene hacerlo junto con el testimonio de Edutech y la autorización del punto 2,
-para armar la narrativa completa de una sola vez.
+> Los números son identificadores estables, no un orden: cuando un punto se
+> termina, se mueve a "Hecho" y su número **no** se reutiliza. Así los enlaces
+> del tipo "ver punto 6" siguen apuntando a lo mismo.
 
 ### 2. Sección de Experiencia / Clientes — pendiente de autorización
 
