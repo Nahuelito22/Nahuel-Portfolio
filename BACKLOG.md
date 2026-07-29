@@ -18,9 +18,16 @@ El detalle de lo ya ejecutado, con el porqué de cada decisión, está en
   lógica de ajedrez con potencia de IA" a "Del dato al producto: diseño el modelo,
   lo convierto en software y lo pongo en producción", con una fila de métricas
   (2 apps en producción · 5 gimnasios · 250+ usuarios).
-- **Sección de testimonios.** Tres citas reales de clientes de AstroFit
-  (Titan Gym, Plena Forma, Evolución Sport), reproducidas textualmente desde la
-  landing pública del producto, con link a la fuente.
+- **Testimonios reales.** Tres citas de clientes de AstroFit (Titan Gym, Plena
+  Forma, Evolución Sport), reproducidas textualmente desde la landing pública del
+  producto, con link a la fuente.
+  **Viven en `/casos/astrofit`, no en la portada.** El componente
+  `Testimonials.astro` existe y funciona, pero está desmontado de las dos
+  portadas: tres citas de gimnasios seguidas hacían parecer que Nahuel solo hace
+  software para gimnasios, y reducirlo a una sola cita rendía poco sin contexto.
+  Para volver a mostrarlo alcanza con importarlo en `src/pages/index.astro` y
+  `src/pages/en/index.astro`; el flag `showOnLanding` de `testimonials.ts` decide
+  cuáles aparecerían.
 - **SEO completo.** `site` configurado, canonical, `hreflang` es/en/x-default,
   Open Graph + Twitter Card con imagen 1200×630 propia, JSON-LD de `Person`,
   títulos y descripciones específicos por idioma, `sitemap-index.xml` y `robots.txt`.
@@ -203,11 +210,18 @@ screenshot de la app cuando tenga contenido cargado.
 Está bien para no saturar, pero el visitante no sabe que hay más. Agregar un contador
 en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por categoría".
 
-### 10. Testimonios en el nav
+### 10. Testimonios en el nav — ya no aplica
 
-La sección quedó sin link en el menú porque ya hay 7 items y sumar uno más lo satura.
-Si se agrega la sección de Experiencia/Clientes va a haber que repensar el nav
-completo (quizá agrupando "Trabajo" = Producción + Experiencia + Testimonios).
+La sección se desmontó de la portada, así que no hay nada que enlazar. Queda la
+parte que sigue vigente: **si se agrega la sección de Experiencia / Clientes
+(punto 2) hay que repensar el nav completo**, que ya tiene 7 ítems. Una opción es
+agrupar "Trabajo" = Producción + Experiencia, y dejar los casos de estudio
+colgando de cada producto como ahora.
+
+Pendiente relacionado: **la landing hoy no tiene ninguna prueba de terceros.**
+Todo lo que dice del trabajo lo dice Nahuel. Si aparecen testimonios de más de un
+producto —Edutech, o el cliente del punto 2— vale replantear una sección de
+prueba social que ya no encasille en un rubro, que era el problema original.
 
 ### 11. Faltantes varios
 

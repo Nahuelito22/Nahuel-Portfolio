@@ -9,7 +9,9 @@ import Certificates from "../components/Certificates.astro";
 import Skills from "../components/Skills.astro";
 import Services from "../components/Services.astro";
 import Contact from "../components/Contact.astro";
-import Testimonials from "../components/Testimonials.astro";
+// Testimonials.astro existe y funciona, pero esta desmontado de la portada:
+// con una sola cita y sin contexto rendia poco. Las tres siguen visibles en
+// /casos/astrofit. Para volver a mostrarlo, importarlo y sumarlo abajo.
 ---
 
 <Layout
@@ -19,7 +21,6 @@ import Testimonials from "../components/Testimonials.astro";
   <main>
     <Hero />
     <ProductionSaaS />
-    <Testimonials />
     <Projects />
     <About />
     <Certificates />
