@@ -1,0 +1,222 @@
+---
+// src/components/CaseStudy.astro
+//
+// Render de un caso de estudio. La estructura sigue el orden del BACKLOG:
+// problema -> solucion -> resultado -> stack. El stack va ultimo y en letra
+// chica a proposito: el visitante que decide una contratacion no llega por el
+// stack, llega por el problema.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { TESTIMONIALS } from "../data/testimonials";
+import type { CaseStudy } from "../data/cases";
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const content = study.content[lang === "en" ? "en" : "es"];
+
+const home = lang === "en" ? "/en/" : "/";
+
+// Las citas viven en testimonials.ts; aca se referencian por autor para no
+// duplicar el texto ni arriesgar que las dos copias diverjan.
+const quotes = TESTIMONIALS.filter((item) =>
+  study.testimonialAuthors.includes(item.author),
+);
+
+const blocks = [
+  { n: "01", label: t("case.problem"), body: content.problem },
+  { n: "02", label: t("case.solution"), body: content.solution },
+  { n: "03", label: t("case.result"), body: content.result },
+];
+---
+
+<article class="relative z-10 py-16 md:py-24">
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Volver -->
+    <a
+      href={home}
+      class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-ai-neon transition-colors mb-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-neon focus-visible:ring-offset-2 focus-visible:ring-offset-chess-dark rounded"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path>
+      </svg>
+      {t("case.back")}
+    </a>
+
+    <!-- Encabezado -->
+    <header class="mb-12">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6"
+      >
+        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+        <span
+          class="text-purple-400 text-xs font-mono tracking-widest uppercase"
+          >{t("case.badge")}</span
+        >
+      </div>
+
+      <div class="flex items-center gap-4 mb-5">
+        <div
+          class="w-16 h-16 rounded-xl bg-chess-dark border border-white/5 flex items-center justify-center overflow-hidden shrink-0"
+        >
+          <img
+            src={study.image}
+            alt={study.product}
+            width="64"
+            height="64"
+            decoding="async"
+            class="w-full h-full object-contain p-1.5"
+          />
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-white">
+          {study.product}
+        </h1>
+      </div>
+
+      <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+        {content.tagline}
+      </p>
+
+      <div
+        class="w-full h-px bg-gradient-to-r from-purple-500/50 via-ai-neon/50 to-transparent mt-8"
+      >
+      </div>
+    </header>
+
+    <!-- Metricas -->
+    {
+      study.metrics.length > 0 && (
+        <div class="flex flex-wrap gap-x-12 gap-y-6 mb-14">
+          {study.metrics.map((metric) => (
+            <div>
+              <div class="text-3xl md:text-4xl font-bold text-ai-neon font-mono">
+                {metric.value}
+              </div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                {t(metric.labelKey)}
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <!-- Problema / Solucion / Resultado -->
+    <div class="flex flex-col gap-12">
+      {
+        blocks.map((block) => (
+          <section>
+            <div class="flex items-baseline gap-3 mb-3">
+              <span class="text-sm font-mono text-ai-neon/40 select-none">
+                {block.n}
+              </span>
+              <h2 class="text-2xl font-bold text-white">{block.label}</h2>
+            </div>
+            <p class="text-gray-400 leading-relaxed text-base md:text-lg">
+              {block.body}
+            </p>
+          </section>
+        ))
+      }
+    </div>
+
+    <!-- Testimonios reales del producto -->
+    {
+      quotes.length > 0 && (
+        <section class="mt-16">
+          <h2 class="text-2xl font-bold text-white mb-6">
+            {t("case.voices")}
+          </h2>
+          <div class="flex flex-col gap-4">
+            {quotes.map((item) => (
+              <figure class="bg-chess-board/60 backdrop-blur-md border border-white/10 rounded-2xl p-6">
+                <blockquote class="text-gray-300 leading-relaxed">
+                  {item.quote}
+                </blockquote>
+                <figcaption class="border-t border-white/10 pt-4 mt-4 text-sm">
+                  <span class="font-bold text-white">{item.author}</span>
+                  <span class="text-gray-500"> · {t(item.roleKey)}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p class="text-xs text-gray-600 mt-4">
+            {t("testimonials.disclaimer")}{" "}
+            <a
+              href={study.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-500 hover:text-ai-neon underline underline-offset-2 transition-colors"
+            >
+              {study.link?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+            </a>
+          </p>
+        </section>
+      )
+    }
+
+    <!-- Stack, al final y en letra chica -->
+    <section class="mt-16 pt-8 border-t border-white/10">
+      <h2
+        class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4"
+      >
+        {t("case.stack")}
+      </h2>
+      <p class="text-sm text-gray-500 leading-relaxed mb-5">
+        {content.stackNote}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {
+          study.stack.map((tech) => (
+            <span class="text-[10px] font-mono px-2 py-1 rounded bg-chess-dark/80 border border-ai-neon/10 text-ai-neon/70">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Cierre: las dos acciones posibles -->
+    <section
+      class="mt-16 bg-chess-board/60 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center"
+    >
+      <h2 class="text-2xl font-bold text-white mb-3">{t("case.cta.title")}</h2>
+      <p class="text-gray-400 mb-6 max-w-xl mx-auto">{t("case.cta.text")}</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a
+          href={`${home}#contacto`}
+          class="px-6 py-3 rounded-lg bg-ai-neon text-chess-dark text-sm font-bold hover:shadow-lg hover:shadow-ai-neon/20 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-neon focus-visible:ring-offset-2 focus-visible:ring-offset-chess-dark"
+        >
+          {t("case.cta.btn")}
+        </a>
+        {
+          study.link && (
+            <a
+              href={study.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 rounded-lg bg-transparent border border-ai-neon/30 text-ai-neon text-sm font-bold hover:bg-ai-neon/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-neon focus-visible:ring-offset-2 focus-visible:ring-offset-chess-dark"
+            >
+              {t("case.visit")}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</article>

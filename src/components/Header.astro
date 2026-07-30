@@ -2,26 +2,46 @@
 // src/components/Header.astro
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+interface Props {
+  /**
+   * URL de ESTA misma pagina en el otro idioma. La pasa el Layout, que ya la
+   * calcula para el hreflang. Sin esto, el switcher de una subpagina te tira a
+   * la portada en vez de al equivalente traducido.
+   */
+  langToggleHref?: string;
+}
+
+const { langToggleHref } = Astro.props;
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const home = lang === "en" ? "/en/" : "/";
+
+// En una subpagina (un caso de estudio) las anclas sueltas no apuntan a nada:
+// esas secciones viven en la portada. Hay que prefijarlas con la home.
+// En la portada se dejan relativas para no recargar la pagina.
+const path = Astro.url.pathname;
+const isHome = path === "/" || path === "/en" || path === "/en/";
+const anchor = (hash: string) => (isHome ? hash : `${home}${hash}`);
+
 const navItems = [
-  { label: t("nav.home"), url: "#" },
-  { label: t("nav.saas"), url: "#saas-production" },
-  { label: t("nav.projects"), url: "#proyectos" },
-  { label: t("nav.about"), url: "#sobre-mi" },
-  { label: t("nav.cert"), url: "#certificados" },
-  { label: t("nav.services"), url: "#servicios" },
-  { label: t("nav.contact"), url: "#contacto" },
+  { label: t("nav.home"), url: isHome ? "#" : home },
+  { label: t("nav.saas"), url: anchor("#saas-production") },
+  { label: t("nav.projects"), url: anchor("#proyectos") },
+  { label: t("nav.about"), url: anchor("#sobre-mi") },
+  { label: t("nav.cert"), url: anchor("#certificados") },
+  { label: t("nav.services"), url: anchor("#servicios") },
+  { label: t("nav.contact"), url: anchor("#contacto") },
 ];
 
-const targetUrl = lang === "es" ? "/en/" : "/";
+const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
 ---
 
 <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
   <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
     <a
-      href="#"
+      href={isHome ? "#" : home}
       class="text-xl font-bold font-mono text-white hover:text-ai-neon transition-colors"
     >
       &lt;Nahu /&gt;

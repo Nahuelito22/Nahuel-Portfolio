@@ -176,7 +176,8 @@ que es donde falla.
 - **No se menciona que el trabajo de Hackathon Edutech fue gratuito.** Habla bien de
   él, pero funciona como ancla de precio justo antes de la sección "Desde $500 USD".
   La iniciativa se transmite sin decirlo.
-- **No se publicó nada de Dialogy LLC**: está bajo NDA y pendiente de autorización.
+- **No se publicó nada del trabajo freelance bajo NDA**: pendiente de autorización
+  escrita del cliente. El criterio está en el punto 2 del backlog.
 - **Los testimonios no se inventaron**: se verificó que existieran publicados antes
   de usarlos.
 - **La sección de testimonios no se agregó al nav**: ya hay 7 ítems y sumar uno más

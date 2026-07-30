@@ -20,6 +20,18 @@ export interface Testimonial {
   product: string;
   /** De dónde salió la cita, para poder verificarla. */
   source: string;
+  /**
+   * Si aparece en la landing. Las que no, viven en el caso de estudio de su
+   * producto, que igual muestra todas.
+   *
+   * Criterio: en la landing va la cita que habla de **cómo trabaja Nahuel**,
+   * porque transfiere a un cliente de cualquier rubro. Las que hablan de las
+   * funciones del producto van en su caso, donde hay contexto. Tres citas de
+   * gimnasios seguidas en la portada hacen parecer que solo hace software para
+   * gimnasios, que es justo lo contrario de lo que el portfolio tiene que
+   * transmitir.
+   */
+  showOnLanding?: boolean;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -46,5 +58,8 @@ export const TESTIMONIALS: Testimonial[] = [
     roleKey: "testimonials.role.direction",
     product: "AstroFit",
     source: "https://www.astrofitapp.com.ar/",
+    // Esta habla de como trabaja, no de gestionar un gimnasio: sirve para
+    // cualquier cliente, de cualquier rubro. Por eso es la de la landing.
+    showOnLanding: true,
   },
 ];
