@@ -7,8 +7,17 @@ Criterio general: **el portfolio tiene que vender quién sos, no demostrar que s
 tecnicismos.** Cuando haya que elegir entre "se ve pro" y "se entiende rápido",
 gana lo segundo.
 
-El detalle de lo ya ejecutado, con el porqué de cada decisión, está en
-[`docs/auditoria-2026-07-24.md`](docs/auditoria-2026-07-24.md).
+El detalle de lo ya ejecutado, con el porqué de cada decisión, está en los informes
+de sesión, del más reciente al más viejo:
+
+- [`docs/sesion-2026-07-29.md`](docs/sesion-2026-07-29.md) — caso de estudio de
+  AstroFit, el hero y los testimonios sin encasillar en un rubro, y la limpieza de
+  datos de cliente de los archivos públicos.
+- [`docs/auditoria-2026-07-24.md`](docs/auditoria-2026-07-24.md) — SEO, contacto,
+  accesibilidad, rendimiento y consistencia ES/EN.
+
+> ⚠️ **Este repositorio es público.** El razonamiento sobre clientes concretos, sus
+> acuerdos y sus datos va **fuera del repo**. Acá solo criterios reutilizables.
 
 ---
 
