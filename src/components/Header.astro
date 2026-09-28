@@ -41,9 +41,24 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
   <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 md:py-5 flex justify-between items-center">
     <a
       href={isHome ? "#" : home}
-      class="font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
+      aria-label="Nahuel Ghilardi"
+      class="flex items-center font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
     >
-      Nahuel Ghilardi<span class="text-accent">.</span>
+      <!-- La N: verticales en el color del texto y la diagonal en el azul oscuro del logo. -->
+      <svg
+        viewBox="30 30 140 240"
+        fill="none"
+        aria-hidden="true"
+        class="h-6 md:h-7 w-auto shrink-0"
+      >
+        <line x1="50" y1="50" x2="150" y2="250" stroke="#2F5D9E" stroke-width="30"></line>
+        <line x1="50" y1="250" x2="50" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
+        <line x1="150" y1="250" x2="150" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
+      </svg>
+      <!-- Arriba de todo se ve el nombre completo; al bajar se pliega detras de
+           la N y queda solo el logo. Asi no se lee "N Nahuel" mientras el
+           header acompania todo el scroll. -->
+      <span class="brand-name" aria-hidden="true">Nahuel Ghilardi<span class="text-accent">.</span></span>
     </a>
 
     <nav class="hidden md:flex items-center gap-7 text-[15px]">
@@ -146,6 +161,7 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
       const handleScroll = () => {
         if (window.scrollY > 50) {
           navbar.classList.add(
+            "is-scrolled",
             "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
@@ -153,6 +169,7 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
           );
         } else {
           navbar.classList.remove(
+            "is-scrolled",
             "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
@@ -217,3 +234,23 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
     }
   });
 </script>
+
+<style>
+  .brand-name {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 16rem;
+    margin-left: 0.75rem;
+    opacity: 1;
+    transition:
+      max-width 400ms ease,
+      margin-left 400ms ease,
+      opacity 250ms ease;
+  }
+  .is-scrolled .brand-name {
+    max-width: 0;
+    margin-left: 0;
+    opacity: 0;
+  }
+</style>
