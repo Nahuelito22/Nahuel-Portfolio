@@ -73,6 +73,12 @@ export const ui = {
     'edu.gpa': 'Promedio',
     'edu.certs': 'Certificados',
     'edu.see': 'Ver',
+    // Stack y Servicios (rediseño)
+    'stack.eyebrow': 'Stack',
+    'stack.title': 'Con qué trabajo, según para qué.',
+    'services.eyebrow': 'Servicios',
+    'services.title': 'En qué te puedo ayudar.',
+    'services.ctaText': '¿Tenés algo en mente que no está en la lista?',
 
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
@@ -201,7 +207,7 @@ export const ui = {
     'services.title1': 'Mis ',
     'services.title2': 'Servicios',
     'services.subtitle': 'Soluciones a medida para cada necesidad digital.',
-    'services.cta': 'Contactar',
+    'services.cta': 'Contame tu proyecto',
 
     'services.t1.title': 'Desarrollo Web & Landing Pages',
     'services.t1.desc': 'Sitios web modernos, responsivos y optimizados para SEO y conversión.',
@@ -231,12 +237,14 @@ export const ui = {
     // Contact
     'contact.title1': 'Hablemos',
     'contact.title2': '.',
-    'contact.subtitle1': '¿Tienes una pregunta, una propuesta o simplemente quieres saludar?',
-    'contact.subtitle2': 'Mi bandeja de entrada está siempre abierta.',
+    'contact.eyebrow': 'Contacto',
+    'contact.subtitle1': 'Contame qué necesitás: un producto, una app, algo con datos o una plataforma que hay que rescatar. Te respondo a la brevedad.',
+    'contact.direct': 'Directo',
+    'contact.form': 'O dejame un mensaje',
     'contact.name': 'Nombre',
     'contact.email': 'Email',
     'contact.message': 'Mensaje',
-    'contact.send': 'Enviar Mensaje',
+    'contact.send': 'Enviar mensaje',
     'contact.sending': 'Enviando...',
     'contact.success': '¡Listo! Recibí tu mensaje y te respondo a la brevedad.',
     'contact.error': 'No se pudo enviar el mensaje. Revisá los datos e intentá de nuevo.',
@@ -245,7 +253,7 @@ export const ui = {
     'contact.wa.prefill': '¡Hola Nahu! Te escribo desde tu portfolio.',
 
     // Footer
-    'footer.rights': 'Matias Nahuel Ghilardi. Casi todos los derechos reservados.',
+    'footer.rights': 'Matías Nahuel Ghilardi · Tupungato, Mendoza',
     'footer.powered': 'Powered by ',
   },
   en: {
@@ -314,6 +322,12 @@ export const ui = {
     'edu.gpa': 'GPA',
     'edu.certs': 'Certificates',
     'edu.see': 'View',
+    // Stack & Services (redesign)
+    'stack.eyebrow': 'Stack',
+    'stack.title': 'What I work with, and what for.',
+    'services.eyebrow': 'Services',
+    'services.title': 'How I can help.',
+    'services.ctaText': 'Have something in mind that is not on the list?',
 
     // Testimonials
     'testimonials.title1': 'What my ',
@@ -442,7 +456,7 @@ export const ui = {
     'services.title1': 'My ',
     'services.title2': 'Services',
     'services.subtitle': 'Tailored solutions for every digital need.',
-    'services.cta': 'Contact',
+    'services.cta': 'Tell me about your project',
 
     'services.t1.title': 'Web Development & Landing Pages',
     'services.t1.desc': 'Modern, responsive websites optimized for SEO and conversion.',
@@ -472,12 +486,14 @@ export const ui = {
     // Contact
     'contact.title1': 'Let\'s talk',
     'contact.title2': '.',
-    'contact.subtitle1': 'Do you have a question, a proposal, or just want to say hi?',
-    'contact.subtitle2': 'My inbox is always open.',
+    'contact.eyebrow': 'Contact',
+    'contact.subtitle1': 'Tell me what you need: a product, an app, something with data or a platform that needs rescuing. I will get back to you shortly.',
+    'contact.direct': 'Direct',
+    'contact.form': 'Or leave me a message',
     'contact.name': 'Name',
     'contact.email': 'Email',
     'contact.message': 'Message',
-    'contact.send': 'Send Message',
+    'contact.send': 'Send message',
     'contact.sending': 'Sending...',
     'contact.success': 'Got it! I received your message and will get back to you shortly.',
     'contact.error': 'The message could not be sent. Please check the fields and try again.',
@@ -486,7 +502,7 @@ export const ui = {
     'contact.wa.prefill': 'Hi Nahu! I am reaching out from your portfolio.',
 
     // Footer
-    'footer.rights': 'Matias Nahuel Ghilardi. Almost all rights reserved.',
+    'footer.rights': 'Matías Nahuel Ghilardi · Tupungato, Mendoza',
     'footer.powered': 'Powered by ',
   },
 } as const;
