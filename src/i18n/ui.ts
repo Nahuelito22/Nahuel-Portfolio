@@ -20,7 +20,7 @@ export const ui = {
     'nav.menu': 'Menú',
     
     // Hero
-    'hero.title': 'Desarrollador Full Stack & Data Scientist.',
+    'hero.title': 'Desarrollador Full Stack & Data Scientist.',
     'hero.leadStrong': 'Del dato al producto:',
     'hero.lead': ' diseño el modelo, lo convierto en software y lo pongo en producción.',
     'hero.contactBtn': 'Hablemos',
@@ -219,7 +219,7 @@ export const ui = {
     'nav.menu': 'Menu',
     
     // Hero
-    'hero.title': 'Full Stack Developer & Data Scientist.',
+    'hero.title': 'Full Stack Developer & Data Scientist.',
     'hero.leadStrong': 'From data to product:',
     'hero.lead': ' I design the model, turn it into software and ship it to production.',
     'hero.contactBtn': "Let's talk",
