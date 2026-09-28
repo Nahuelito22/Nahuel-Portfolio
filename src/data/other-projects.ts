@@ -29,7 +29,7 @@ export interface OtherProject {
 
 export const OTHER_PROJECTS: OtherProject[] = [
   {
-    name: "Roque",
+    name: "Roque Chess",
     line: {
       es: "Un bot de ajedrez que juega como una persona: una red recurrente (LSTM) entrenada solo con partidas reales. Un enfoque poco común para un motor de ajedrez.",
       en: "A chess bot that plays like a person: a recurrent network (LSTM) trained only on real games. An unusual approach for a chess engine.",

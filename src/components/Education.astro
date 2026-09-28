@@ -1,0 +1,70 @@
+---
+// src/components/Education.astro
+//
+// Formacion compacta, con promedios, y los certificados en un desplegable:
+// estan para quien los quiera verificar, no para ocupar pantalla.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { DEGREES, CERTIFICATES } from "../data/education";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="formacion" class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+  <p class="text-sm md:text-[15px] font-medium text-accent">{t("edu.eyebrow")}</p>
+  <h2
+    class="mt-1.5 md:mt-2 font-serif font-medium text-[1.875rem] md:text-[2.75rem] leading-[1.15] md:leading-[1.12] tracking-[-0.02em] max-w-2xl text-balance"
+  >
+    {t("edu.title")}
+  </h2>
+
+  <ul class="mt-8 md:mt-12 border-t border-line">
+    {
+      DEGREES.map((d) => (
+        <li class="py-5 border-b border-line md:grid md:grid-cols-[150px_minmax(0,1fr)_auto] md:gap-8 md:items-baseline">
+          <p class="text-[13px] md:text-sm text-faint">{d.period[lang]}</p>
+          <div class="mt-1 md:mt-0">
+            <h3 class="font-serif font-semibold text-lg md:text-xl tracking-[-0.01em]">{d.title[lang]}</h3>
+            <p class="mt-0.5 text-[15px] text-muted">{d.institution}</p>
+          </div>
+          {d.gpa && (
+            <p class="mt-2 md:mt-0 text-[15px] text-muted md:text-right">
+              {t("edu.gpa")} <span class="font-serif font-semibold text-xl text-ink">{d.gpa}</span>
+            </p>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+
+  <details class="group mt-8 border border-line bg-surface/90">
+    <summary
+      class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 md:px-6 text-[15px] text-ink hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+    >
+      <span>{t("edu.certs")} <span class="text-faint">({CERTIFICATES.length})</span></span>
+      <span aria-hidden="true" class="text-accent transition-transform group-open:rotate-45 text-xl leading-none">+</span>
+    </summary>
+    <ul class="px-5 pb-4 md:px-6">
+      {
+        CERTIFICATES.map((c) => (
+          <li class="py-3 border-t border-line flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-6">
+            <span class="text-[15px] text-soft">{c.name[lang]}</span>
+            <span class="text-[13px] text-faint md:text-right">
+              {c.issuer}
+              {c.href && (
+                <a
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="ml-3 text-accent hover:text-[#8ADDE7] transition-colors"
+                >
+                  {t("edu.see")} ↗
+                </a>
+              )}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</section>

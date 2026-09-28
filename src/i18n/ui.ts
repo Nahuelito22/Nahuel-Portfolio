@@ -52,6 +52,28 @@ export const ui = {
     'other.code': 'Código',
     'other.more': 'Hay más experimentos y prácticas en mi',
 
+    // Sobre mí (rediseño)
+    'about.eyebrow': 'Sobre mí',
+    'about.title': 'Desde Tupungato, para donde haga falta.',
+    'about.p1': 'Soy de Tupungato, en el Valle de Uco, Mendoza, y trabajo de forma remota. Estudio en paralelo la Tecnicatura en Desarrollo de Software y la Licenciatura en Ciencia de Datos, porque lo que más me interesa está justo en el medio: tomar un problema real, entenderlo con datos y convertirlo en algo que la gente use.',
+    'about.p2': 'Me gusta también la parte que no se ve en el código: hablar con quien tiene el problema, ordenar prioridades y entregar. Coordino una comunidad de más de 150 compañeros de la carrera y fui parte de la organización de la Hackathon EduTech Mendoza, a cargo de lo técnico.',
+    'about.p3': 'Cuando no estoy programando, probablemente esté jugando al ajedrez. De ahí salió Roque Chess.',
+    'about.fact.base': 'Base',
+    'about.fact.baseValue': 'Tupungato, Mendoza, Argentina',
+    'about.fact.studies': 'Estudio',
+    'about.fact.studiesValue': 'Desarrollo de Software · Ciencia de Datos',
+    'about.fact.community': 'Comunidad',
+    'about.fact.communityValue': 'Más de 150 compañeros de la carrera',
+    'about.fact.work': 'Trabajo',
+    'about.fact.workValue': 'Remoto, con clientes en Argentina y EE.UU.',
+
+    // Formación (rediseño)
+    'edu.eyebrow': 'Formación',
+    'edu.title': 'Dos carreras en paralelo y una base técnica.',
+    'edu.gpa': 'Promedio',
+    'edu.certs': 'Certificados',
+    'edu.see': 'Ver',
+
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
     'testimonials.title2': 'mis clientes',
@@ -270,6 +292,28 @@ export const ui = {
     'other.demo': 'Open',
     'other.code': 'Code',
     'other.more': 'More experiments and practice projects on my',
+
+    // About (redesign)
+    'about.eyebrow': 'About',
+    'about.title': 'From Tupungato, to wherever the work is.',
+    'about.p1': "I'm from Tupungato, in Mendoza's Uco Valley, and I work remotely. I'm studying software development and data science at the same time, because what interests me most sits right in between: taking a real problem, understanding it with data and turning it into something people use.",
+    'about.p2': "I also enjoy the part that doesn't show up in the code: talking to whoever has the problem, sorting priorities and shipping. I run a community of 150+ classmates and was part of the Hackathon EduTech Mendoza organising team, in charge of the tech.",
+    'about.p3': "When I'm not coding, I'm probably playing chess. That's where Roque Chess came from.",
+    'about.fact.base': 'Based in',
+    'about.fact.baseValue': 'Tupungato, Mendoza, Argentina',
+    'about.fact.studies': 'Studying',
+    'about.fact.studiesValue': 'Software Development · Data Science',
+    'about.fact.community': 'Community',
+    'about.fact.communityValue': '150+ classmates',
+    'about.fact.work': 'Work',
+    'about.fact.workValue': 'Remote, with clients in Argentina and the US',
+
+    // Education (redesign)
+    'edu.eyebrow': 'Education',
+    'edu.title': 'Two degrees in parallel and a technical foundation.',
+    'edu.gpa': 'GPA',
+    'edu.certs': 'Certificates',
+    'edu.see': 'View',
 
     // Testimonials
     'testimonials.title1': 'What my ',
