@@ -25,77 +25,68 @@ const path = Astro.url.pathname;
 const isHome = path === "/" || path === "/en" || path === "/en/";
 const anchor = (hash: string) => (isHome ? hash : `${home}${hash}`);
 
+// Menu corto a proposito: la experiencia y el contacto son lo que importa.
+// "Proyectos" apunta a la seccion vieja hasta que exista la de Casos.
 const navItems = [
-  { label: t("nav.home"), url: isHome ? "#" : home },
-  { label: t("nav.saas"), url: anchor("#saas-production") },
+  { label: t("nav.experience"), url: anchor("#experiencia") },
   { label: t("nav.projects"), url: anchor("#proyectos") },
   { label: t("nav.about"), url: anchor("#sobre-mi") },
-  { label: t("nav.cert"), url: anchor("#certificados") },
-  { label: t("nav.services"), url: anchor("#servicios") },
-  { label: t("nav.contact"), url: anchor("#contacto") },
 ];
+const contactUrl = anchor("#contacto");
 
 const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
 ---
 
 <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 md:py-5 flex justify-between items-center">
     <a
       href={isHome ? "#" : home}
-      class="text-xl font-bold font-mono text-white hover:text-ai-neon transition-colors"
+      class="font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
     >
-      &lt;Nahu /&gt;
+      Nahuel Ghilardi<span class="text-accent">.</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8">
+    <nav class="hidden md:flex items-center gap-7 text-[15px]">
       {
         navItems.map((link) => (
-          <a
-            href={link.url}
-            class="text-sm font-medium text-gray-300 hover:text-ai-neon transition-colors relative group"
-          >
+          <a href={link.url} class="text-muted hover:text-ink transition-colors">
             {link.label}
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-ai-neon transition-all group-hover:w-full" />
           </a>
         ))
       }
 
-      <!-- Language Toggle (Desktop) -->
       <a
         href={targetUrl}
-        class="flex items-center gap-2 px-3 py-1 rounded border border-gray-700 text-gray-400 font-mono text-xs hover:border-ai-neon hover:text-ai-neon hover:bg-ai-neon/10 transition-all"
-        aria-label="Toggle language"
+        class="text-sm text-faint hover:text-ink transition-colors"
+        aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
       >
-        <span class={lang === "es" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >ES</span
-        >
-        <span class="text-gray-600">|</span>
-        <span class={lang === "en" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >EN</span
-        >
+        <span class={lang === "es" ? "text-ink font-medium" : ""}>ES</span>
+        <span class="mx-1">|</span>
+        <span class={lang === "en" ? "text-ink font-medium" : ""}>EN</span>
+      </a>
+
+      <a
+        href={contactUrl}
+        class="border border-accent text-accent px-4 py-2 rounded-sm font-medium text-sm hover:bg-accent hover:text-chess-dark transition-colors"
+      >
+        {t("nav.contact")}
       </a>
     </nav>
 
-    <div class="md:hidden flex items-center gap-4 relative z-50">
-      <!-- Language Toggle (Mobile) -->
+    <div class="md:hidden flex items-center gap-2 relative z-50">
       <a
         href={targetUrl}
-        class="flex items-center gap-2 px-2 py-1 rounded border border-gray-700 text-gray-400 font-mono text-xs hover:border-ai-neon hover:text-ai-neon hover:bg-ai-neon/10 transition-all"
-        aria-label="Toggle language"
+        class="text-sm text-faint px-2 py-3"
+        aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
       >
-        <span class={lang === "es" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >ES</span
-        >
-        <span class="text-gray-600">|</span>
-        <span class={lang === "en" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >EN</span
-        >
+        <span class={lang === "es" ? "text-ink font-medium" : ""}>ES</span>
+        <span class="mx-1">|</span>
+        <span class={lang === "en" ? "text-ink font-medium" : ""}>EN</span>
       </a>
 
-      <!-- Hamburger Button -->
       <button
         id="mobile-menu-btn"
-        class="text-gray-300 hover:text-ai-neon transition-colors p-2 focus:outline-none"
+        class="text-ink w-11 h-11 flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
         aria-label={t("nav.menu")}
         aria-expanded="false"
         aria-controls="mobile-menu-overlay"
@@ -105,28 +96,22 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          stroke-width="1.6"
           stroke="currentColor"
-          class="w-6 h-6 transition-transform duration-300"
+          class="w-6 h-6"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
         <svg
           id="menu-icon-close"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          stroke-width="1.6"
           stroke="currentColor"
-          class="w-6 h-6 hidden transition-transform duration-300"
+          class="w-6 h-6 hidden"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
@@ -138,16 +123,12 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
   id="mobile-menu-overlay"
   class="fixed inset-0 bg-chess-dark/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300"
 >
-  <div
-    class="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-ai-neon/10 via-transparent to-transparent pointer-events-none"
-  >
-  </div>
-  <nav class="flex flex-col items-center gap-8 w-full px-6 relative z-10">
+  <nav class="flex flex-col items-center w-full px-6">
     {
-      navItems.map((link) => (
+      [...navItems, { label: t("nav.contact"), url: contactUrl }].map((link) => (
         <a
           href={link.url}
-          class="mobile-nav-link text-2xl font-bold text-gray-300 hover:text-ai-neon transition-colors w-full text-center py-4 border-b border-white/5"
+          class="mobile-nav-link font-serif text-3xl text-ink hover:text-accent transition-colors w-full text-center py-5 border-b border-line"
         >
           {link.label}
         </a>
@@ -165,17 +146,17 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
       const handleScroll = () => {
         if (window.scrollY > 50) {
           navbar.classList.add(
-            "bg-chess-dark/80",
+            "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
-            "border-white/10",
+            "border-line",
           );
         } else {
           navbar.classList.remove(
-            "bg-chess-dark/80",
+            "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
-            "border-white/10",
+            "border-line",
           );
         }
       };

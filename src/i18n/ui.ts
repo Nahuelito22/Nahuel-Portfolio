@@ -11,22 +11,33 @@ export const ui = {
     // Navbar
     'nav.home': 'Inicio',
     'nav.saas': 'Soluciones B2B',
+    'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
-    'nav.about': 'Sobre Mí',
+    'nav.about': 'Sobre mí',
     'nav.cert': 'Educación',
     'nav.services': 'Servicios',
     'nav.contact': 'Contacto',
     'nav.menu': 'Menú',
     
     // Hero
-    'hero.hello': 'Hola, soy ',
-    'hero.role': 'Desarrollador Full Stack & Data Scientist.',
-    'hero.subtitle': 'Del dato al producto: diseño el modelo, lo convierto en software y lo pongo en producción.',
-    'hero.stats.apps': 'Apps en producción',
-    'hero.stats.clients': 'Clientes activos',
-    'hero.stats.users': 'Usuarios activos',
-    'hero.projectsBtn': 'Ver Proyectos',
-    'hero.contactBtn': 'Contactarme',
+    'hero.title': 'Desarrollador Full Stack & Data Scientist.',
+    'hero.leadStrong': 'Del dato al producto:',
+    'hero.lead': ' diseño el modelo, lo convierto en software y lo pongo en producción.',
+    'hero.contactBtn': 'Hablemos',
+    'hero.cvBtn': 'Descargar CV',
+    'hero.photoAlt': 'Foto de Matías Nahuel Ghilardi',
+    'hero.card.now': 'Hoy',
+    'hero.card.nowValue': 'Responsable técnico de una app con IA · cliente en EE.UU.',
+    'hero.card.base': 'Base',
+    'hero.card.baseValue': 'Tupungato, MZA',
+    'hero.card.available': 'Disponible',
+    'hero.card.availableValue': 'Freelance',
+    'hero.card.focus': 'Foco',
+    'hero.card.focusValue': 'Desarrollo de software · Ciencia de datos · IA aplicada',
+
+    // Experiencia
+    'exp.eyebrow': 'Experiencia',
+    'exp.title': 'Lo que construí, para quién y qué pasó después.',
 
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
@@ -199,6 +210,7 @@ export const ui = {
     // Navbar
     'nav.home': 'Home',
     'nav.saas': 'B2B Solutions',
+    'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.about': 'About',
     'nav.cert': 'Education',
@@ -207,14 +219,24 @@ export const ui = {
     'nav.menu': 'Menu',
     
     // Hero
-    'hero.hello': 'Hi, I am ',
-    'hero.role': 'Full Stack Developer & Data Scientist.',
-    'hero.subtitle': 'From data to product: I design the model, turn it into software and ship it to production.',
-    'hero.stats.apps': 'Apps in production',
-    'hero.stats.clients': 'Active clients',
-    'hero.stats.users': 'Active users',
-    'hero.projectsBtn': 'View Projects',
-    'hero.contactBtn': 'Contact Me',
+    'hero.title': 'Full Stack Developer & Data Scientist.',
+    'hero.leadStrong': 'From data to product:',
+    'hero.lead': ' I design the model, turn it into software and ship it to production.',
+    'hero.contactBtn': "Let's talk",
+    'hero.cvBtn': 'Download CV',
+    'hero.photoAlt': 'Photo of Matías Nahuel Ghilardi',
+    'hero.card.now': 'Now',
+    'hero.card.nowValue': 'Technical lead on an AI app · US-based client',
+    'hero.card.base': 'Based in',
+    'hero.card.baseValue': 'Tupungato, Argentina',
+    'hero.card.available': 'Available',
+    'hero.card.availableValue': 'Freelance',
+    'hero.card.focus': 'Focus',
+    'hero.card.focusValue': 'Software development · Data science · Applied AI',
+
+    // Experience
+    'exp.eyebrow': 'Experience',
+    'exp.title': 'What I built, for whom, and what happened next.',
 
     // Testimonials
     'testimonials.title1': 'What my ',
