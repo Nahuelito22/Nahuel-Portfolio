@@ -43,14 +43,15 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
       aria-label="Nahuel Ghilardi"
       class="flex items-center font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
     >
-      <!-- La N: verticales en el color del texto y la diagonal en el azul oscuro del logo. -->
+      <!-- La N: verticales en el color del texto y la diagonal en el azul del logo,
+           un punto mas claro que el original para que contraste sobre el fondo oscuro. -->
       <svg
         viewBox="30 30 140 240"
         fill="none"
         aria-hidden="true"
         class="h-6 md:h-7 w-auto shrink-0"
       >
-        <line x1="50" y1="50" x2="150" y2="250" stroke="#2F5D9E" stroke-width="30"></line>
+        <line x1="50" y1="50" x2="150" y2="250" stroke="#4677C8" stroke-width="30"></line>
         <line x1="50" y1="250" x2="50" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
         <line x1="150" y1="250" x2="150" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
       </svg>
