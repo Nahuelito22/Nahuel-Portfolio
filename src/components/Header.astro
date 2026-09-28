@@ -26,10 +26,9 @@ const isHome = path === "/" || path === "/en" || path === "/en/";
 const anchor = (hash: string) => (isHome ? hash : `${home}${hash}`);
 
 // Menu corto a proposito: la experiencia y el contacto son lo que importa.
-// "Proyectos" apunta a la seccion vieja hasta que exista la de Casos.
 const navItems = [
   { label: t("nav.experience"), url: anchor("#experiencia") },
-  { label: t("nav.projects"), url: anchor("#proyectos") },
+  { label: t("nav.cases"), url: anchor("#casos") },
   { label: t("nav.about"), url: anchor("#sobre-mi") },
 ];
 const contactUrl = anchor("#contacto");

@@ -1,0 +1,56 @@
+---
+// src/components/Cases.astro
+//
+// Indice de casos de estudio en la portada. Cada tarjeta es una puerta a la
+// pagina completa del caso: aca va solo el gancho (la frase y dos numeros).
+// Sumar un caso es agregarlo a CASES; esta seccion lo toma sola.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { CASES } from "../data/cases";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const caseUrl = (slug: string) => (lang === "en" ? `/en/cases/${slug}/` : `/casos/${slug}/`);
+---
+
+<section id="casos" class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+  <p class="text-sm md:text-[15px] font-medium text-accent">{t("cases.eyebrow")}</p>
+  <h2
+    class="mt-1.5 md:mt-2 font-serif font-medium text-[1.875rem] md:text-[2.75rem] leading-[1.15] md:leading-[1.12] tracking-[-0.02em] max-w-2xl text-balance"
+  >
+    {t("cases.title")}
+  </h2>
+
+  <div class="mt-8 md:mt-12 grid gap-4 md:gap-6 md:grid-cols-3">
+    {
+      CASES.map((study) => {
+        const c = study.content[lang];
+        return (
+          <a
+            href={caseUrl(study.slug)}
+            class="group flex flex-col bg-surface/90 border border-line rounded-md p-[22px] md:p-7 hover:border-accent/60 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+          >
+            <p class="text-[13px] md:text-sm text-faint">{study.period}</p>
+            <h3 class="mt-1.5 font-serif font-semibold text-[23px] md:text-[26px] tracking-[-0.01em]">
+              {study.product}
+            </h3>
+            <p class="mt-3 text-[15px] md:text-base leading-relaxed text-soft">{c.tagline}</p>
+
+            <div class="mt-5 pt-5 border-t border-line grid grid-cols-2 gap-4">
+              {study.metrics.slice(0, 2).map((m) => (
+                <div>
+                  <p class="font-serif font-semibold text-2xl md:text-[28px] leading-none">{m.value}</p>
+                  <p class="mt-1.5 text-xs md:text-[13px] leading-snug text-muted">{t(m.labelKey as any)}</p>
+                </div>
+              ))}
+            </div>
+
+            <p class="mt-auto pt-6 text-[15px] text-accent">
+              {t("cases.read")} <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+            </p>
+          </a>
+        );
+      })
+    }
+  </div>
+</section>

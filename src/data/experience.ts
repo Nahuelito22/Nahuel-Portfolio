@@ -105,6 +105,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     ],
     links: [
       {
+        href: { es: "/casos/hackathon-edutech", en: "/en/cases/hackathon-edutech" },
+        label: { es: "Leer el caso →", en: "Read the case →" },
+      },
+      {
         href: {
           es: "https://www.hackathonedutech.com.ar/",
           en: "https://www.hackathonedutech.com.ar/",

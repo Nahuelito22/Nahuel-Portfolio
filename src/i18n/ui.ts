@@ -12,6 +12,7 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.saas': 'Soluciones B2B',
     'nav.experience': 'Experiencia',
+    'nav.cases': 'Casos',
     'nav.projects': 'Proyectos',
     'nav.about': 'Sobre mí',
     'nav.cert': 'Educación',
@@ -39,6 +40,11 @@ export const ui = {
     'exp.eyebrow': 'Experiencia',
     'exp.title': 'Lo que construí, para quién y qué pasó después.',
 
+    // Casos (portada)
+    'cases.eyebrow': 'Casos',
+    'cases.title': 'Tres problemas reales, contados de punta a punta.',
+    'cases.read': 'Leer el caso',
+
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
     'testimonials.title2': 'mis clientes',
@@ -49,7 +55,7 @@ export const ui = {
     'testimonials.readCase': 'Ver el caso completo de AstroFit',
 
     // Casos de estudio
-    'case.badge': 'Caso.de.Estudio',
+    'case.badge': 'Caso de estudio',
     'case.back': 'Volver al inicio',
     'case.problem': 'El problema',
     'case.solution': 'La solución',
@@ -57,10 +63,16 @@ export const ui = {
     'case.stack': 'Cómo está construido',
     'case.voices': 'Lo que dicen los que lo usan',
     'case.visit': 'Ver el producto',
-    'case.metrics.gyms': 'Gimnasios clientes',
-    'case.metrics.students': 'Alumnos activos',
+    'case.metrics.gyms': 'Gimnasios',
+    'case.metrics.students': 'Alumnos',
+    'case.metrics.signups': 'Inscriptos',
+    'case.metrics.participants': 'Participantes',
+    'case.metrics.mentors': 'Mentores y jurados',
+    'case.metrics.recall': 'Granizos detectados en los datos de prueba',
+    'case.metrics.years': 'Años de datos climáticos',
+    'case.metrics.dashboards': 'Paneles, uno por rol',
     'case.cta.title': '¿Tenés un problema parecido?',
-    'case.cta.text': 'Si tu negocio todavía vive en un cuaderno o en una planilla, se puede resolver. Contame qué necesitás y te digo si puedo ayudarte.',
+    'case.cta.text': 'Si hay un proceso que hoy vive en planillas, mails o un cuaderno, se puede resolver. Contame qué necesitás y te digo si puedo ayudarte.',
     'case.cta.btn': 'Hablemos',
 
     // Projects
@@ -211,6 +223,7 @@ export const ui = {
     'nav.home': 'Home',
     'nav.saas': 'B2B Solutions',
     'nav.experience': 'Experience',
+    'nav.cases': 'Cases',
     'nav.projects': 'Projects',
     'nav.about': 'About',
     'nav.cert': 'Education',
@@ -238,6 +251,11 @@ export const ui = {
     'exp.eyebrow': 'Experience',
     'exp.title': 'What I built, for whom, and what happened next.',
 
+    // Cases (home)
+    'cases.eyebrow': 'Cases',
+    'cases.title': 'Real problems, told from start to finish.',
+    'cases.read': 'Read the case',
+
     // Testimonials
     'testimonials.title1': 'What my ',
     'testimonials.title2': 'clients say',
@@ -248,7 +266,7 @@ export const ui = {
     'testimonials.readCase': 'Read the full AstroFit case',
 
     // Case studies
-    'case.badge': 'Case.Study',
+    'case.badge': 'Case study',
     'case.back': 'Back to home',
     'case.problem': 'The problem',
     'case.solution': 'The solution',
@@ -256,10 +274,16 @@ export const ui = {
     'case.stack': 'How it is built',
     'case.voices': 'What the people using it say',
     'case.visit': 'Visit the product',
-    'case.metrics.gyms': 'Gym clients',
-    'case.metrics.students': 'Active members',
+    'case.metrics.gyms': 'Gyms',
+    'case.metrics.students': 'Members',
+    'case.metrics.signups': 'Sign-ups',
+    'case.metrics.participants': 'Participants',
+    'case.metrics.mentors': 'Mentors and judges',
+    'case.metrics.recall': 'Hail events caught in the test data',
+    'case.metrics.years': 'Years of weather data',
+    'case.metrics.dashboards': 'Dashboards, one per role',
     'case.cta.title': 'Got a similar problem?',
-    'case.cta.text': 'If your business still runs on a notebook or a spreadsheet, it can be solved. Tell me what you need and I will let you know if I can help.',
+    'case.cta.text': 'If a process still lives in spreadsheets, emails or a notebook, it can be solved. Tell me what you need and I will let you know if I can help.',
     'case.cta.btn': "Let's talk",
 
     // Projects
