@@ -5,11 +5,10 @@
 // prosa esta por idioma en `content`.
 //
 // REGLAS
-// - El cliente freelance en EE.UU. va anonimo hasta tener su autorizacion por
-//   escrito. Mientras tanto, nada que permita identificarlo: ni nombre, ni logo,
-//   ni links a la tienda. El repo es publico y las previews de Vercel tambien.
-// - Del stack de un cliente bajo NDA se publica solo la lista plana de
-//   tecnologias, nunca como se conectan entre si.
+// - Clientes bajo NDA: solo nombre, rol, que hace el producto (lo que ya es
+//   publico) y el stack como lista plana. Nunca como se conectan las
+//   tecnologias (eso es arquitectura), ni el estado en que se recibio el
+//   producto, ni montos. Logo y capturas son uso de marca: permiso aparte.
 // - Los numeros de `facts` tienen que ser reales y poder explicarse si alguien
 //   pregunta. Si no hay dato, se omite.
 
@@ -51,19 +50,35 @@ export interface ExperienceItem {
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    id: "cliente-eeuu",
+    id: "dialogy",
     current: true,
     stack: ["React Native (Expo)", "Django", "FastAPI", "LangChain", "Supabase", "AWS"],
+    // Links publicos de Dialogy. App Store se suma cuando la app este publicada.
+    links: [
+      {
+        href: { es: "https://www.dialogy.info/", en: "https://www.dialogy.info/" },
+        label: { es: "Sitio web ↗", en: "Website ↗" },
+        external: true,
+      },
+      {
+        href: {
+          es: "https://play.google.com/store/apps/details?id=com.dialogy.app&hl=es_AR",
+          en: "https://play.google.com/store/apps/details?id=com.dialogy.app&hl=en",
+        },
+        label: { es: "Google Play ↗", en: "Google Play ↗" },
+        external: true,
+      },
+    ],
     content: {
       es: {
-        org: "Cliente en EE.UU.",
+        org: "Dialogy LLC · EE.UU.",
         role: "Freelance · Responsable técnico",
         period: "2026 — hoy",
         description:
           "App móvil de bienestar emocional con un asistente de IA. Me ocupo del backend, los pagos dentro de la app y la publicación en las tiendas.",
       },
       en: {
-        org: "US-based client",
+        org: "Dialogy LLC · USA",
         role: "Freelance · Technical lead",
         period: "2026 — present",
         description:

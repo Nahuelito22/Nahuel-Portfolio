@@ -152,47 +152,49 @@ export const CASES: CaseStudy[] = [
   {
     slug: "nimbus-ai",
     product: "Nimbus AI",
-    period: "2025 — 2026",
+    period: "2024 — 2025",
     image: "/projects/nimbus-ai.webp",
     link: "https://nimbus-ai-mdz.vercel.app/",
-    stack: ["Python", "TensorFlow / Keras", "LSTM / RNN / CNN", "Scikit-learn", "Pandas", "FastAPI", "React", "PostgreSQL", "Docker"],
-    // Metricas del README del repo (modelo v3.1, sobre el 20% de prueba).
+    stack: ["Python", "TensorFlow / Keras", "Red densa + CNN", "Scikit-learn", "Pandas", "FastAPI", "React", "PostgreSQL", "Docker"],
+    // Metricas del README del repo (modelo v3.1, sobre el 20% de prueba) y de
+    // lo que conto Nahuel sobre el proyecto.
     metrics: [
       { value: "100%", labelKey: "case.metrics.recall" },
       { value: "24", labelKey: "case.metrics.years" },
+      { value: "300+", labelKey: "case.metrics.hours" },
       { value: "5", labelKey: "case.metrics.dashboards" },
     ],
     testimonialAuthors: [],
     content: {
       es: {
         tagline:
-          "Un sistema de alerta temprana de granizo para Mendoza, que cruza datos del clima con imágenes satelitales.",
+          "Empezó con una pregunta en un micro a Tupungato, en medio de una tormenta de granizo. Terminó siendo un sistema de alerta temprana para Mendoza.",
         metaTitle: "Nimbus AI: caso de estudio | Matías Nahuel Ghilardi",
         metaDescription:
-          "Cómo construí un modelo que predice granizo en Mendoza combinando 24 años de datos climáticos con imágenes del satélite GOES-16, y lo puse en producción con una plataforma para cada rol.",
+          "Cómo construí un predictor de granizo para Mendoza: 24 años de datos etiquetados a mano, imágenes satelitales y dos redes neuronales que combinan sus predicciones, con una plataforma para cada rol.",
         problem:
-          "En Mendoza el granizo arruina cosechas enteras en minutos, además de autos y techos. Las alertas que existen suelen ser generales: avisan que puede haber tormenta, pero no con la anticipación ni la precisión que necesita alguien que tiene que decidir si cubrir un cultivo. Y el dato más difícil de conseguir ni siquiera existía ordenado: en qué días de los últimos años cayó granizo de verdad.",
+          "Iba en micro al instituto, en Tupungato, cuando se largó a caer granizo. En Mendoza eso significa cosechas arruinadas en minutos, autos y techos rotos. Me pregunté si existía alguna app que avisara con tiempo, y la respuesta fue casi que no. Después de meses leyendo papers y buscando datos, encontré un solo antecedente grande, con un dataset parcial. El problema de fondo no era el modelo: era que nadie tenía registrado, de forma ordenada, en qué días cayó granizo de verdad.",
         solution:
-          "Armé el dataset desde cero: registros climáticos de Mendoza de 2000 a 2024, más variables del clima sumadas desde una API meteorológica, y los días con granizo reconstruidos a mano, cruzando un portal del clima con noticias y registros históricos. A partir de 2017 sumé imágenes del satélite GOES-16 para cada fecha. Con eso entrené un modelo que mira las dos cosas a la vez, los números del clima y la imagen, y devuelve una probabilidad de granizo. Encima construí la plataforma: un panel distinto para Defensa Civil, meteorólogos, científicos de datos, administradores y público general.",
+          "El proyecto tuvo dos etapas. La primera fue exploratoria: un análisis y un modelo no supervisado para aprobar el primer módulo de Ciencia de Datos en Coderhouse. La segunda fue mi proyecto de fin de año en la tecnicatura: un año entero y más de 300 horas. Armé el dataset juntando datos climáticos de varias fuentes, con scraping y verificación a mano, y etiqueté año por año los días con granizo de 2000 a 2024. Sumé imágenes del satélite GOES-16 desde que están disponibles. Con eso entrené dos redes: una densa que lee los datos del clima y una convolucional (CNN) que lee las imágenes, y sus predicciones se combinan en una sola probabilidad. Encima construí la plataforma, con un panel para cada rol: Defensa Civil, meteorólogos, científicos de datos, administración y público general.",
         result:
-          "Hasta donde pude relevar, el dataset resultante es el registro etiquetado de granizo más grande de Argentina, y no encontré otro predictor que combine datos del clima con imágenes satelitales de esta forma. En los datos de prueba, el modelo detectó todos los eventos de granizo reales. El costo de esa decisión es explícito: de cada siete alertas, una termina en granizo. Lo ajusté así a propósito, porque una falsa alarma cuesta mucho menos que un granizo sin aviso. El modelo está en producción como API y la plataforma está publicada.",
+          "Hasta donde pude relevar, el dataset resultante es el registro etiquetado de granizo más grande de Argentina. En los datos de prueba, el modelo detectó todos los granizos reales, a cambio de que solo una de cada siete alertas termine en granizo. Lo ajusté así a propósito: una falsa alarma cuesta mucho menos que un granizo sin aviso. Hoy la plataforma está publicada y el servidor del modelo está pausado por costos, a la espera de Nimbus 2.0.",
         stackNote:
-          "El modelo está hecho con TensorFlow y Keras, combinando redes recurrentes (RNN y LSTM) para las series del clima y convolucionales (CNN) para las imágenes satelitales, con Scikit-learn y Pandas para preparar los datos. La API es FastAPI en un contenedor Docker, y la plataforma usa React y PostgreSQL. Todo el proceso, desde la limpieza de datos hasta las métricas, está documentado en el repositorio.",
+          "Las dos redes están hechas con TensorFlow y Keras: una red densa para los datos tabulares del clima y una CNN para las imágenes satelitales, con Scikit-learn y Pandas para preparar los datos. La API es FastAPI en un contenedor Docker, y la plataforma usa React y PostgreSQL. Todo el proceso, desde la limpieza de datos hasta las métricas, está documentado en el repositorio.",
       },
       en: {
         tagline:
-          "An early warning system for hail in Mendoza that combines weather data with satellite imagery.",
+          "It started with a question on a bus to Tupungato, in the middle of a hailstorm. It ended up as an early warning system for Mendoza.",
         metaTitle: "Nimbus AI: case study | Matías Nahuel Ghilardi",
         metaDescription:
-          "How I built a model that predicts hail in Mendoza by combining 24 years of weather data with GOES-16 satellite imagery, and shipped it to production with a platform for each role.",
+          "How I built a hail predictor for Mendoza: 24 years of hand-labelled data, satellite imagery and two neural networks that combine their predictions, with a platform for each role.",
         problem:
-          "In Mendoza, hail can wipe out an entire harvest in minutes, not to mention cars and roofs. Existing warnings tend to be broad: they say a storm may come, but not with the lead time or precision someone needs to decide whether to cover a crop. And the hardest data point didn't even exist in usable form: on which days over the past years hail actually fell.",
+          "I was on the bus to college in Tupungato when hail started pouring down. In Mendoza that means harvests ruined in minutes, dented cars and broken roofs. I wondered whether any app warned people in time, and the answer was: barely. After months of reading papers and hunting for data, I found a single major precedent, with a partial dataset. The real problem wasn't the model: nobody had an orderly record of which days hail actually fell.",
         solution:
-          "I built the dataset from scratch: Mendoza weather records from 2000 to 2024, extra variables pulled from a weather API, and hail days rebuilt by hand by cross-checking a weather portal against news and historical records. From 2017 on I added GOES-16 satellite images for each date. With that I trained a model that looks at both at once, the weather numbers and the image, and returns a probability of hail. On top of it I built the platform: a separate dashboard for civil defence, meteorologists, data scientists, admins and the general public.",
+          "The project had two stages. The first was exploratory: an analysis and an unsupervised model to pass the first Data Science module at Coderhouse. The second was my end-of-year project in the software degree: a full year and over 300 hours. I built the dataset by pulling weather data from several sources, with scraping and manual checks, and labelled hail days year by year from 2000 to 2024. I added GOES-16 satellite images from the point they became available. With that I trained two networks: a dense one that reads the weather data and a convolutional one (CNN) that reads the images, and their predictions are combined into a single probability. On top of it I built the platform, with a dashboard for each role: civil defence, meteorologists, data scientists, admins and the general public.",
         result:
-          "As far as I could find, the resulting dataset is the largest labelled hail record in Argentina, and I found no other predictor that combines weather data with satellite imagery this way. On the test data, the model caught every real hail event. The cost of that choice is explicit: one in seven alerts ends in hail. I tuned it that way on purpose, because a false alarm costs far less than hail with no warning. The model runs in production as an API and the platform is live.",
+          "As far as I could find, the resulting dataset is the largest labelled hail record in Argentina. On the test data, the model caught every real hail event, at the cost of only one in seven alerts ending in hail. I tuned it that way on purpose: a false alarm costs far less than hail with no warning. Today the platform is live and the model server is paused for cost reasons, waiting for Nimbus 2.0.",
         stackNote:
-          "The model is built with TensorFlow and Keras, combining recurrent networks (RNN and LSTM) for the weather series and convolutional networks (CNN) for the satellite images, with Scikit-learn and Pandas for data preparation. The API is FastAPI in a Docker container, and the platform uses React and PostgreSQL. The whole process, from data cleaning to metrics, is documented in the repository.",
+          "Both networks are built with TensorFlow and Keras: a dense network for the tabular weather data and a CNN for the satellite images, with Scikit-learn and Pandas for data preparation. The API is FastAPI in a Docker container, and the platform uses React and PostgreSQL. The whole process, from data cleaning to metrics, is documented in the repository.",
       },
     },
   },
