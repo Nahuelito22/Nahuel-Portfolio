@@ -1,0 +1,72 @@
+---
+// src/components/OtherProjects.astro
+//
+// Lista compacta de proyectos propios. Sin imagenes ni filtros a proposito:
+// los casos de estudio son los que cuentan la historia completa; aca alcanza
+// con que se entienda que hace cada cosa y se pueda abrir.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { OTHER_PROJECTS } from "../data/other-projects";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="proyectos" class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+  <p class="text-sm md:text-[15px] font-medium text-accent">{t("other.eyebrow")}</p>
+  <h2
+    class="mt-1.5 md:mt-2 font-serif font-medium text-[1.875rem] md:text-[2.75rem] leading-[1.15] md:leading-[1.12] tracking-[-0.02em] max-w-2xl text-balance"
+  >
+    {t("other.title")}
+  </h2>
+
+  <ul class="mt-8 md:mt-12 border-t border-line">
+    {
+      OTHER_PROJECTS.map((p) => (
+        <li class="py-5 md:py-6 border-b border-line md:grid md:grid-cols-[220px_minmax(0,1fr)_auto] md:gap-8 md:items-baseline">
+          <div>
+            <h3 class="font-serif font-semibold text-xl md:text-[22px] tracking-[-0.01em]">{p.name}</h3>
+            {p.status && (
+              <p class="mt-1 text-xs tracking-[0.06em] uppercase text-accent">{p.status[lang]}</p>
+            )}
+          </div>
+          <div class="mt-1.5 md:mt-0">
+            <p class="text-[15px] md:text-base leading-relaxed text-soft">{p.line[lang]}</p>
+            <p class="mt-1.5 text-[13px] text-faint">{p.stack.join(" · ")}</p>
+          </div>
+          <p class="mt-3 md:mt-0 flex gap-5 text-[15px] md:justify-end whitespace-nowrap">
+            {p.link && (
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent hover:text-[#8ADDE7] transition-colors"
+              >
+                {t("other.demo")} ↗
+              </a>
+            )}
+            {p.github && (
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-muted hover:text-ink transition-colors"
+              >
+                {t("other.code")} ↗
+              </a>
+            )}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-6 text-[15px] text-muted">
+    {t("other.more")}{" "}
+    <a
+      href="https://github.com/Nahuelito22"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-accent hover:text-[#8ADDE7] transition-colors">GitHub ↗</a
+    >
+  </p>
+</section>

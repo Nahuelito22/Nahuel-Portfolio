@@ -45,6 +45,13 @@ export const ui = {
     'cases.title': 'Tres problemas reales, contados de punta a punta.',
     'cases.read': 'Leer el caso',
 
+    // Otros proyectos
+    'other.eyebrow': 'Otros proyectos',
+    'other.title': 'Lo que construyo cuando nadie me lo pide.',
+    'other.demo': 'Ver',
+    'other.code': 'Código',
+    'other.more': 'Hay más experimentos y prácticas en mi',
+
     // Testimonios
     'testimonials.title1': 'Lo que dicen ',
     'testimonials.title2': 'mis clientes',
@@ -256,6 +263,13 @@ export const ui = {
     'cases.eyebrow': 'Cases',
     'cases.title': 'Real problems, told from start to finish.',
     'cases.read': 'Read the case',
+
+    // Other projects
+    'other.eyebrow': 'Other projects',
+    'other.title': 'What I build when nobody asks me to.',
+    'other.demo': 'Open',
+    'other.code': 'Code',
+    'other.more': 'More experiments and practice projects on my',
 
     // Testimonials
     'testimonials.title1': 'What my ',
