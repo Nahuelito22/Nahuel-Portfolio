@@ -14,17 +14,11 @@ export default {
 				surface: '#12151C',    // Fondo de tarjetas
 				accent: '#5CC8D6',     // Cian apagado: el único acento
 
-				// Paleta anterior. La siguen usando las secciones que todavía no
-				// se rediseñaron; se borra cuando la última deje de usarla.
-				'chess-dark': '#0B0D12',
-				'chess-board': '#1a1a24',
-				'ai-neon': '#00f3ff',
-				'chess-accent': '#a8a8b8',
+				'chess-dark': '#0B0D12', // Fondo del sitio
 			},
 			fontFamily: {
 				serif: ['"Source Serif 4"', 'Georgia', 'serif'], // Títulos
 				sans: ['Onest', 'system-ui', 'sans-serif'],      // Lectura e interfaz
-				mono: ['Fira Code', 'monospace'],                // Secciones viejas
 			},
 		},
 	},

@@ -9,17 +9,12 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     // Navbar
-    'nav.home': 'Inicio',
-    'nav.saas': 'Soluciones B2B',
     'nav.experience': 'Experiencia',
     'nav.cases': 'Casos',
-    'nav.projects': 'Proyectos',
     'nav.about': 'Sobre mí',
-    'nav.cert': 'Educación',
-    'nav.services': 'Servicios',
     'nav.contact': 'Contacto',
     'nav.menu': 'Menú',
-    
+
     // Hero
     'hero.title': 'Desarrollador Full Stack & Data Scientist.',
     'hero.leadStrong': 'Del dato al producto:',
@@ -52,7 +47,7 @@ export const ui = {
     'other.code': 'Código',
     'other.more': 'Hay más experimentos y prácticas en mi',
 
-    // Sobre mí (rediseño)
+    // Sobre mí
     'about.eyebrow': 'Sobre mí',
     'about.title': 'Desde Tupungato, para donde haga falta.',
     'about.p1': 'Soy de Tupungato, en el Valle de Uco, Mendoza, y trabajo de forma remota. Estudio en paralelo la Tecnicatura en Desarrollo de Software y la Licenciatura en Ciencia de Datos, porque lo que más me interesa está justo en el medio: tomar un problema real, entenderlo con datos y convertirlo en algo que la gente use.',
@@ -67,13 +62,13 @@ export const ui = {
     'about.fact.work': 'Trabajo',
     'about.fact.workValue': 'Remoto, con clientes en Argentina y EE.UU.',
 
-    // Formación (rediseño)
+    // Formación
     'edu.eyebrow': 'Formación',
     'edu.title': 'Dos carreras en paralelo y una base técnica.',
     'edu.gpa': 'Promedio',
     'edu.certs': 'Certificados',
     'edu.see': 'Ver',
-    // Stack y Servicios (rediseño)
+    // Stack y Servicios
     'stack.eyebrow': 'Stack',
     'stack.title': 'Con qué trabajo, según para qué.',
     'services.eyebrow': 'Servicios',
@@ -81,13 +76,8 @@ export const ui = {
     'services.ctaText': '¿Tenés algo en mente que no está en la lista?',
 
     // Testimonios
-    'testimonials.title1': 'Lo que dicen ',
-    'testimonials.title2': 'mis clientes',
-    'testimonials.subtitle': 'Citas reales, publicadas y verificables. Ninguna la escribí yo.',
     'testimonials.role.direction': 'Dirección',
-    'testimonials.about': 'sobre',
     'testimonials.disclaimer': 'Testimonios publicados en',
-    'testimonials.readCase': 'Ver el caso completo de AstroFit',
 
     // Casos de estudio
     'case.badge': 'Caso de estudio',
@@ -111,128 +101,8 @@ export const ui = {
     'case.cta.text': 'Si hay un proceso que hoy vive en planillas, mails o un cuaderno, se puede resolver. Contame qué necesitás y te digo si puedo ayudarte.',
     'case.cta.btn': 'Hablemos',
 
-    // Projects
-    'projects.title1': 'Proyectos',
-    'projects.title2': 'Destacados',
-    'projects.filter.all': '[ All_Systems ]',
-    'projects.filter.ds': '/ Data_Science',
-    'projects.filter.ai': '/ AI_Models',
-    'projects.filter.fs': '/ Full_Stack',
-    'projects.filter.gd': '/ Game_Dev',
-    'projects.modal.category': 'Categoría',
-    'projects.modal.tech': 'Tecnologías',
-    'projects.modal.code': 'Ver Código',
-    'projects.modal.visit': 'Visitar Proyecto',
-    'projects.modal.close': 'Cerrar',
-
-    // Skills
-    'skills.title1': 'Tech',
-    'skills.title2': 'Stack',
-    
-    // About
-    'about.label': 'System.UserInfo.Load()',
-    'about.title1': 'Más que código, ',
-    'about.title2': 'arquitecturas que resuelven problemas reales',
-    'about.p1.1a': 'Tengo ',
-    'about.p1.1b': ' años y soy de ',
-    'about.p1.2': '. Mi base técnica viene de la ',
-    'about.p1.career': 'Electromecánica',
-    'about.p1.3': ', lo que me enseñó a entender y desarmar sistemas complejos desde sus componentes físicos hasta su lógica interna.',
-    'about.p2.1': 'Hoy aplico esa misma mentalidad analítica al ecosistema digital. Mientras consolido mi perfil académico en ',
-    'about.p2.ds': 'Ciencia de Datos (Siglo 21)',
-    'about.p2.2': ' y ',
-    'about.p2.dev': 'Desarrollo de Software (CESIT 9-023)',
-    'about.p2.3': ', me dedico a construir plataformas que generan impacto directo en los usuarios y negocios.',
-    'about.p3.1': 'Me especializo en encontrar patrones donde otros ven ruido. Ya sea desarrollando un SaaS B2B para gestión empresarial, diseñando sistemas de alerta temprana para el sector salud con ',
-    'about.p3.lstm': 'Machine Learning',
-    'about.p3.2': ', o analizando datos climáticos, mi objetivo es el mismo: transformar la tecnología en herramientas inteligentes para la toma de decisiones.',
-    'about.stats.years': 'AÑOS DE ESTUDIO',
-    'about.stats.projects': 'PROYECTOS COMPLETADOS',
-    'about.cv': 'Descargar CV',
-    'about.role': 'Data Scientist // Dev',
-
-    // Certificates
-    'cert.title1': 'Formación ',
-    'cert.title2': '& Certificaciones',
-    
-    'cert.uni1.title': 'Tecnicatura en Desarrollo de Software',
-    'cert.uni1.gpa': 'Promedio Actual: 9.53 / 10',
-    'cert.uni1.1': 'Programación II (Nota: 10)',
-    'cert.uni1.2': 'Bases de Datos I (Nota: 10)',
-    'cert.uni1.3': 'Lógica Computacional (Nota: 10)',
-    'cert.uni1.date': '2024 - Presente',
-
-    'cert.uni2.title': 'Licenciatura en Ciencia de Datos',
-    'cert.uni2.gpa': 'Promedio General: 8.55 / 10',
-    'cert.uni2.1': 'Análisis Matemático',
-    'cert.uni2.2': 'Computación en la Nube',
-    'cert.uni2.3': 'Análisis de Datos',
-    'cert.uni2.date': '2025 - Presente',
-
-    'cert.ds.title': 'Carrera de Data Science',
-    'cert.ds.desc': 'Formación integral cubriendo el ciclo completo de vida del dato.',
-    'cert.ds.1': 'Data Science I: Fundamentos y Visualización',
-    'cert.ds.2': 'Data Science II: Machine Learning Supervisado',
-    'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2023 - 2025',
-    
-    'cert.esp.title': 'Cursos de Especialización',
-    'cert.esp.desc': 'Formación complementaria para ampliar el stack tecnológico.',
-    'cert.esp.1': 'Power BI: Dashboarding y Business Intelligence',
-    'cert.esp.2': 'IA Generativa: Prompt Engineering y LLMs',
-    'cert.esp.3': 'Gestión Ágil de Proyectos',
-    'cert.esp.4': 'Data Science Ethics - University of Michigan',
-    'cert.esp.date': 'Abril 2026',
-
-    // Production SaaS
-    'saas.title1': 'Soluciones en ',
-    'saas.title2': 'Producción',
-    'saas.metrics.users': 'Usuarios Activos',
-    'saas.metrics.clients': 'Clientes B2B',
-    'saas.readCase': 'Ver el caso completo',
-    'saas.status.active': 'En Producción',
-    'saas.status.dev': 'Desarrollo Activo',
-    'saas.status.paused': 'Pausado',
-    'saas.soon': 'Próximamente',
-    'saas.visit': 'Visitar App',
-    'saas.visitSite': 'Visitar Sitio',
-    'saas.landing': 'Ver Landing',
-
-    'saas.af.desc': 'Los gimnasios llevaban todo en un cuaderno: quién debía la cuota, quién asistía, cuánto entraba. AstroFit reemplaza ese cuaderno por un sistema donde el dueño controla alumnos, cobros y asistencias desde el celular, con check-in por código QR y rutinas armadas una sola vez para todos. Hoy lo usan 5 gimnasios para gestionar más de 250 alumnos.',
-    'saas.tr.desc': 'Conecta corredores con comercios del barrio: los kilómetros que corrés se sincronizan con Strava y se convierten en descuentos reales, que se canjean mostrando un código QR en el local. El comercio suma clientes; el corredor, un motivo más para salir a entrenar.',
-    'saas.tr.status_detailed': 'En pausa temporal',
-    'saas.he.desc': 'Los organizadores pedían una landing para anunciar el evento. Propuse construir la plataforma completa: hoy las inscripciones, la entrega de proyectos, la asignación de mentores y la evaluación del jurado corren ahí, cada rol con su propia vista. Se estrena en la 2ª edición, en agosto de 2026, organizada por el IES 9-023 y el IES Tomás Alva Edison.',
-
     // Services
-    'services.title1': 'Mis ',
-    'services.title2': 'Servicios',
-    'services.subtitle': 'Soluciones a medida para cada necesidad digital.',
     'services.cta': 'Contame tu proyecto',
-
-    'services.t1.title': 'Desarrollo Web & Landing Pages',
-    'services.t1.desc': 'Sitios web modernos, responsivos y optimizados para SEO y conversión.',
-    'services.t1.price': 'Desde $150 USD',
-    'services.t1.f1': 'Diseño 100% responsivo y moderno',
-    'services.t1.f2': 'Optimización SEO y rendimiento',
-    'services.t1.f3': 'Despliegue y configuración de dominio',
-    'services.t1.f4': 'Soporte y mantenimiento inicial',
-
-    'services.t2.title': 'Sistemas a Medida / SaaS',
-    'services.t2.desc': 'Aplicaciones robustas a gran escala con arquitecturas seguras y modulares.',
-    'services.t2.badge': 'Popular',
-    'services.t2.price': 'Desde $500 USD',
-    'services.t2.f1': 'Arquitectura escalable Full Stack',
-    'services.t2.f2': 'Autenticación avanzada y roles (RBAC)',
-    'services.t2.f3': 'Base de datos y API REST/GraphQL',
-    'services.t2.f4': 'Pruebas automatizadas y E2E',
-
-    'services.t3.title': 'Consultoría en Datos & IA',
-    'services.t3.desc': 'Análisis estadístico, predicciones e integraciones de modelos inteligentes.',
-    'services.t3.price': 'Consultar',
-    'services.t3.f1': 'Análisis exploratorio de datos (EDA)',
-    'services.t3.f2': 'Modelos predictivos de Machine Learning',
-    'services.t3.f3': 'Dashboards interactivos en tiempo real',
-    'services.t3.f4': 'Consultoría en automatización e IA',
 
     // Contact
     'contact.title1': 'Hablemos',
@@ -249,26 +119,19 @@ export const ui = {
     'contact.success': '¡Listo! Recibí tu mensaje y te respondo a la brevedad.',
     'contact.error': 'No se pudo enviar el mensaje. Revisá los datos e intentá de nuevo.',
     'contact.offline': 'No pudimos conectar. Te abrimos el correo para que puedas escribirme directo.',
-    'contact.or': 'o completá el formulario',
     'contact.wa.prefill': '¡Hola Nahu! Te escribo desde tu portfolio.',
 
     // Footer
     'footer.rights': 'Matías Nahuel Ghilardi · Tupungato, Mendoza',
-    'footer.powered': 'Powered by ',
   },
   en: {
     // Navbar
-    'nav.home': 'Home',
-    'nav.saas': 'B2B Solutions',
     'nav.experience': 'Experience',
     'nav.cases': 'Cases',
-    'nav.projects': 'Projects',
     'nav.about': 'About',
-    'nav.cert': 'Education',
-    'nav.services': 'Services',
     'nav.contact': 'Contact',
     'nav.menu': 'Menu',
-    
+
     // Hero
     'hero.title': 'Full Stack Developer & Data Scientist.',
     'hero.leadStrong': 'From data to product:',
@@ -301,7 +164,7 @@ export const ui = {
     'other.code': 'Code',
     'other.more': 'More experiments and practice projects on my',
 
-    // About (redesign)
+    // About
     'about.eyebrow': 'About',
     'about.title': 'From Tupungato, to wherever the work is.',
     'about.p1': "I'm from Tupungato, in Mendoza's Uco Valley, and I work remotely. I'm studying software development and data science at the same time, because what interests me most sits right in between: taking a real problem, understanding it with data and turning it into something people use.",
@@ -316,13 +179,13 @@ export const ui = {
     'about.fact.work': 'Work',
     'about.fact.workValue': 'Remote, with clients in Argentina and the US',
 
-    // Education (redesign)
+    // Education
     'edu.eyebrow': 'Education',
     'edu.title': 'Two degrees in parallel and a technical foundation.',
     'edu.gpa': 'GPA',
     'edu.certs': 'Certificates',
     'edu.see': 'View',
-    // Stack & Services (redesign)
+    // Stack & Services
     'stack.eyebrow': 'Stack',
     'stack.title': 'What I work with, and what for.',
     'services.eyebrow': 'Services',
@@ -330,13 +193,8 @@ export const ui = {
     'services.ctaText': 'Have something in mind that is not on the list?',
 
     // Testimonials
-    'testimonials.title1': 'What my ',
-    'testimonials.title2': 'clients say',
-    'testimonials.subtitle': 'Real quotes, published and verifiable. None of them written by me. Kept in their original Spanish.',
     'testimonials.role.direction': 'Management',
-    'testimonials.about': 'on',
     'testimonials.disclaimer': 'Testimonials published on',
-    'testimonials.readCase': 'Read the full AstroFit case',
 
     // Case studies
     'case.badge': 'Case study',
@@ -360,128 +218,8 @@ export const ui = {
     'case.cta.text': 'If a process still lives in spreadsheets, emails or a notebook, it can be solved. Tell me what you need and I will let you know if I can help.',
     'case.cta.btn': "Let's talk",
 
-    // Projects
-    'projects.title1': 'Featured',
-    'projects.title2': 'Projects',
-    'projects.filter.all': '[ All_Systems ]',
-    'projects.filter.ds': '/ Data_Science',
-    'projects.filter.ai': '/ AI_Models',
-    'projects.filter.fs': '/ Full_Stack',
-    'projects.filter.gd': '/ Game_Dev',
-    'projects.modal.category': 'Category',
-    'projects.modal.tech': 'Technologies',
-    'projects.modal.code': 'View Code',
-    'projects.modal.visit': 'Visit Project',
-    'projects.modal.close': 'Close',
-
-    // Skills
-    'skills.title1': 'Tech',
-    'skills.title2': 'Stack',
-    
-    // About
-    'about.label': 'System.UserInfo.Load()',
-    'about.title1': 'Beyond code: ',
-    'about.title2': 'building architectures that solve real-world problems',
-    'about.p1.1a': 'I am ',
-    'about.p1.1b': ' years old and from ',
-    'about.p1.2': '. My technical background comes from ',
-    'about.p1.career': 'Electromechanics',
-    'about.p1.3': ', which taught me to understand and dismantle complex systems from their physical components to their internal logic.',
-    'about.p2.1': 'Today, I apply that same analytical mindset to the digital ecosystem. While consolidating my academic profile in ',
-    'about.p2.ds': 'Data Science (Siglo 21)',
-    'about.p2.2': ' and ',
-    'about.p2.dev': 'Software Development (CESIT 9-023)',
-    'about.p2.3': ', I am dedicated to building platforms that generate a direct impact on users and businesses.',
-    'about.p3.1': 'I specialize in finding patterns where others see noise. Whether developing a B2B SaaS for business management, designing early warning systems for the healthcare sector using ',
-    'about.p3.lstm': 'Machine Learning',
-    'about.p3.2': ', or analyzing climate data, my goal remains the same: to transform technology into smart tools for decision-making.',
-    'about.stats.years': 'YEARS OF STUDY',
-    'about.stats.projects': 'COMPLETED PROJECTS',
-    'about.cv': 'Download CV',
-    'about.role': 'Data Scientist // Dev',
-
-    // Certificates
-    'cert.title1': 'Education ',
-    'cert.title2': '& Certifications',
-
-    'cert.uni1.title': 'Software Development Degree',
-    'cert.uni1.gpa': 'Current GPA: 9.53 / 10',
-    'cert.uni1.1': 'Programming II (Grade: 10)',
-    'cert.uni1.2': 'Databases I (Grade: 10)',
-    'cert.uni1.3': 'Computational Logic (Grade: 10)',
-    'cert.uni1.date': '2024 - Present',
-
-    'cert.uni2.title': 'Bachelor in Data Science',
-    'cert.uni2.gpa': 'Overall GPA: 8.55 / 10',
-    'cert.uni2.1': 'Mathematical Analysis',
-    'cert.uni2.2': 'Cloud Computing',
-    'cert.uni2.3': 'Data Analysis',
-    'cert.uni2.date': '2025 - Present',
-
-    'cert.ds.title': 'Data Science Career',
-    'cert.ds.desc': 'Comprehensive training covering the full data lifecycle.',
-    'cert.ds.1': 'Data Science I: Fundamentals & Visualization',
-    'cert.ds.2': 'Data Science II: Supervised Machine Learning',
-    'cert.ds.3': 'Data Science III: NLP & Deep Learning',
-    'cert.ds.date': '2023 - 2025',
-
-    'cert.esp.title': 'Specialization Courses',
-    'cert.esp.desc': 'Complementary training to expand the tech stack.',
-    'cert.esp.1': 'Power BI: Dashboarding & Business Intelligence',
-    'cert.esp.2': 'Generative AI: Prompt Engineering & LLMs',
-    'cert.esp.3': 'Agile Project Management',
-    'cert.esp.4': 'Data Science Ethics - University of Michigan',
-    'cert.esp.date': 'April 2026',
-
-    // Production SaaS
-    'saas.title1': 'Production ',
-    'saas.title2': 'Solutions',
-    'saas.metrics.users': 'Active Users',
-    'saas.metrics.clients': 'B2B Clients',
-    'saas.readCase': 'Read the full case',
-    'saas.status.active': 'In Production',
-    'saas.status.dev': 'Active Development',
-    'saas.status.paused': 'On Hold',
-    'saas.soon': 'Coming Soon',
-    'saas.visit': 'Visit App',
-    'saas.visitSite': 'Visit Site',
-    'saas.landing': 'View Landing',
-
-    'saas.af.desc': 'Gyms used to run everything on a paper notebook: who owed the monthly fee, who showed up, how much came in. AstroFit replaces that notebook with a system where the owner tracks members, payments and attendance from their phone, with QR check-in and workout routines built once for everyone. 5 gyms use it today to manage over 250 members.',
-    'saas.tr.desc': 'Connects runners with neighbourhood shops: the kilometres you run sync from Strava and turn into real discounts, redeemed by showing a QR code at the counter. The shop gains customers; the runner, one more reason to go out and train.',
-    'saas.tr.status_detailed': 'Temporarily on hold',
-    'saas.he.desc': 'The organisers asked for a landing page to announce the event. I proposed building the full platform instead: registration, project submissions, mentor assignment and jury scoring all run on it, each role with its own view. It goes live for the 2nd edition, August 2026, hosted by IES 9-023 and IES Tomás Alva Edison.',
-
     // Services
-    'services.title1': 'My ',
-    'services.title2': 'Services',
-    'services.subtitle': 'Tailored solutions for every digital need.',
     'services.cta': 'Tell me about your project',
-
-    'services.t1.title': 'Web Development & Landing Pages',
-    'services.t1.desc': 'Modern, responsive websites optimized for SEO and conversion.',
-    'services.t1.price': 'From $150 USD',
-    'services.t1.f1': '100% responsive and modern design',
-    'services.t1.f2': 'SEO optimization and performance',
-    'services.t1.f3': 'Deployment & domain configuration',
-    'services.t1.f4': 'Initial support and maintenance',
-
-    'services.t2.title': 'Custom Systems / SaaS',
-    'services.t2.desc': 'Robust large-scale applications with secure and modular architectures.',
-    'services.t2.badge': 'Popular',
-    'services.t2.price': 'From $500 USD',
-    'services.t2.f1': 'Scalable Full Stack architecture',
-    'services.t2.f2': 'Advanced authentication & roles (RBAC)',
-    'services.t2.f3': 'Database and REST/GraphQL API',
-    'services.t2.f4': 'Automated and E2E testing',
-
-    'services.t3.title': 'Data & AI Consulting',
-    'services.t3.desc': 'Statistical analysis, predictions, and integration of intelligent models.',
-    'services.t3.price': 'Inquire',
-    'services.t3.f1': 'Exploratory data analysis (EDA)',
-    'services.t3.f2': 'Predictive Machine Learning models',
-    'services.t3.f3': 'Real-time interactive dashboards',
-    'services.t3.f4': 'Consulting on automation and AI',
 
     // Contact
     'contact.title1': 'Let\'s talk',
@@ -498,11 +236,9 @@ export const ui = {
     'contact.success': 'Got it! I received your message and will get back to you shortly.',
     'contact.error': 'The message could not be sent. Please check the fields and try again.',
     'contact.offline': 'We could not connect. Opening your email client so you can reach me directly.',
-    'contact.or': 'or fill in the form',
     'contact.wa.prefill': 'Hi Nahu! I am reaching out from your portfolio.',
 
     // Footer
     'footer.rights': 'Matías Nahuel Ghilardi · Tupungato, Mendoza',
-    'footer.powered': 'Powered by ',
   },
 } as const;

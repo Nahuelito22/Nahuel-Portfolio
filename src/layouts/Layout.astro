@@ -108,14 +108,14 @@ const personSchema = {
          render y la aplica al llegar. El <noscript> cubre el resto. -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Onest:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Onest:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
       />
     </noscript>
 
@@ -155,41 +155,6 @@ const personSchema = {
     </script>
 
     <script>
-      // Konami Code Easter Egg
-      const konamiCode = [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowLeft",
-        "ArrowRight",
-        "b",
-        "a",
-      ];
-      let konamiIndex = 0;
-      document.addEventListener("keydown", (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-          konamiIndex++;
-          if (konamiIndex === konamiCode.length) {
-            activateEasterEgg();
-            konamiIndex = 0;
-          }
-        } else {
-          konamiIndex = 0;
-        }
-      });
-      function activateEasterEgg() {
-        alert(
-          "♟️ SYSTEM OVERRIDE: CHECKMATE! ♟️\n\nAccessing Neural Network Core...",
-        );
-        document.body.style.filter = "invert(1) hue-rotate(180deg)";
-        setTimeout(() => {
-          document.body.style.filter = "none";
-        }, 5000);
-      }
-
       // Scroll Animations setup on every page load
       document.addEventListener("astro:page-load", () => {
         // Si el visitante pidio menos movimiento, no animamos nada: el
@@ -215,7 +180,7 @@ const personSchema = {
         }, observerOptions);
 
         document
-          .querySelectorAll("section, .project-card, .timeline-item, .production-card, .service-card")
+          .querySelectorAll("section")
           .forEach((el) => {
             el.classList.add(
               "opacity-0",
