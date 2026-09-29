@@ -1,262 +1,129 @@
 # Backlog del Portfolio
 
-Evaluación del estado actual y mejoras pendientes, ordenadas por impacto.
-Última revisión: 2026-07-29.
+Pendientes y criterios del sitio, ordenados por impacto.
+Última revisión: 2026-09-28, al cerrar el rediseño.
 
 Criterio general: **el portfolio tiene que vender quién sos, no demostrar que sabés
 tecnicismos.** Cuando haya que elegir entre "se ve pro" y "se entiende rápido",
 gana lo segundo.
 
-El detalle de lo ya ejecutado, con el porqué de cada decisión, está en los informes
-de sesión, del más reciente al más viejo:
+Informes de sesiones anteriores, del más reciente al más viejo:
 
-- [`docs/sesion-2026-07-29.md`](docs/sesion-2026-07-29.md) — caso de estudio de
-  AstroFit, el hero y los testimonios sin encasillar en un rubro, y la limpieza de
-  datos de cliente de los archivos públicos.
-- [`docs/auditoria-2026-07-24.md`](docs/auditoria-2026-07-24.md) — SEO, contacto,
+- [`docs/sesion-2026-07-29.md`](docs/sesion-2026-07-29.md): caso de estudio de
+  AstroFit y limpieza de datos de cliente de los archivos públicos.
+- [`docs/auditoria-2026-07-24.md`](docs/auditoria-2026-07-24.md): SEO, contacto,
   accesibilidad, rendimiento y consistencia ES/EN.
 
-> ⚠️ **Este repositorio es público.** El razonamiento sobre clientes concretos, sus
-> acuerdos y sus datos va **fuera del repo**. Acá solo criterios reutilizables.
+> ⚠️ **Este repositorio es público.** Acuerdos, montos y detalles de clientes van
+> **fuera del repo**. Acá solo criterios reutilizables.
 
 ---
 
-## ✅ Hecho
+## ✅ Hecho: rediseño (septiembre 2026)
 
-- **Hero con propuesta de valor y dato duro.** El subtítulo pasó de "Combinando
-  lógica de ajedrez con potencia de IA" a "Del dato al producto: diseño el modelo,
-  lo convierto en software y lo pongo en producción", con una fila de métricas
-  (2 apps en producción · 5 gimnasios · 250+ usuarios).
-- **Testimonios reales.** Tres citas de clientes de AstroFit (Titan Gym, Plena
-  Forma, Evolución Sport), reproducidas textualmente desde la landing pública del
-  producto, con link a la fuente.
-  **Viven en `/casos/astrofit`, no en la portada.** El componente
-  `Testimonials.astro` existe y funciona, pero está desmontado de las dos
-  portadas: tres citas de gimnasios seguidas hacían parecer que Nahuel solo hace
-  software para gimnasios, y reducirlo a una sola cita rendía poco sin contexto.
-  Para volver a mostrarlo alcanza con importarlo en `src/pages/index.astro` y
-  `src/pages/en/index.astro`; el flag `showOnLanding` de `testimonials.ts` decide
-  cuáles aparecerían.
-- **SEO completo.** `site` configurado, canonical, `hreflang` es/en/x-default,
-  Open Graph + Twitter Card con imagen 1200×630 propia, JSON-LD de `Person`,
-  títulos y descripciones específicos por idioma, `sitemap-index.xml` y `robots.txt`.
-- **Formulario de contacto.** Envío por `fetch` sin salir del sitio, estados de
-  carga/éxito/error en pantalla, honeypot anti-spam, fallback a mail si falla la red,
-  y vías directas (mail y WhatsApp) arriba del formulario.
-- **Producción sin jerga.** Fuera etiquetas `SaaS`/`B2B`/`Platform`/`Event` y los
-  indicadores parpadeantes de estado. Las tres descripciones reescritas en formato
-  problema → solución → resultado.
-- **Regla de 6 destacados** en `[ All_Systems ]` vía flag `featured`.
-- **Consistencia ES/EN.** Corregidas las fechas de certificados y el link de Roque
-  Chess (se tomó el valor del español como correcto), la tilde de "Menú" y el
-  contador de proyectos de "Sobre Mí", que decía 5+ con 10 proyectos publicados.
-- **Accesibilidad.** Modal con `role="dialog"`, `aria-modal`, foco al abrir,
-  trampa de foco con Tab y devolución del foco al cerrar. Tarjetas y filas
-  operables con Enter/Espacio y con anillo de foco visible. `aria-pressed` en los
-  filtros. `prefers-reduced-motion` respetado en el CSS y en las animaciones de
-  scroll — **pero no en las partículas**, ver punto 6. Red de seguridad para que el
-  contenido nunca quede oculto si el JS falla.
-- **Rendimiento.** Imágenes redimensionadas: 2,8 MB → 380 kB (-87%). Fuentes no
-  bloqueantes y `loading="lazy"` en las imágenes.
-- **Dependencias.** Removido `tsparticles@3`, que estaba instalado sin usarse.
-  `package.json` renombrado de `astronautical-antimatter` a `nahuel-portfolio`.
-- **Caso de estudio de AstroFit** *(era el punto 1)*. `/casos/astrofit` y su
-  espejo `/en/cases/astrofit`, con los cuatro bloques: problema → solución →
-  resultado → stack en letra chica. Une lo que antes estaba repartido entre el
-  hero, Producción y los testimonios, y da una URL compartible que se le puede
-  mandar directo a un cliente. Ruta dinámica `/casos/[slug]`: sumar TupRun o
-  Edutech es agregar un objeto a `CASES`.
-  `cases.ts` estrena el patrón del punto 4 — lo no traducible vive una sola vez.
-  De paso se arreglaron dos cosas que se rompían al existir una subpágina: el
-  `hreflang` del `Layout`, que estaba fijo a la portada, y los enlaces del
-  `Header`, que eran anclas sueltas y no llevaban a ningún lado fuera del home.
+Rama `rediseno`. Se pasó de un portfolio de estudiante (muchas tarjetas, guiños de
+consola, precios bajos) a un sitio centrado en la experiencia.
+
+- **Dirección visual:** fondo oscuro, un solo acento cian, Source Serif 4 para
+  títulos y Onest para lectura. Las partículas se mantienen, más sutiles.
+- **Marca:** logo N (verticales claras, diagonal azul). En el header, al hacer
+  scroll, las letras del nombre convergen en el punto final y el punto "firma" la
+  diagonal. Atado al scroll, así que se ve aun con las animaciones del sistema
+  desactivadas.
+- **Estructura:** Inicio → Experiencia → Casos → Otros proyectos → Sobre mí →
+  Formación → Stack → Servicios → Contacto. Menú corto: Experiencia, Casos, Sobre mí
+  y Contacto.
+- **Contenido centralizado** en `src/data/` (experiencia, casos, otros proyectos,
+  formación, stack, servicios): lo no traducible existe una sola vez. Resuelve el
+  viejo problema de contenido duplicado entre idiomas.
+- **Nada que envejezca:** fuera los contadores de clientes y usuarios. Las cifras de
+  AstroFit están en pasado (máximo alcanzado) porque el producto se vendió.
+- **Casos de estudio:** AstroFit, Hackathon EduTech Mendoza y Nimbus AI.
+- **Dialogy LLC** figura en Experiencia con nombre, rol, stack como lista plana y
+  links públicos, con autorización de la clienta.
+- **Correcciones de contenido:** un certificado se mostraba con el nombre de otro
+  curso; se unificó el voseo; salieron los precios públicos de los servicios.
+- **SEO:** imagen para redes nueva, una por idioma; página 404.
+- **Limpieza:** componentes, datos, imágenes y claves de traducción del diseño
+  anterior; dependencias de íconos; el easter egg del Konami. Queda el ♞ del footer
+  como único guiño.
+
+## ✅ Hecho antes del rediseño
+
+SEO completo (canonical, hreflang, Open Graph, JSON-LD, sitemap), formulario de
+contacto con estados y honeypot, accesibilidad (foco, teclado, reduced-motion en
+CSS), imágenes livianas y el caso de estudio de AstroFit. El detalle está en los
+informes de `docs/`.
 
 ---
 
 ## 🔴 Alto impacto
 
-> Los números son identificadores estables, no un orden: cuando un punto se
-> termina, se mueve a "Hecho" y su número **no** se reutiliza. Así los enlaces
-> del tipo "ver punto 6" siguen apuntando a lo mismo.
+### 1. CV descargable
 
-### 2. Sección de Experiencia / Clientes — pendiente de autorización
+El PDF de `public/CV-Nahuel.pdf` es el viejo. Reemplazarlo por el nuevo, con la
+misma historia y el mismo título profesional que el sitio.
 
-> ⚠️ **Este archivo es público** (el repo lo es). El detalle de qué cliente es, qué
-> permite su acuerdo y qué no, vive **fuera del repo**, en las notas privadas. Acá
-> queda solo el criterio, que es lo reutilizable.
+### 2. Foto con fondo neutro
 
-Hay trabajo freelance para un cliente que todavía no aparece en el portfolio porque
-la autorización está pendiente. Cuando llegue, **no** va en "Soluciones en
-Producción": esa sección son proyectos propios, donde sos el dueño del producto.
-Trabajo contratado es otra cosa, y mezclarlos le quita claridad a la narrativa.
+La foto del inicio tiene fondo verde saturado, fuera de la paleta: lleva la mirada
+al fondo en vez de a la cara. Lo ideal es una foto nueva contra una pared lisa gris
+u oscura; como alternativa, recortar el fondo.
 
-Va en una sección nueva, **"Experiencia / Clientes"** o **"Freelance & Consultoría"**,
-con tarjetas de rol + stack y sin capturas del producto.
+### 3. Más prueba de terceros
 
-**Criterio para cualquier cliente bajo NDA** (no es asesoramiento legal — la
-respuesta siempre está en el acuerdo concreto, hay que leerlo):
+Hoy solo hay testimonios de AstroFit, y viven en su caso. Pedir una línea a la
+organización de la Hackathon y, si corresponde, a Dialogy. Regla: **solo citas
+reales y verificables, con la fuente anotada**; nunca un testimonio "de ejemplo".
+
+**Criterio para clientes bajo NDA** (no es asesoramiento legal: la respuesta está en
+cada acuerdo):
 
 | | Qué |
 |---|---|
-| ✅ Suele poderse | La existencia de la relación comercial y tu rol, salvo que el acuerdo lo prohíba expresamente. Muchos NDA no dicen nada al respecto: hay que buscar la cláusula de no-publicidad y confirmar que no está. |
-| ✅ Suele poderse | El stack, **como lista plana de tecnologías**. Es norma de la industria. |
-| ❌ No | **Cómo se conectan** esas tecnologías. Eso es arquitectura de software, y los NDA la listan como confidencial casi siempre. La línea está entre "Django, FastAPI, Postgres" y "microservicio de IA detrás del backend, con vectores en Postgres". |
-| ❌ Nunca, con acuerdo o sin él | En qué estado estaba el producto al llegar, bugs, vulnerabilidades encontradas, números de negocio, montos del contrato o del abono, y nombres de otros proveedores o clientes que viste en el trabajo. |
-| ⚠️ Permiso aparte | Logo, capturas y nombres de producto. Eso es **uso de marca**, no confidencialidad: son dos permisos distintos y hay que pedir los dos. |
-
-**Trampa a evitar:** contar el trabajo en anónimo *y* listar al cliente en otra
-sección del mismo sitio. Se cruza en segundos y el anonimato se cae, con el agravante
-de que ahí la divulgación es deliberada. Es binario: o nombrás al cliente y contás la
-versión sin detalles, o guardás los detalles y no nombrás al cliente.
-
-**Cómo pedir la autorización:** por escrito, **enumerando exactamente qué va a
-aparecer** (rol, tecnologías, si hay logo o no). Un "sí, dale" por chat no especifica
-a qué se dijo sí, y es lo que después no sirve de nada. Pedirlo en un momento de valor
-entregado, no antes.
-
-**Al desplegar:** el contador de "Apps en producción" del hero pasa de 2 a 3
-(`src/components/Hero.astro`) el día que el trabajo esté efectivamente publicado
-en la tienda, **no antes**. Solo se cuentan cosas ya entregadas: si un cliente
-pregunta "¿cuáles tres?" hay que poder responder. Y el contador de "Clientes
-activos" puede subir a 6 sin nombrar a nadie, si se decide que corresponde.
-
-Estructura de la tarjeta, para cuando haya luz verde:
-
-> **[Cliente]** — [Rol]
-> [Qué hacés, en una frase, sin describir la arquitectura.]
-> *Stack: [lista plana de tecnologías]*
-
-### 3. Más testimonios
-
-Ya hay tres de AstroFit. Faltan:
-
-- **Hackathon Edutech Mendoza**: pedirle una línea al organizador. Es un evento, no
-  un cliente pago, así que aporta un tipo de prueba distinto (te confían un proyecto
-  con visibilidad pública).
-  En el mismo mensaje conviene pedir permiso para publicar **el número final de
-  inscriptos** — la fila de Edutech en Producción hoy no tiene métricas porque
-  cuando se escribió no había datos, y ahora sí. Dos criterios: esperar a que
-  **cierren las inscripciones** (un número que todavía crece queda viejo en
-  semanas, y un portfolio no es un dashboard), y usar **inscriptos, no visitas**:
-  el tráfico no es un resultado y se lee como relleno. El dato es de la
-  organización, no tuyo, así que se pregunta aunque no haya NDA.
-- **Cliente freelance del punto 2**: sujeto a la autorización.
-
-Cuando haya testimonios de más de un producto, agregar el logo o el nombre del
-producto como filtro visual en la sección.
-
-**Regla para `src/data/testimonials.ts`: solo citas reales y verificables, con la
-fuente anotada.** Nunca redactar un testimonio "de ejemplo", ni siquiera temporal.
+| ✅ Suele poderse | La relación comercial, el rol y el stack **como lista plana**. |
+| ❌ No | **Cómo se conectan** las tecnologías: es arquitectura. |
+| ❌ Nunca | Estado en que se recibió el producto, bugs o vulnerabilidades encontradas, números de negocio, montos, otros proveedores. |
+| ⚠️ Permiso aparte | Logo, capturas y nombres de producto: es uso de marca, no confidencialidad. |
 
 ---
 
 ## 🟡 Medio impacto
 
-### 4. Contenido duplicado entre idiomas
+### 4. tsparticles: 140 kB en el bundle inicial
 
-Ya no hay divergencias (se auditaron todas las claves y todos los campos no
-traducibles de los proyectos), pero **la causa sigue ahí**: `projects.ts` y `ui.ts`
-duplican el contenido en dos idiomas, así que links, imágenes, tags y fechas
-existen dos veces y pueden volver a separarse.
+**No tocar sin verificar en el navegador del dueño del sitio.** Se intentó una vez y
+se revirtió: un guard de `prefers-reduced-motion` **apagaba las partículas**, y
+Windows reporta esa preferencia cuando "Efectos de animación" está desactivado, que
+es común. Las partículas son identidad visual, no un adorno.
 
-Arreglo de fondo: que los datos que **no** son texto traducible vivan una sola vez
-y que solo `title`/`description` estén por idioma. Elimina la clase entera de bug.
-Mientras tanto, el script de auditoría usado queda documentado abajo.
+Si se retoma: import dinámico **sin** el guard, verificado en un navegador con esa
+opción activada. Alternativa: menos partículas en móvil.
 
 ### 5. Imágenes servidas por Astro
 
-Se resolvió lo urgente (peso y `loading="lazy"`), y el CLS no es problema porque
-los contenedores tienen alto fijo. Lo que falta para hacerlo bien es mover las
-imágenes de `public/` a `src/assets/` y usar el componente `<Image />`: da
-`width`/`height` automáticos, variantes por densidad de pantalla y AVIF además de
-WebP. Es un cambio más invasivo porque `projects.ts` y `production.ts` referencian
-las rutas como strings.
+Mover las imágenes de `public/` a `src/assets/` y usar `<Image />`: tamaños
+automáticos, variantes por densidad y AVIF.
 
-### 6. tsparticles: 140 kB en el bundle inicial
+### 6. Auditoría de idiomas automatizable
 
-**No tocar sin verificar en el navegador del dueño del sitio.** Se intentó una vez
-y se revirtió.
+Un `npm run check:i18n` que falle si falta una clave en algún idioma o si hay texto
+en español en las páginas `/en/` (salvo nombres propios y citas textuales).
 
-Qué se probó: import dinámico dentro de `requestIdleCallback` + saltear las
-partículas si el visitante tiene `prefers-reduced-motion: reduce`. El chunk inicial
-bajaba de 140 kB a 1,8 kB.
+### 7. Eventos de Analytics
 
-Por qué se revirtió: **el guard de reduced-motion apagaba las partículas**. Windows
-reporta `prefers-reduced-motion: reduce` cuando "Efectos de animación" está
-desactivado en Accesibilidad, que es una configuración bastante común — así que el
-efecto no era un caso de borde, se veía en máquinas normales. Las partículas son la
-identidad visual del sitio, no un adorno prescindible: apagarlas cuesta más de lo
-que ahorra.
-
-Si se retoma, hacerlo **sin el guard de reduced-motion** y verificando en un
-navegador con esa opción activada. El import dinámico por sí solo funciona (se
-comprobó que los chunks cargan y las partículas se dibujan igual); el problema
-era exclusivamente el guard.
-
-Alternativas más seguras para el mismo objetivo: bajar la cantidad de partículas
-en móvil, o reemplazar tsparticles por un fondo animado en CSS/SVG.
-
-### 7. Auditoría de idiomas automatizable
-
-La comparación ES/EN se hizo a mano con un script de una sola vez. Vale la pena
-dejarlo como `npm run check:i18n` para que un valor divergente falle en CI en
-lugar de descubrirse leyendo el sitio. Compara: claves faltantes en cada idioma,
-campos no traducibles distintos entre `PROJECTS.es` y `PROJECTS.en`, y números o
-fechas que difieren entre traducciones de una misma clave.
-
----
-
-## 🟢 Bajo impacto — pulido
-
-### 8. Imagen de portada de GameMatch
-
-La actual es una placa de título generada, no una captura real. Reemplazarla por un
-screenshot de la app cuando tenga contenido cargado.
-
-### 9. Descubribilidad de los proyectos no destacados
-
-`[ All_Systems ]` muestra 6 proyectos y el resto vive dentro de su categoría.
-Está bien para no saturar, pero el visitante no sabe que hay más. Agregar un contador
-en los filtros (`/ Full_Stack (4)`) o un texto tipo "y 4 proyectos más por categoría".
-
-### 10. Testimonios en el nav — ya no aplica
-
-La sección se desmontó de la portada, así que no hay nada que enlazar. Queda la
-parte que sigue vigente: **si se agrega la sección de Experiencia / Clientes
-(punto 2) hay que repensar el nav completo**, que ya tiene 7 ítems. Una opción es
-agrupar "Trabajo" = Producción + Experiencia, y dejar los casos de estudio
-colgando de cada producto como ahora.
-
-Pendiente relacionado: **la landing hoy no tiene ninguna prueba de terceros.**
-Todo lo que dice del trabajo lo dice Nahuel. Si aparecen testimonios de más de un
-producto —Edutech, o el cliente del punto 2— vale replantear una sección de
-prueba social que ya no encasille en un rubro, que era el problema original.
-
-### 11. Faltantes varios
-
-- No hay página **404**.
-- Los CTA de contacto ya tienen `data-analytics`, pero **falta cablearlos** a eventos
-  de Vercel Analytics. Sin eso, sabés cuánta gente entró pero no qué hizo. Sumar
-  también la descarga de CV y los clicks a las apps en producción.
-- El easter egg del Konami usa `alert()` y aplica `filter: invert(1)` al body por 5
-  segundos: es abrupto y no hay forma de cortarlo. Cambiar el alert por un toast.
-- `System.Production.ENV` y los filtros `[ All_Systems ]` / `/ Full_Stack` mantienen
-  el tono "consola". Es una decisión de estilo consistente en todo el sitio, pero si
-  el objetivo es vender a clientes no técnicos, vale la pena testear una versión con
-  etiquetas en lenguaje natural y ver si convierte mejor.
-- El `README.md` sigue diciendo que el sitio fue la entrega final de Programación 2 y
-  describe una sección de "Línea de Tiempo con certificaciones de Coderhouse y
-  Santander" que ya no coincide con el contenido actual.
+Los links de contacto tienen `data-analytics`, pero falta cablearlos a eventos de
+Vercel Analytics. Sumar la descarga del CV y los clicks a los casos.
 
 ---
 
 ## Ideas para más adelante
 
-- **Blog / notas técnicas**: dos o tres posts bien escritos sobre decisiones reales
-  (por qué Supabase y no Firebase en AstroFit, cómo modelaste las correlativas) hacen
-  mucho por el SEO y por mostrar criterio, no solo ejecución.
-- **Página de proyecto individual** en vez del modal: URL propia, indexable,
-  compartible, con espacio para contar el proceso.
-- **Versión imprimible / one-pager** del portfolio para adjuntar a postulaciones.
-- **Tests E2E mínimos** (Playwright ya lo usás en AstroFit): que los filtros, el modal,
-  el envío del formulario y el cambio de idioma no se rompan en silencio.
+- **Roque Chess como caso de estudio**, por el enfoque del modelo (una red
+  recurrente entrenada solo con partidas reales). Correlativas también podría
+  serlo, por la historia de la comunidad.
+- **Nimbus 2.0:** cuando vuelva el servidor del modelo, actualizar el caso.
+- **Blog o notas técnicas** sobre decisiones reales.
+- **Versión imprimible / one-pager** para adjuntar a postulaciones.
+- **Tests E2E mínimos** con Playwright: formulario, cambio de idioma y la animación
+  del header.

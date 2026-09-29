@@ -1,64 +1,58 @@
-# ♟️ Nahu Portfolio | Data Science & Full Stack Dev
+# Nahuel Ghilardi · Portfolio
 
-> Un portafolio interactivo que fusiona la estrategia del ajedrez con la complejidad de las redes neuronales.
+Sitio personal de Matías Nahuel Ghilardi, desarrollador Full Stack y científico de
+datos en Tupungato, Mendoza. En producción en
+[nahuelghilardi.com.ar](https://www.nahuelghilardi.com.ar), en español e inglés.
 
 ![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=nahuel-portfolio)
-[![Astro](https://img.shields.io/badge/Astro-5.0-orange.svg)](https://astro.build)
-[![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC.svg)](https://tailwindcss.com)
 
-## 📋 Sobre el Proyecto
+## Qué hay en el sitio
 
-Este proyecto fue desarrollado como entrega final para la materia **Programación 2**, pero diseñado para ser mi portafolio profesional a largo plazo. 
+- **Inicio:** rol, propuesta ("Del dato al producto") y una ficha con el estado actual.
+- **Experiencia:** línea de tiempo del trabajo real.
+- **Casos de estudio:** AstroFit, la plataforma de la Hackathon EduTech Mendoza y
+  Nimbus AI, cada uno con su página (problema → solución → resultado → stack).
+- **Otros proyectos, Sobre mí, Formación, Stack, Servicios y Contacto.**
 
-El concepto visual **"Neural Chess"** busca reflejar mi perfil híbrido:
-* **La Lógica:** Representada por la estética minimalista y referencias al ajedrez (mi pasión).
-* **Los Datos:** Representados por el fondo de partículas interactivas que simulan una red neuronal y nodos de datos.
+## Stack
 
-## 🛠️ Tech Stack
+- [Astro](https://astro.build/) con View Transitions, sitio estático.
+- [Tailwind CSS](https://tailwindcss.com/).
+- [tsParticles](https://particles.js.org/) para el fondo.
+- Formulario de contacto con [Formspree](https://formspree.io/).
+- Deploy en Vercel, con Vercel Analytics.
 
-El sitio está construido con una arquitectura moderna enfocada en el rendimiento y la experiencia de usuario:
+## Cómo está organizado
 
-* **Framework:** [Astro](https://astro.build/) (Por su velocidad y arquitectura de islas).
-* **Estilos:** [Tailwind CSS](https://tailwindcss.com/) (Para un diseño responsivo y modo oscuro).
-* **Animaciones:** [tsParticles](https://particles.js.org/) (Para el fondo interactivo de red neuronal).
-* **Iconos:** Material Design Icons (vía `astro-icon`).
-* **Despliegue:** Vercel.
-
-## ✨ Funcionalidades Clave
-
-* **Fondo Interactivo:** Un sistema de partículas que reacciona al mouse, simbolizando conexiones neuronales.
-* **Filtro de Proyectos:** Sistema en JavaScript vanilla para filtrar trabajos por categoría (Data Science, AI, Full Stack).
-* **Diseño Glassmorphism:** Elementos con transparencias y desenfoques (`backdrop-blur`) para mantener la legibilidad sobre el fondo animado.
-* **Línea de Tiempo:** Sección visual para mostrar mis certificaciones en Coderhouse y Santander.
-* **100% Responsivo:** Adaptado a móviles, tablets y escritorio.
-
-## 🚀 Instalación y Uso Local
-
-Si deseas clonar y correr este proyecto localmente:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/Nahuelito22/Nahuel-Portfolio](https://github.com/Nahuelito22/Nahuel-Portfolio)
-    cd Nahuel-Portfolio
-    ```
-
-2.  **Instalar dependencias:**
-    ```bash
-    npm install
-    ```
-
-3.  **Iniciar servidor de desarrollo:**
-    ```bash
-    npm run dev
-    ```
-
-4.  Abrir en `http://localhost:4321`
-
-## 📂 Estructura del Proyecto
+El contenido vive en `src/data/`, separado de la presentación. Lo que no se traduce
+(fechas, links, stack, cifras) se escribe una sola vez y solo el texto va por idioma.
 
 ```text
 src/
-├── components/      # Componentes UI (Hero, Projects, Skills, etc.)
-├── config/          # Configuración de partículas (particlesConfig.ts)
-├── layouts/         # Layout principal (Manejo de SEO y fondo fijo)
-└── pages/           # Rutas del sitio (index.astro)
+├── components/   # Una sección por componente (Hero, Experience, Cases, ...)
+├── config/       # Datos globales (site.ts) y configuración de partículas
+├── data/         # Contenido: experiencia, casos, proyectos, formación, stack
+├── i18n/         # Textos de la interfaz en español e inglés
+├── layouts/      # Layout con SEO, Open Graph, hreflang y partículas
+└── pages/        # Portadas (/ y /en/), casos de estudio y 404
+```
+
+- Sumar un caso de estudio: agregar un objeto a `CASES` en `src/data/cases.ts`. La
+  ruta `/casos/<slug>` y su versión en inglés se generan solas.
+- Sumar una entrada de experiencia o un proyecto: `experience.ts` u
+  `other-projects.ts`.
+
+## Correr el proyecto
+
+```bash
+git clone https://github.com/Nahuelito22/Nahuel-Portfolio
+cd Nahuel-Portfolio
+npm install
+npm run dev
+```
+
+Abre en `http://localhost:4321` (inglés en `/en/`).
+
+## Licencia
+
+MIT. El contenido (textos, foto, logo) es de Matías Nahuel Ghilardi.
