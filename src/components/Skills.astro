@@ -1,43 +1,33 @@
 ---
 // src/components/Skills.astro
-import { Icon } from "astro-icon/components";
+//
+// Stack en filas de texto, sin iconos ni tarjetas: se lee de un vistazo y no
+// compite con los casos, que son los que cuentan como se usa cada cosa.
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import { SKILLS } from "../data/skills";
+import { STACK } from "../data/stack";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const currentSkills = SKILLS[lang];
 ---
 
-<section class="py-20 relative z-10">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-white mb-12 text-center">
-      {t("skills.title1")}
-      <span class="text-ai-neon">{t("skills.title2")}</span>
-    </h2>
+<section id="stack" class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+  <p class="text-sm md:text-[15px] font-medium text-accent">{t("stack.eyebrow")}</p>
+  <h2
+    class="mt-1.5 md:mt-2 font-serif font-medium text-[1.875rem] md:text-[2.75rem] leading-[1.15] md:leading-[1.12] tracking-[-0.02em] max-w-2xl text-balance"
+  >
+    {t("stack.title")}
+  </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {
-        currentSkills.map((skill) => (
-          <div class="bg-chess-board p-8 rounded-2xl border border-white/5 hover:border-ai-neon/40 transition-all group hover:-translate-y-1">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 bg-ai-neon/10 rounded-lg flex items-center justify-center text-ai-neon group-hover:scale-110 transition-transform">
-                <Icon name={skill.icon} class="w-7 h-7" />
-              </div>
-              <h3 class="text-xl font-bold text-white">{skill.category}</h3>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              {skill.items.map((item) => (
-                <span class="flex items-center gap-2 px-3 py-1 bg-chess-dark text-gray-300 text-sm font-mono border border-white/10 rounded hover:border-ai-neon/50 hover:text-white transition-colors cursor-default">
-                  <Icon name={item.icon} class="w-4 h-4" />
-                  {item.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+  <dl class="mt-8 md:mt-12 border-t border-line">
+    {
+      STACK.map((group) => (
+        <div class="py-5 border-b border-line md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-8 md:items-baseline">
+          <dt class="font-serif font-semibold text-lg md:text-xl tracking-[-0.01em]">{group.label[lang]}</dt>
+          <dd class="mt-1.5 md:mt-0 text-[15px] md:text-base leading-relaxed text-soft">
+            {group.items.join(" · ")}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
 </section>

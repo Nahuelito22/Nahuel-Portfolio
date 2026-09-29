@@ -1,38 +1,44 @@
 import type { ISourceOptions } from "tsparticles-engine";
 
+// Las particulas son parte de la identidad del sitio: no se apagan (ni por
+// rendimiento ni por prefers-reduced-motion) sin consultarlo. En el rediseno se
+// bajaron de tono: el cian apagado del acento, menos densidad y mas lentas, para
+// que acompanien la lectura en vez de competir con ella.
+const ACCENT = "#5CC8D6";
+
 export const particlesConfig: ISourceOptions = {
   particles: {
     number: {
-      value: 60,
+      value: 40,
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 900,
       },
     },
     color: {
-      value: "#00ffff",
+      value: ACCENT,
     },
     shape: {
       type: "circle",
     },
     opacity: {
-      value: 0.5,
+      value: 0.4,
       random: true,
     },
     size: {
-      value: 3,
+      value: 2.2,
       random: true,
     },
     links: {
       enable: true,
-      distance: 150,
-      color: "#4a5568",
-      opacity: 0.2,
+      distance: 140,
+      color: ACCENT,
+      opacity: 0.12,
       width: 1,
     },
     move: {
       enable: true,
-      speed: 0.8,
+      speed: 0.35,
       direction: "none",
       out_mode: "out",
     },
@@ -42,54 +48,18 @@ export const particlesConfig: ISourceOptions = {
     events: {
       onHover: {
         enable: true,
-        mode: ["grab", "trail"],
-      },
-      onClick: {
-        enable: true,
-        mode: ["bubble", "connect"],
+        mode: "grab",
       },
       resize: true,
     },
     modes: {
       grab: {
-        distance: 200,
+        distance: 180,
         links: {
-          opacity: 0.8,
-          color: "#ffffff"
-        }
+          opacity: 0.35,
+          color: ACCENT,
+        },
       },
-      bubble: {
-        distance: 250,
-        size: 8,
-        duration: 2,
-        opacity: 1,
-      },
-      
-      connect: {},
-      trail: {
-        delay: 0.005,
-        quantity: 2,
-        particles: {
-          color: {
-            value: "#ffffff",
-          },
-          size: {
-            value: 2,
-          },
-          opacity: {
-            value: 1,
-            animation: {
-              enable: true,
-              speed: 2,
-              minimumValue: 0,
-              destroy: "max",
-            },
-          },
-          move: {
-            enable: false,
-          }
-        }
-      }
     },
   },
   detectRetina: true,

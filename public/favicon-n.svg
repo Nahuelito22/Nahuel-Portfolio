@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 30 240 240" fill="none">
+  <style>
+    .ink{stroke:#1E293B} .acc{stroke:#2F5D9E}
+    @media (prefers-color-scheme: dark){ .ink{stroke:#E8EAEE} .acc{stroke:#4677C8} }
+  </style>
+  <line class="acc" x1="50" y1="50" x2="150" y2="250" stroke-width="34"/>
+  <line class="ink" x1="50" y1="250" x2="50" y2="50" stroke-width="34" stroke-linecap="square"/>
+  <line class="ink" x1="150" y1="250" x2="150" y2="50" stroke-width="34" stroke-linecap="square"/>
+</svg>

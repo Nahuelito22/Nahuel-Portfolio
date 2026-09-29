@@ -25,77 +25,91 @@ const path = Astro.url.pathname;
 const isHome = path === "/" || path === "/en" || path === "/en/";
 const anchor = (hash: string) => (isHome ? hash : `${home}${hash}`);
 
+// Menu corto a proposito: la experiencia y el contacto son lo que importa.
 const navItems = [
-  { label: t("nav.home"), url: isHome ? "#" : home },
-  { label: t("nav.saas"), url: anchor("#saas-production") },
-  { label: t("nav.projects"), url: anchor("#proyectos") },
+  { label: t("nav.experience"), url: anchor("#experiencia") },
+  { label: t("nav.cases"), url: anchor("#casos") },
   { label: t("nav.about"), url: anchor("#sobre-mi") },
-  { label: t("nav.cert"), url: anchor("#certificados") },
-  { label: t("nav.services"), url: anchor("#servicios") },
-  { label: t("nav.contact"), url: anchor("#contacto") },
 ];
+const contactUrl = anchor("#contacto");
+
+// Letras del nombre para la animacion de la marca (ver .n-mark).
+const letters = [..."Nahuel Ghilardi"];
 
 const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
 ---
 
 <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 md:py-5 flex justify-between items-center">
     <a
       href={isHome ? "#" : home}
-      class="text-xl font-bold font-mono text-white hover:text-ai-neon transition-colors"
+      aria-label="Nahuel Ghilardi"
+      class="flex items-center font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
     >
-      &lt;Nahu /&gt;
+      <!-- La N se arma con el scroll, en tres tiempos:
+           1. las letras del nombre convergen en el punto final;
+           2. la vertical derecha se cierra y se lleva el punto;
+           3. desde el punto nace la diagonal y queda la N del logo.
+           Todo esta atado al scroll (no a un tiempo) y solo anima transform,
+           opacity y clip-path. Proporciones del SVG original: barras de 1/8
+           del alto y un hueco de 70/240. -->
+      <span class="n-mark">
+        <span class="n-bar"></span>
+        <span class="brand-name" aria-hidden="true">
+          <span class="brand-text">{
+            letters.map((ch, i) => (
+              <span class="ch" style={`--k:${letters.length - 1 - i}`}>{ch === " " ? " " : ch}</span>
+            ))
+          }</span><span class="brand-dot">.</span>
+        </span>
+        <span class="n-bar"></span>
+        <svg class="n-diag" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" y1="0" x2="100" y2="100" vector-effect="non-scaling-stroke"></line>
+        </svg>
+      </span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8">
+    <nav class="hidden md:flex items-center gap-7 text-[15px]">
       {
         navItems.map((link) => (
-          <a
-            href={link.url}
-            class="text-sm font-medium text-gray-300 hover:text-ai-neon transition-colors relative group"
-          >
+          <a href={link.url} class="text-muted hover:text-ink transition-colors">
             {link.label}
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-ai-neon transition-all group-hover:w-full" />
           </a>
         ))
       }
 
-      <!-- Language Toggle (Desktop) -->
       <a
         href={targetUrl}
-        class="flex items-center gap-2 px-3 py-1 rounded border border-gray-700 text-gray-400 font-mono text-xs hover:border-ai-neon hover:text-ai-neon hover:bg-ai-neon/10 transition-all"
-        aria-label="Toggle language"
+        class="text-sm text-faint hover:text-ink transition-colors"
+        aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
       >
-        <span class={lang === "es" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >ES</span
-        >
-        <span class="text-gray-600">|</span>
-        <span class={lang === "en" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >EN</span
-        >
+        <span class={lang === "es" ? "text-ink font-medium" : ""}>ES</span>
+        <span class="mx-1">|</span>
+        <span class={lang === "en" ? "text-ink font-medium" : ""}>EN</span>
+      </a>
+
+      <a
+        href={contactUrl}
+        class="border border-accent text-accent px-4 py-2 rounded-sm font-medium text-sm hover:bg-accent hover:text-chess-dark transition-colors"
+      >
+        {t("nav.contact")}
       </a>
     </nav>
 
-    <div class="md:hidden flex items-center gap-4 relative z-50">
-      <!-- Language Toggle (Mobile) -->
+    <div class="md:hidden flex items-center gap-2 relative z-50">
       <a
         href={targetUrl}
-        class="flex items-center gap-2 px-2 py-1 rounded border border-gray-700 text-gray-400 font-mono text-xs hover:border-ai-neon hover:text-ai-neon hover:bg-ai-neon/10 transition-all"
-        aria-label="Toggle language"
+        class="text-sm text-faint px-2 py-3"
+        aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
       >
-        <span class={lang === "es" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >ES</span
-        >
-        <span class="text-gray-600">|</span>
-        <span class={lang === "en" ? "text-ai-neon font-bold" : "text-gray-400"}
-          >EN</span
-        >
+        <span class={lang === "es" ? "text-ink font-medium" : ""}>ES</span>
+        <span class="mx-1">|</span>
+        <span class={lang === "en" ? "text-ink font-medium" : ""}>EN</span>
       </a>
 
-      <!-- Hamburger Button -->
       <button
         id="mobile-menu-btn"
-        class="text-gray-300 hover:text-ai-neon transition-colors p-2 focus:outline-none"
+        class="text-ink w-11 h-11 flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
         aria-label={t("nav.menu")}
         aria-expanded="false"
         aria-controls="mobile-menu-overlay"
@@ -105,28 +119,22 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          stroke-width="1.6"
           stroke="currentColor"
-          class="w-6 h-6 transition-transform duration-300"
+          class="w-6 h-6"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
         <svg
           id="menu-icon-close"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          stroke-width="1.6"
           stroke="currentColor"
-          class="w-6 h-6 hidden transition-transform duration-300"
+          class="w-6 h-6 hidden"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
@@ -138,16 +146,12 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
   id="mobile-menu-overlay"
   class="fixed inset-0 bg-chess-dark/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300"
 >
-  <div
-    class="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-ai-neon/10 via-transparent to-transparent pointer-events-none"
-  >
-  </div>
-  <nav class="flex flex-col items-center gap-8 w-full px-6 relative z-10">
+  <nav class="flex flex-col items-center w-full px-6">
     {
-      navItems.map((link) => (
+      [...navItems, { label: t("nav.contact"), url: contactUrl }].map((link) => (
         <a
           href={link.url}
-          class="mobile-nav-link text-2xl font-bold text-gray-300 hover:text-ai-neon transition-colors w-full text-center py-4 border-b border-white/5"
+          class="mobile-nav-link font-serif text-3xl text-ink hover:text-accent transition-colors w-full text-center py-5 border-b border-line"
         >
           {link.label}
         </a>
@@ -162,20 +166,62 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
     // --- Lógica del Scroll (Glass Effect) ---
     const navbar = document.getElementById("navbar");
     if (navbar) {
+      // Progreso de la N: 0 arriba de todo, 1 a los N_CLOSE_PX de scroll.
+      const N_CLOSE_PX = 800;
+      const mark = navbar.querySelector<HTMLElement>(".n-mark");
+      const text = navbar.querySelector<HTMLElement>(".brand-text");
+      const dot = navbar.querySelector<HTMLElement>(".brand-dot");
+      const chars = navbar.querySelectorAll<HTMLElement>(".ch");
+      // Medidas sin transformaciones (offset*): cuanto tiene que viajar cada
+      // letra hasta el punto, y el ancho total del nombre abierto.
+      const measure = () => {
+        if (!mark || !text || !dot) return;
+        const target = text.offsetWidth + dot.offsetWidth / 2;
+        chars.forEach((ch) => {
+          const center = ch.offsetLeft + ch.offsetWidth / 2;
+          ch.style.setProperty("--dx", `${target - center}px`);
+        });
+        mark.style.setProperty("--n-w", `${text.offsetWidth + dot.offsetWidth}px`);
+      };
+      measure();
+      // La fuente web puede llegar despues y cambiar las medidas.
+      document.fonts?.ready.then(measure);
+      window.addEventListener("resize", measure);
+
+      let ticking = false;
+      const updateMark = () => {
+        const p = Math.min(1, Math.max(0, window.scrollY / N_CLOSE_PX));
+        navbar.style.setProperty("--n-p", p.toFixed(3));
+        ticking = false;
+      };
+      updateMark();
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateMark);
+          }
+        },
+        { passive: true },
+      );
+
       const handleScroll = () => {
         if (window.scrollY > 50) {
           navbar.classList.add(
-            "bg-chess-dark/80",
+            "is-scrolled",
+            "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
-            "border-white/10",
+            "border-line",
           );
         } else {
           navbar.classList.remove(
-            "bg-chess-dark/80",
+            "is-scrolled",
+            "bg-chess-dark/85",
             "backdrop-blur-md",
             "border-b",
-            "border-white/10",
+            "border-line",
           );
         }
       };
@@ -236,3 +282,95 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
     }
   });
 </script>
+
+<style>
+  /* Alto de la N: el resto de las medidas sale de aca, en proporcion al SVG
+     del logo (viewBox de 140 x 240, barras de 30, hueco de 70). */
+  .n-mark {
+    --h: 24px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: var(--h);
+  }
+  @media (min-width: 768px) {
+    .n-mark {
+      --h: 28px;
+    }
+  }
+
+  .n-bar {
+    position: relative;
+    z-index: 1; /* como en el logo: la diagonal queda debajo de las verticales */
+    flex: none;
+    width: calc(var(--h) / 8);
+    height: calc(var(--h) * 230 / 240);
+    background: currentColor;
+  }
+
+  /* Las tres fases salen del mismo progreso --n-p (0 a 1). */
+  .n-mark {
+    --q1: clamp(0, var(--n-p, 0) / 0.5, 1); /* letras hacia el punto */
+    --q2: clamp(0, (var(--n-p, 0) - 0.5) / 0.3, 1); /* cierre de la N */
+    --q3: clamp(0, (var(--n-p, 0) - 0.8) / 0.2, 1); /* firma de la diagonal */
+    --n-gap: calc(var(--h) * 70 / 240);
+  }
+
+  .brand-name {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
+    width: calc(
+      (var(--n-w, 11rem) + 1.4rem) * (1 - var(--q2)) + var(--n-gap) * var(--q2)
+    );
+    padding-inline: calc(0.7rem * (1 - var(--q2)));
+  }
+
+  /* 1. Cada letra viaja hasta el punto y se achica, una detras de otra como
+     un cierre: arrancan las mas cercanas (k chico), cada una recorre su
+     tramo en un 25% de la fase y la N es la ultima en llegar. */
+  .ch {
+    --l: clamp(0, (var(--q1) - var(--k) / 14 * 0.75) / 0.25, 1);
+    display: inline-block;
+    transform-origin: 50% 85%;
+    transform: translateX(calc(var(--l) * var(--dx, 0px))) scale(calc(1 - var(--l) * 0.75));
+    opacity: calc(1 - var(--l) * var(--l));
+  }
+
+  /* 2. El punto queda pegado a la vertical derecha y viaja con ella. Mientras
+     la N se cierra, crece hasta el grosor de la diagonal y pasa del cian al
+     azul del logo: cuando la diagonal nace, sale de el con el mismo color.
+     3. Recien se funde cuando la linea ya esta casi completa. */
+  .brand-dot {
+    position: absolute;
+    right: calc(0.7rem * (1 - var(--q2)));
+    bottom: 0;
+    line-height: 1;
+    transform-origin: 50% 80%;
+    transform: scale(calc(1 + var(--q2) * 0.6));
+    color: color-mix(in srgb, #4677c8 calc(var(--q2) * 100%), #5cc8d6);
+    opacity: calc(1 - clamp(0, (var(--q3) - 0.6) / 0.4, 1));
+  }
+
+  /* La diagonal va de arriba de la barra izquierda a abajo de la derecha y
+     conserva el grosor aunque se estire (non-scaling-stroke). Se dibuja
+     desde abajo a la derecha, donde esta el punto, hacia arriba. */
+  .n-diag {
+    position: absolute;
+    top: calc(var(--h) * 20 / 240);
+    bottom: calc(var(--h) * 20 / 240);
+    left: calc(var(--h) / 16);
+    right: calc(var(--h) / 16);
+    width: calc(100% - var(--h) / 8);
+    height: calc(100% - var(--h) * 40 / 240);
+    overflow: visible;
+    pointer-events: none;
+    clip-path: inset(-30% 0 -30% calc((1 - var(--q3)) * 100%));
+  }
+  .n-diag line {
+    stroke: #4677c8;
+    stroke-width: calc(var(--h) / 8);
+  }
+</style>

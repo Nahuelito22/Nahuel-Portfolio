@@ -1,0 +1,104 @@
+---
+// src/components/Experience.astro
+//
+// Linea de tiempo de trabajo real: para quien, que hice y que paso despues.
+// Los datos viven en src/data/experience.ts; aca solo la presentacion.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { EXPERIENCE } from "../data/experience";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="experiencia" class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+  <p class="text-sm md:text-[15px] font-medium text-accent">{t("exp.eyebrow")}</p>
+  <h2
+    class="mt-1.5 md:mt-2 font-serif font-medium text-[1.875rem] md:text-[2.75rem] leading-[1.15] md:leading-[1.12] tracking-[-0.02em] max-w-2xl text-balance"
+  >
+    {t("exp.title")}
+  </h2>
+
+  <ol class="mt-8 md:mt-12 pl-5 md:pl-[34px] border-l border-[#262B35] flex flex-col gap-6 md:gap-[34px]">
+    {
+      EXPERIENCE.map((item) => {
+        const c = item.content[lang];
+        return (
+          <li class="relative">
+            <span
+              aria-hidden="true"
+              class:list={[
+                "absolute top-1 rounded-sm",
+                item.current
+                  ? "-left-[26px] md:-left-[41px] w-[11px] h-[11px] md:w-3 md:h-3 bg-accent"
+                  : "-left-[25px] md:-left-[40px] w-[9px] h-[9px] md:w-2.5 md:h-2.5 bg-chess-dark border-[1.5px] border-accent",
+              ]}
+            />
+            <p class="text-[13px] md:text-sm text-faint">{c.period}</p>
+
+            <article
+              class:list={[
+                "mt-2 bg-surface/90 border border-line rounded-md md:grid md:grid-cols-[minmax(0,1fr)_220px] md:gap-8",
+                item.compact ? "p-[18px] md:px-7 md:py-[22px]" : "p-[18px] md:px-7 md:py-[26px]",
+              ]}
+            >
+              <div>
+                <h3
+                  class:list={[
+                    "font-serif font-semibold tracking-[-0.01em]",
+                    item.compact ? "text-[19px] md:text-[22px]" : "text-[21px] md:text-[25px]",
+                  ]}
+                >
+                  {c.org}
+                </h3>
+                {/* En movil el rol va debajo del nombre; en escritorio, a la derecha. */}
+                <p class="md:hidden mt-0.5 text-sm text-muted">{c.role}</p>
+
+                <p
+                  class:list={[
+                    "text-soft leading-relaxed",
+                    item.compact ? "mt-1.5 md:mt-2 text-[15px] md:text-base" : "mt-2.5 md:mt-3 text-base md:text-[17px]",
+                  ]}
+                >
+                  {c.description}
+                </p>
+
+                {item.facts && (
+                  <div class="mt-4 grid grid-cols-3 gap-2 md:flex md:gap-9">
+                    {item.facts.map((f) => (
+                      <div>
+                        <p class="font-serif font-semibold text-2xl md:text-3xl">{f.value}</p>
+                        <p class="text-xs md:text-sm text-muted">{f.label[lang]}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {item.stack && (
+                  <p class="mt-3 md:mt-3.5 text-[13px] md:text-sm leading-relaxed text-faint">
+                    {item.stack.join(" · ")}
+                  </p>
+                )}
+
+                {item.links && (
+                  <p class="mt-3.5 md:mt-4 text-[15px] flex flex-wrap gap-x-5 gap-y-1">
+                    {item.links.map((l) => (
+                      <a
+                        href={l.href[lang]}
+                        class="text-accent hover:text-[#8ADDE7] transition-colors"
+                        {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      >
+                        {l.label[lang]}
+                      </a>
+                    ))}
+                  </p>
+                )}
+              </div>
+
+              <p class="hidden md:block text-[15px] text-muted text-right">{c.role}</p>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>

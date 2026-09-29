@@ -21,5 +21,6 @@ export const SOCIALS = {
   linkedin: "https://www.linkedin.com/in/nahuel-ghilardi/",
 };
 
-/** Imagen por defecto para las previsualizaciones al compartir (1200x630). */
+/** Imagenes para las previsualizaciones al compartir (1200x630), por idioma. */
 export const OG_IMAGE = "/og-image.png";
+export const OG_IMAGE_EN = "/og-image-en.png";

@@ -1,7 +1,6 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import { SITE_URL } from './src/config/site.ts';
 
@@ -17,7 +16,6 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    icon(),
     sitemap({
       i18n: {
         defaultLocale: 'es',
