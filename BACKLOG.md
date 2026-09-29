@@ -44,6 +44,10 @@ consola, precios bajos) a un sitio centrado en la experiencia.
 - **Correcciones de contenido:** un certificado se mostraba con el nombre de otro
   curso; se unificó el voseo; salieron los precios públicos de los servicios.
 - **SEO:** imagen para redes nueva, una por idioma; página 404.
+- **CV nuevo** alineado con el sitio (mismo título, fechas y stack) y revisado
+  contra el contrato de Dialogy.
+- **Foto:** la foto real, con el fondo verde quitado y un degradé azul noche,
+  igual en el sitio y en el CV.
 - **Limpieza:** componentes, datos, imágenes y claves de traducción del diseño
   anterior; dependencias de íconos; el easter egg del Konami. Queda el ♞ del footer
   como único guiño.
@@ -59,18 +63,7 @@ informes de `docs/`.
 
 ## 🔴 Alto impacto
 
-### 1. CV descargable
-
-El PDF de `public/CV-Nahuel.pdf` es el viejo. Reemplazarlo por el nuevo, con la
-misma historia y el mismo título profesional que el sitio.
-
-### 2. Foto con fondo neutro
-
-La foto del inicio tiene fondo verde saturado, fuera de la paleta: lleva la mirada
-al fondo en vez de a la cara. Lo ideal es una foto nueva contra una pared lisa gris
-u oscura; como alternativa, recortar el fondo.
-
-### 3. Más prueba de terceros
+### 1. Más prueba de terceros
 
 Hoy solo hay testimonios de AstroFit, y viven en su caso. Pedir una línea a la
 organización de la Hackathon y, si corresponde, a Dialogy. Regla: **solo citas
@@ -90,7 +83,7 @@ cada acuerdo):
 
 ## 🟡 Medio impacto
 
-### 4. tsparticles: 140 kB en el bundle inicial
+### 2. tsparticles: 140 kB en el bundle inicial
 
 **No tocar sin verificar en el navegador del dueño del sitio.** Se intentó una vez y
 se revirtió: un guard de `prefers-reduced-motion` **apagaba las partículas**, y
@@ -100,17 +93,17 @@ es común. Las partículas son identidad visual, no un adorno.
 Si se retoma: import dinámico **sin** el guard, verificado en un navegador con esa
 opción activada. Alternativa: menos partículas en móvil.
 
-### 5. Imágenes servidas por Astro
+### 3. Imágenes servidas por Astro
 
 Mover las imágenes de `public/` a `src/assets/` y usar `<Image />`: tamaños
 automáticos, variantes por densidad y AVIF.
 
-### 6. Auditoría de idiomas automatizable
+### 4. Auditoría de idiomas automatizable
 
 Un `npm run check:i18n` que falle si falta una clave en algún idioma o si hay texto
 en español en las páginas `/en/` (salvo nombres propios y citas textuales).
 
-### 7. Eventos de Analytics
+### 5. Eventos de Analytics
 
 Los links de contacto tienen `data-analytics`, pero falta cablearlos a eventos de
 Vercel Analytics. Sumar la descarga del CV y los clicks a los casos.
