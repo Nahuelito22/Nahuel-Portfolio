@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
 import { ViewTransitions } from "astro:transitions";
-import { SITE_URL, OG_IMAGE, SOCIALS, EMAIL } from "../config/site";
+import { SITE_URL, OG_IMAGE, OG_IMAGE_EN, SOCIALS, EMAIL } from "../config/site";
 
 interface Props {
   title: string;
@@ -30,7 +30,7 @@ const {
 
 // URLs absolutas: las redes sociales no resuelven rutas relativas.
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
-const ogImage = new URL(OG_IMAGE, SITE_URL).href;
+const ogImage = new URL(lang === "en" ? OG_IMAGE_EN : OG_IMAGE, SITE_URL).href;
 
 // hreflang: le dice a Google que la version es y la en son la misma pagina en
 // dos idiomas, y cual servir por defecto.

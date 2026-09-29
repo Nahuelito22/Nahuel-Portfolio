@@ -194,7 +194,7 @@ export const ui = {
 
     // Testimonials
     'testimonials.role.direction': 'Management',
-    'testimonials.disclaimer': 'Testimonials published on',
+    'testimonials.disclaimer': 'Verbatim quotes, in their original Spanish, published on',
 
     // Case studies
     'case.badge': 'Case study',
