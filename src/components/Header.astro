@@ -33,6 +33,9 @@ const navItems = [
 ];
 const contactUrl = anchor("#contacto");
 
+// Letras del nombre para la animacion de la marca (ver .n-mark).
+const letters = [..."Nahuel Ghilardi"];
+
 const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
 ---
 
@@ -43,22 +46,27 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
       aria-label="Nahuel Ghilardi"
       class="flex items-center font-serif font-semibold text-[19px] md:text-[21px] tracking-[-0.01em] text-ink hover:text-white transition-colors"
     >
-      <!-- La N: verticales en el color del texto y la diagonal en el azul del logo,
-           un punto mas claro que el original para que contraste sobre el fondo oscuro. -->
-      <svg
-        viewBox="30 30 140 240"
-        fill="none"
-        aria-hidden="true"
-        class="h-6 md:h-7 w-auto shrink-0"
-      >
-        <line x1="50" y1="50" x2="150" y2="250" stroke="#4677C8" stroke-width="30"></line>
-        <line x1="50" y1="250" x2="50" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
-        <line x1="150" y1="250" x2="150" y2="50" stroke="currentColor" stroke-width="30" stroke-linecap="square"></line>
-      </svg>
-      <!-- Arriba de todo se ve el nombre completo; al bajar se pliega detras de
-           la N y queda solo el logo. Asi no se lee "N Nahuel" mientras el
-           header acompania todo el scroll. -->
-      <span class="brand-name" aria-hidden="true">Nahuel Ghilardi<span class="text-accent">.</span></span>
+      <!-- La N se arma con el scroll, en tres tiempos:
+           1. las letras del nombre convergen en el punto final;
+           2. la vertical derecha se cierra y se lleva el punto;
+           3. desde el punto nace la diagonal y queda la N del logo.
+           Todo esta atado al scroll (no a un tiempo) y solo anima transform,
+           opacity y clip-path. Proporciones del SVG original: barras de 1/8
+           del alto y un hueco de 70/240. -->
+      <span class="n-mark">
+        <span class="n-bar"></span>
+        <span class="brand-name" aria-hidden="true">
+          <span class="brand-text">{
+            letters.map((ch, i) => (
+              <span class="ch" style={`--k:${letters.length - 1 - i}`}>{ch === " " ? " " : ch}</span>
+            ))
+          }</span><span class="brand-dot">.</span>
+        </span>
+        <span class="n-bar"></span>
+        <svg class="n-diag" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" y1="0" x2="100" y2="100" vector-effect="non-scaling-stroke"></line>
+        </svg>
+      </span>
     </a>
 
     <nav class="hidden md:flex items-center gap-7 text-[15px]">
@@ -158,6 +166,46 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
     // --- Lógica del Scroll (Glass Effect) ---
     const navbar = document.getElementById("navbar");
     if (navbar) {
+      // Progreso de la N: 0 arriba de todo, 1 a los N_CLOSE_PX de scroll.
+      const N_CLOSE_PX = 800;
+      const mark = navbar.querySelector<HTMLElement>(".n-mark");
+      const text = navbar.querySelector<HTMLElement>(".brand-text");
+      const dot = navbar.querySelector<HTMLElement>(".brand-dot");
+      const chars = navbar.querySelectorAll<HTMLElement>(".ch");
+      // Medidas sin transformaciones (offset*): cuanto tiene que viajar cada
+      // letra hasta el punto, y el ancho total del nombre abierto.
+      const measure = () => {
+        if (!mark || !text || !dot) return;
+        const target = text.offsetWidth + dot.offsetWidth / 2;
+        chars.forEach((ch) => {
+          const center = ch.offsetLeft + ch.offsetWidth / 2;
+          ch.style.setProperty("--dx", `${target - center}px`);
+        });
+        mark.style.setProperty("--n-w", `${text.offsetWidth + dot.offsetWidth}px`);
+      };
+      measure();
+      // La fuente web puede llegar despues y cambiar las medidas.
+      document.fonts?.ready.then(measure);
+      window.addEventListener("resize", measure);
+
+      let ticking = false;
+      const updateMark = () => {
+        const p = Math.min(1, Math.max(0, window.scrollY / N_CLOSE_PX));
+        navbar.style.setProperty("--n-p", p.toFixed(3));
+        ticking = false;
+      };
+      updateMark();
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateMark);
+          }
+        },
+        { passive: true },
+      );
+
       const handleScroll = () => {
         if (window.scrollY > 50) {
           navbar.classList.add(
@@ -236,21 +284,93 @@ const targetUrl = langToggleHref ?? (lang === "es" ? "/en/" : "/");
 </script>
 
 <style>
+  /* Alto de la N: el resto de las medidas sale de aca, en proporcion al SVG
+     del logo (viewBox de 140 x 240, barras de 30, hueco de 70). */
+  .n-mark {
+    --h: 24px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: var(--h);
+  }
+  @media (min-width: 768px) {
+    .n-mark {
+      --h: 28px;
+    }
+  }
+
+  .n-bar {
+    position: relative;
+    z-index: 1; /* como en el logo: la diagonal queda debajo de las verticales */
+    flex: none;
+    width: calc(var(--h) / 8);
+    height: calc(var(--h) * 230 / 240);
+    background: currentColor;
+  }
+
+  /* Las tres fases salen del mismo progreso --n-p (0 a 1). */
+  .n-mark {
+    --q1: clamp(0, var(--n-p, 0) / 0.5, 1); /* letras hacia el punto */
+    --q2: clamp(0, (var(--n-p, 0) - 0.5) / 0.3, 1); /* cierre de la N */
+    --q3: clamp(0, (var(--n-p, 0) - 0.8) / 0.2, 1); /* firma de la diagonal */
+    --n-gap: calc(var(--h) * 70 / 240);
+  }
+
   .brand-name {
+    position: relative;
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 16rem;
-    margin-left: 0.75rem;
-    opacity: 1;
-    transition:
-      max-width 400ms ease,
-      margin-left 400ms ease,
-      opacity 250ms ease;
+    line-height: 1;
+    width: calc(
+      (var(--n-w, 11rem) + 1.4rem) * (1 - var(--q2)) + var(--n-gap) * var(--q2)
+    );
+    padding-inline: calc(0.7rem * (1 - var(--q2)));
   }
-  .is-scrolled .brand-name {
-    max-width: 0;
-    margin-left: 0;
-    opacity: 0;
+
+  /* 1. Cada letra viaja hasta el punto y se achica, una detras de otra como
+     un cierre: arrancan las mas cercanas (k chico), cada una recorre su
+     tramo en un 25% de la fase y la N es la ultima en llegar. */
+  .ch {
+    --l: clamp(0, (var(--q1) - var(--k) / 14 * 0.75) / 0.25, 1);
+    display: inline-block;
+    transform-origin: 50% 85%;
+    transform: translateX(calc(var(--l) * var(--dx, 0px))) scale(calc(1 - var(--l) * 0.75));
+    opacity: calc(1 - var(--l) * var(--l));
+  }
+
+  /* 2. El punto queda pegado a la vertical derecha y viaja con ella. Mientras
+     la N se cierra, crece hasta el grosor de la diagonal y pasa del cian al
+     azul del logo: cuando la diagonal nace, sale de el con el mismo color.
+     3. Recien se funde cuando la linea ya esta casi completa. */
+  .brand-dot {
+    position: absolute;
+    right: calc(0.7rem * (1 - var(--q2)));
+    bottom: 0;
+    line-height: 1;
+    transform-origin: 50% 80%;
+    transform: scale(calc(1 + var(--q2) * 0.6));
+    color: color-mix(in srgb, #4677c8 calc(var(--q2) * 100%), #5cc8d6);
+    opacity: calc(1 - clamp(0, (var(--q3) - 0.6) / 0.4, 1));
+  }
+
+  /* La diagonal va de arriba de la barra izquierda a abajo de la derecha y
+     conserva el grosor aunque se estire (non-scaling-stroke). Se dibuja
+     desde abajo a la derecha, donde esta el punto, hacia arriba. */
+  .n-diag {
+    position: absolute;
+    top: calc(var(--h) * 20 / 240);
+    bottom: calc(var(--h) * 20 / 240);
+    left: calc(var(--h) / 16);
+    right: calc(var(--h) / 16);
+    width: calc(100% - var(--h) / 8);
+    height: calc(100% - var(--h) * 40 / 240);
+    overflow: visible;
+    pointer-events: none;
+    clip-path: inset(-30% 0 -30% calc((1 - var(--q3)) * 100%));
+  }
+  .n-diag line {
+    stroke: #4677c8;
+    stroke-width: calc(var(--h) / 8);
   }
 </style>
