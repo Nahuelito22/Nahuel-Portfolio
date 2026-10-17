@@ -37,7 +37,8 @@ consola, precios bajos) a un sitio centrado en la experiencia.
   formación, stack, servicios): lo no traducible existe una sola vez. Resuelve el
   viejo problema de contenido duplicado entre idiomas.
 - **Nada que envejezca:** fuera los contadores de clientes y usuarios. Las cifras de
-  AstroFit están en pasado (máximo alcanzado) porque el producto se vendió.
+  AstroFit están en pasado (máximo alcanzado) porque el sistema se traspasó a otro
+  operador. La marca AstroFit sigue siendo de Nahuel: no decir que se vendió la marca.
 - **Casos de estudio:** AstroFit, Hackathon EduTech Mendoza y Nimbus AI.
 - **Dialogy LLC** figura en Experiencia con nombre, rol, stack como lista plana y
   links públicos, con autorización de la clienta.

@@ -76,13 +76,13 @@ export const CASES: CaseStudy[] = [
         metaTitle:
           "AstroFit: caso de estudio | Matías Nahuel Ghilardi",
         metaDescription:
-          "Cómo un gimnasio pasó del cuaderno donde anotaba quién debía la cuota a gestionar alumnos, pagos y asistencias en un solo lugar. Llegó a 5 gimnasios y 300 alumnos, y en 2026 lo vendimos.",
+          "Cómo un gimnasio pasó del cuaderno donde anotaba quién debía la cuota a gestionar alumnos, pagos y asistencias en un solo lugar. Llegó a 5 gimnasios y 300 alumnos, y en 2026 traspasé el sistema, adaptado, a Gimnasio Gemza.",
         problem:
           "Un gimnasio de barrio anota en un cuaderno quién pagó la cuota y quién no. Funciona hasta que dejan de ser veinte alumnos. Después ya nadie sabe con certeza quién está al día, quién viene a entrenar y cuánto entró en el mes. Las decisiones del negocio —si conviene tomar otro profesor, si hay que ajustar la cuota, por qué este mes entró menos— se terminan tomando a ojo.",
         solution:
           "AstroFit reemplaza el cuaderno. Cada alumno tiene su ficha, las cuotas quedan registradas al cobrarlas y la asistencia se toma con un código QR en la puerta. El dueño abre el panel y ve de una sola vez lo que antes tenía que reconstruir de memoria: quién debe, quién viene y cuánto facturó.",
         result:
-          "Llegó a 5 gimnasios y 300 alumnos. El crecimiento dejó de ser un problema de administración: sumar alumnos no significaba sumar planillas. Cuando uno de los gimnasios pidió que los números de la caja no quedaran a la vista de quien pasa por el mostrador, la función estuvo lista en días. En 2026 lo vendimos, y hasta diciembre acompaño la transferencia técnica al comprador.",
+          "Llegó a 5 gimnasios y 300 alumnos. El crecimiento dejó de ser un problema de administración: sumar alumnos no significaba sumar planillas. Cuando uno de los gimnasios pidió que los números de la caja no quedaran a la vista de quien pasa por el mostrador, la función estuvo lista en días. En 2026 traspasé el sistema a Gimnasio Gemza, con las modificaciones para adaptarlo a su operación; la marca AstroFit sigue siendo mía. Hasta diciembre los acompaño con soporte y ajustes menores.",
         stackNote:
           "Construido con Astro, Supabase y TypeScript. Los flujos que no pueden fallar —cobrar una cuota, dar de alta un alumno, registrar una asistencia— están cubiertos con pruebas automatizadas en Playwright. En la práctica significa que una mejora nueva no rompe lo que ya venía funcionando.",
       },
@@ -91,13 +91,13 @@ export const CASES: CaseStudy[] = [
           "From the notebook on the counter to a dashboard where the owner sees the whole business.",
         metaTitle: "AstroFit: case study | Matías Nahuel Ghilardi",
         metaDescription:
-          "How a gym went from a notebook tracking who owed their monthly fee to managing members, payments and attendance in one place. It grew to 5 gyms and 300 members, and in 2026 we sold it.",
+          "How a gym went from a notebook tracking who owed their monthly fee to managing members, payments and attendance in one place. It grew to 5 gyms and 300 members, and in 2026 I transferred the system, adapted, to Gimnasio Gemza.",
         problem:
           "A neighbourhood gym writes down who paid their monthly fee and who didn't in a paper notebook. That works until there are more than twenty members. After that, nobody knows for certain who is up to date, who actually shows up, and how much came in this month. The business decisions — whether to hire another trainer, whether to adjust the fee, why this month was slower — end up being guesswork.",
         solution:
           "AstroFit replaces the notebook. Every member has a record, fees are logged as they're collected, and attendance is taken with a QR code at the door. The owner opens the dashboard and sees at a glance what used to be reconstructed from memory: who owes, who attends, and how much was billed.",
         result:
-          "It grew to 5 gyms and 300 members. Growth stopped being an admin problem: adding members no longer meant adding spreadsheets. When one of the gyms asked for the till figures to be hidden from whoever is standing at the counter, the feature shipped in days. In 2026 we sold it, and until December I'm supporting the technical handover to the buyer.",
+          "It grew to 5 gyms and 300 members. Growth stopped being an admin problem: adding members no longer meant adding spreadsheets. When one of the gyms asked for the till figures to be hidden from whoever is standing at the counter, the feature shipped in days. In 2026 I transferred the system to Gimnasio Gemza, with the changes needed to fit their operation; the AstroFit brand remains mine. Until December I'm supporting them with maintenance and minor fixes.",
         stackNote:
           "Built with Astro, Supabase and TypeScript. The flows that cannot fail — collecting a fee, registering a member, logging attendance — are covered by automated Playwright tests. In practice that means a new improvement doesn't break what was already working.",
       },
@@ -126,7 +126,7 @@ export const CASES: CaseStudy[] = [
         problem:
           "Una hackathon tiene cuatro públicos que necesitan cosas distintas al mismo tiempo: los equipos se inscriben y entregan su proyecto, los mentores tienen que saber a quién acompañan, el jurado evalúa y la organización necesita ver todo junto. Los organizadores me pidieron una landing para anunciar el evento. Pero una landing no resolvía lo difícil: todo lo que pasa después de que alguien se inscribe.",
         solution:
-          "Propuse construir la plataforma completa, y la desarrollé como parte del staff técnico. Cada rol entra y ve solo lo suyo: los equipos se inscriben y suben su proyecto, cada mentor ve los equipos que le tocan, el jurado evalúa desde su propio panel y la organización ve el evento completo en un solo lugar.",
+          "Propuse construir la plataforma completa, y la desarrollé como parte de la organización. Cada rol entra y ve solo lo suyo: los equipos se inscriben y suben su proyecto, cada mentor ve los equipos que le tocan, el jurado evalúa desde su propio panel y la organización ve el evento completo en un solo lugar.",
         result:
           "La 2ª edición corrió entera sobre la plataforma: más de 300 inscriptos, 150 participantes y más de 40 mentores y jurados. El evento tuvo cobertura en MDZ, que me entrevistó.",
         stackNote:
@@ -141,7 +141,7 @@ export const CASES: CaseStudy[] = [
         problem:
           "A hackathon has four audiences who need different things at the same time: teams register and submit their project, mentors need to know who they are supporting, the jury scores, and the organisers need to see it all together. The organisers asked me for a landing page to announce the event. But a landing page didn't solve the hard part: everything that happens after someone signs up.",
         solution:
-          "I proposed building the full platform and developed it as part of the technical staff. Each role logs in and sees only what's theirs: teams register and upload their project, each mentor sees the teams assigned to them, the jury scores from its own panel, and the organisers see the whole event in one place.",
+          "I proposed building the full platform and developed it as part of the organising team. Each role logs in and sees only what's theirs: teams register and upload their project, each mentor sees the teams assigned to them, the jury scores from its own panel, and the organisers see the whole event in one place.",
         result:
           "The 2nd edition ran entirely on the platform: over 300 sign-ups, 150 participants and over 40 mentors and judges. The event was covered by MDZ, who interviewed me.",
         stackNote:

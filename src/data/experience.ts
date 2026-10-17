@@ -52,7 +52,8 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     id: "dialogy",
     current: true,
-    stack: ["React Native (Expo)", "Django", "FastAPI", "LangChain", "Supabase", "AWS"],
+    // Sin stack a proposito: el contrato (cl. 10) vuelve confidencial toda la
+    // informacion tecnica del producto. El stack general vive en la seccion Stack.
     // Links publicos de Dialogy. App Store se suma cuando la app este publicada.
     links: [
       {
@@ -97,17 +98,17 @@ export const EXPERIENCE: ExperienceItem[] = [
     content: {
       es: {
         org: "AstroFit",
-        role: "Cofundador · Vendido en 2026",
+        role: "Cofundador · Traspasado en 2026",
         period: "2025 — 2026",
         description:
-          "Software de gestión para gimnasios. Lo diseñé, lo construí, conseguimos clientes que lo usaban a diario y lo vendimos. Hasta diciembre acompaño la transferencia técnica al comprador.",
+          "Software de gestión para gimnasios. Lo diseñé, lo construí y conseguimos clientes que lo usaban a diario. En 2026 traspasé el sistema, adaptado, a Gimnasio Gemza; la marca sigue siendo mía. Hasta diciembre los acompaño con soporte y ajustes menores.",
       },
       en: {
         org: "AstroFit",
-        role: "Co-founder · Sold in 2026",
+        role: "Co-founder · Transferred in 2026",
         period: "2025 — 2026",
         description:
-          "Management software for gyms. I designed it, built it, we signed clients who used it every day, and we sold it. Until December I'm supporting the technical handover to the buyer.",
+          "Management software for gyms. I designed it, built it and we signed clients who used it every day. In 2026 I transferred the system, adapted, to Gimnasio Gemza; the brand remains mine. Until December I'm supporting them with maintenance and minor fixes.",
       },
     },
   },
@@ -135,14 +136,14 @@ export const EXPERIENCE: ExperienceItem[] = [
     content: {
       es: {
         org: "Hackathon EduTech Mendoza",
-        role: "Staff técnico · 2ª edición",
+        role: "Organizador · Desarrollador de plataforma",
         period: "2026",
         description:
           "Desarrollé la plataforma completa: inscripciones, entrega de proyectos, asignación de mentores y evaluación del jurado, con una vista para cada rol.",
       },
       en: {
         org: "Hackathon EduTech Mendoza",
-        role: "Technical staff · 2nd edition",
+        role: "Organiser · Platform developer",
         period: "2026",
         description:
           "I built the whole platform: registrations, project submissions, mentor assignment and jury scoring, with a dedicated view for each role.",
