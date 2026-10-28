@@ -22,6 +22,8 @@ const content = study.content.es;
   description={content.metaDescription}
   lang="es"
   ogType="article"
+  ogImage={`/og/${study.slug}.png`}
+  ogImageAlt={`${study.product}: caso de estudio de Matías Nahuel Ghilardi`}
   alternatePaths={{
     // Con barra final, para que coincidan exactamente con el canonical y el
     // sitemap. Sin ella, Google las lee como URLs distintas y el hreflang

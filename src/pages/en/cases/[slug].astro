@@ -23,6 +23,8 @@ const content = study.content.en;
   description={content.metaDescription}
   lang="en"
   ogType="article"
+  ogImage={`/og/${study.slug}-en.png`}
+  ogImageAlt={`${study.product}: case study by Matías Nahuel Ghilardi`}
   alternatePaths={{
     // Con barra final: tiene que coincidir con el canonical y el sitemap.
     es: `/casos/${study.slug}/`,

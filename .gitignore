@@ -40,6 +40,9 @@ plantilla_commit.txt
 # Carpeta de ayudas y recursos
 ayudas_y_recursos/
 
+# POC de rediseño (fuera del deploy y del historial del portfolio actual)
+POC-Portfolio/
+
 # Ignorar checkpoints de Jupyter
 .ipynb_checkpoints/
 .cache.sqlite

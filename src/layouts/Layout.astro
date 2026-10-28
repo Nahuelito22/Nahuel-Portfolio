@@ -18,6 +18,13 @@ interface Props {
   alternatePaths?: { es: string; en: string };
   /** "website" para la portada, "article" para un caso de estudio. */
   ogType?: string;
+  /**
+   * Imagen para redes propia de esta pagina (1200x630), ya en su idioma.
+   * Si no se pasa, se usa la de la portada.
+   */
+  ogImage?: string;
+  /** Texto alternativo de `ogImage`. */
+  ogImageAlt?: string;
 }
 
 const {
@@ -26,11 +33,13 @@ const {
   lang = "es",
   alternatePaths = { es: "/", en: "/en/" },
   ogType = "website",
+  ogImage: ogImagePath = lang === "en" ? OG_IMAGE_EN : OG_IMAGE,
+  ogImageAlt = "Matías Nahuel Ghilardi — Full Stack Developer & Data Scientist",
 } = Astro.props;
 
 // URLs absolutas: las redes sociales no resuelven rutas relativas.
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
-const ogImage = new URL(lang === "en" ? OG_IMAGE_EN : OG_IMAGE, SITE_URL).href;
+const ogImage = new URL(ogImagePath, SITE_URL).href;
 
 // hreflang: le dice a Google que la version es y la en son la misma pagina en
 // dos idiomas, y cual servir por defecto.
@@ -87,10 +96,7 @@ const personSchema = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Matías Nahuel Ghilardi — Full Stack Developer & Data Scientist"
-    />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
