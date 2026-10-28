@@ -46,16 +46,25 @@ export const OTHER_PROJECTS: OtherProject[] = [
       en: "Clinical decision support: nurses log vital signs and a model flags early warnings of deterioration.",
     },
     stack: ["Python", "Scikit-learn", "FastAPI"],
+    link: "https://zahasalud.com.ar/",
     github: "https://github.com/Nahuelito22/Zaha",
+  },
+  {
+    name: "S Pen Presenter",
+    line: {
+      es: "Quería pasar las diapositivas de la notebook con el S Pen del teléfono y ninguna app lo lograba. Samsung no abre esos gestos, así que la app se hace pasar por un reproductor de música para recibirlos.",
+      en: "I wanted to move my laptop's slides with my phone's S Pen and no app could do it. Samsung doesn't expose those gestures, so the app poses as a music player to receive them.",
+    },
+    stack: ["Kotlin", "Python", "WebSocket"],
+    github: "https://github.com/Nahuelito22/spen-presenter",
   },
   {
     name: "Guidia",
     line: {
-      es: "Arma itinerarios y sugerencias a partir de tus preferencias, con IA generativa. Lo hicimos en una hackathon y llegamos a la final.",
-      en: "Builds itineraries and suggestions from your preferences using generative AI. We built it at a hackathon and made the final.",
+      es: "Un copiloto de IA para docentes: arma la planificación con adaptaciones para cada alumno y la rúbrica para las familias. Lo hicimos en 48 horas en la Hackathon EduTech 360 de 2025 y llegamos a la final.",
+      en: "An AI copilot for teachers: it drafts lesson plans with adaptations for each student and the rubric for families. We built it in 48 hours at the 2025 EduTech 360 Hackathon and made the final.",
     },
-    stack: ["React", "Python", "GenAI"],
-    link: "https://guidia.onrender.com/",
+    stack: ["Python", "Dash", "Gemini"],
     github: "https://github.com/Nahuelito22/Guidia",
   },
   {
