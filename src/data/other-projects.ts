@@ -59,6 +59,16 @@ export const OTHER_PROJECTS: OtherProject[] = [
     github: "https://github.com/Nahuelito22/spen-presenter",
   },
   {
+    name: "Nimbus-TTS",
+    status: { es: "En pausa", en: "On hold" },
+    line: {
+      es: "Escucho mucho de lo que estudio y el Lector inmersivo de OneNote quedó abandonado. Le paso un PDF o un apunte y lo lee con voces naturales, incluso sin internet.",
+      en: "I listen to a lot of what I study, and OneNote's Immersive Reader was left behind. I give it a PDF or my notes and it reads them with natural voices, even offline.",
+    },
+    stack: ["Python", "Kokoro", "Piper"],
+    github: "https://github.com/Nahuelito22/Nimbus-TTS",
+  },
+  {
     name: "Guidia",
     line: {
       es: "Un copiloto de IA para docentes: arma la planificación con adaptaciones para cada alumno y la rúbrica para las familias. Lo hicimos en 48 horas en la Hackathon EduTech 360 de 2025 y llegamos a la final.",
