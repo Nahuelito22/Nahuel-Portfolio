@@ -88,6 +88,48 @@ export const EXPERIENCE: ExperienceItem[] = [
     },
   },
   {
+    id: "empujon",
+    current: true,
+    // Sin stack, sin links y sin logo: el codigo vive solo en las cuentas de la
+    // empresa y la marca es suya. La descripcion es la que ya salio en prensa.
+    content: {
+      es: {
+        org: "Empujón Educativo · Mendoza",
+        role: "Desarrollador de software",
+        period: "2026 — hoy",
+        description:
+          "Edtech que usa IA para entender cómo aprende cada estudiante: mide la fluidez lectora y adapta los materiales a sus capacidades. Formo parte del equipo de tecnología.",
+      },
+      en: {
+        org: "Empujón Educativo · Mendoza",
+        role: "Software developer",
+        period: "2026 — present",
+        description:
+          "An edtech that uses AI to understand how each student learns: it measures reading fluency and adapts materials to their abilities. I'm part of the tech team.",
+      },
+    },
+  },
+  {
+    id: "trazza",
+    current: true,
+    content: {
+      es: {
+        org: "Trazza",
+        role: "CTO",
+        period: "2026 — hoy",
+        description:
+          "Un pasaporte de competencias para juniors y pasantes: en lugar de un CV que escribe uno mismo, las habilidades las validan quienes te vieron trabajar. Lo armamos con Martín Pérez Millán y estamos validándolo con encuestas a candidatos y empresas.",
+      },
+      en: {
+        org: "Trazza",
+        role: "CTO",
+        period: "2026 — present",
+        description:
+          "A skills passport for juniors and interns: instead of a CV you write yourself, your skills are validated by the people who saw you work. I'm building it with Martín Pérez Millán, and we're validating it with surveys of candidates and companies.",
+      },
+    },
+  },
+  {
     id: "astrofit",
     links: [
       {
