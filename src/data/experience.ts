@@ -98,14 +98,14 @@ export const EXPERIENCE: ExperienceItem[] = [
         role: "Desarrollador de software",
         period: "2026 — hoy",
         description:
-          "Edtech que usa IA para entender cómo aprende cada estudiante: mide la fluidez lectora y adapta los materiales a sus capacidades. Formo parte del equipo de tecnología.",
+          "Edtech que usa IA para entender cómo aprende cada estudiante: mide la fluidez lectora y adapta los materiales a sus capacidades. Me ocupo del backend, la infraestructura y el relevamiento de requerimientos. Hoy armamos herramientas internas para el equipo, antes de pasar al producto.",
       },
       en: {
         org: "Empujón Educativo · Mendoza",
         role: "Software developer",
         period: "2026 — present",
         description:
-          "An edtech that uses AI to understand how each student learns: it measures reading fluency and adapts materials to their abilities. I'm part of the tech team.",
+          "An edtech that uses AI to understand how each student learns: it measures reading fluency and adapts materials to their abilities. I handle the backend, infrastructure and requirements gathering. Right now we're building internal tools for the team before moving on to the product.",
       },
     },
   },
@@ -118,14 +118,14 @@ export const EXPERIENCE: ExperienceItem[] = [
         role: "CTO",
         period: "2026 — hoy",
         description:
-          "Un pasaporte de competencias para juniors y pasantes: en lugar de un CV que escribe uno mismo, las habilidades las validan quienes te vieron trabajar. Lo armamos con Martín Pérez Millán, somos parte de la incubadora de la UNCuyo y estamos validándolo con encuestas a candidatos y empresas.",
+          "Un pasaporte de competencias para juniors y pasantes: en lugar de un CV que escribe uno mismo, las habilidades las validan quienes te vieron trabajar. Lo armamos con Martín Pérez Millán en la incubadora de la UNCuyo. Como CTO armo la infraestructura y diseño los algoritmos que ordenan ese registro de habilidades.",
       },
       en: {
         org: "Trazza",
         role: "CTO",
         period: "2026 — present",
         description:
-          "A skills passport for juniors and interns: instead of a CV you write yourself, your skills are validated by the people who saw you work. I'm building it with Martín Pérez Millán; we're part of the UNCuyo incubator and validating it with surveys of candidates and companies.",
+          "A skills passport for juniors and interns: instead of a CV you write yourself, your skills are validated by the people who saw you work. We're building it with Martín Pérez Millán at the UNCuyo incubator. As CTO I'm setting up the infrastructure and designing the algorithms that organise that skills record.",
       },
     },
   },
