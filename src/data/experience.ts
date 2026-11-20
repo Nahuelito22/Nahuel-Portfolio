@@ -118,14 +118,14 @@ export const EXPERIENCE: ExperienceItem[] = [
         role: "CTO",
         period: "2026 — hoy",
         description:
-          "Un pasaporte de competencias para juniors y pasantes: en lugar de un CV que escribe uno mismo, las habilidades las validan quienes te vieron trabajar. Lo armamos con Martín Pérez Millán y estamos validándolo con encuestas a candidatos y empresas.",
+          "Un pasaporte de competencias para juniors y pasantes: en lugar de un CV que escribe uno mismo, las habilidades las validan quienes te vieron trabajar. Lo armamos con Martín Pérez Millán, somos parte de la incubadora de la UNCuyo y estamos validándolo con encuestas a candidatos y empresas.",
       },
       en: {
         org: "Trazza",
         role: "CTO",
         period: "2026 — present",
         description:
-          "A skills passport for juniors and interns: instead of a CV you write yourself, your skills are validated by the people who saw you work. I'm building it with Martín Pérez Millán, and we're validating it with surveys of candidates and companies.",
+          "A skills passport for juniors and interns: instead of a CV you write yourself, your skills are validated by the people who saw you work. I'm building it with Martín Pérez Millán; we're part of the UNCuyo incubator and validating it with surveys of candidates and companies.",
       },
     },
   },
